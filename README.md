@@ -21,14 +21,14 @@ This project implements a CUG (Closed User Group) management system using the ME
 Clone this repository:
 
 ```
-Bash
+
 git clone https://github.com/<your-username>/cug-management-system.git
 ```
 
 Install dependencies:
 
 ```
-Bash
+
 cd cug-management-system
 npm install
 ```
@@ -38,14 +38,14 @@ npm install
 Start the backend server:
 
 ```
-Bash
+
 npm run server-start (or a similar script defined in your package.json)
 ```
 
 Start the React development server:
 
 ```
-Bash
+
 npm run start (or a similar script defined in your package.json)
 ```
 
