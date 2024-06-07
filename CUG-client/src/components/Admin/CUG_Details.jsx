@@ -3,7 +3,7 @@ import React from 'react'
 const CUG_details = () => {
   return (
     <div>
-      
+      CUG details
     </div>
   )
 }

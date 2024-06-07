@@ -3,7 +3,7 @@ import React from 'react'
 const Allotment_history = () => {
   return (
     <div>
-      
+      Allotment_history
     </div>
   )
 }

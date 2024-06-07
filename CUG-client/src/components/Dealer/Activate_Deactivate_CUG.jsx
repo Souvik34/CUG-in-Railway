@@ -4,7 +4,7 @@ import React from 'react'
 const Activate_Deactivate_CUG = () => {
   return (
     <div>
-      
+      Activate cug here
     </div>
   )
 }

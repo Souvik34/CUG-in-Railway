@@ -4,7 +4,7 @@ import React from 'react'
 const Allocation_WIse_Report = () => {
   return (
     <div>
-      
+      Allocation_WIse_Report
     </div>
   )
 }
