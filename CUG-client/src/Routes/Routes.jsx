@@ -2,19 +2,19 @@ import { createBrowserRouter } from "react-router-dom"
 import Admin from "../Pages/Admin-dashboard/Admin";
 import Home from "../Pages/Home/Home";
 import Dealer from "../Pages/Dealer-dashboard/Dealer";
-import Activate_Deactivate_CUG from "../components/Dealer/Activate_Deactivate_CUG"
-import Providers from "../components/Admin/Providers"
+import Activate_Deactivate_CUG from "../Components/Dealer/Activate_Deactivate_CUG"
+import Providers from "../Components/Admin/Providers"
 import App from "../App";
-import Activate_Deactivate_Report from "../components/Admin/Activate_Deactivate_Report"
-import Allocation_Wise_Report from "../components/Admin/Allocation_Wise_Report"
-import Allotment_history from "../components/Admin/Allotment_History"
-import CUG_details from "../components/Admin/CUG_Details"
-import CUG_Status_Report from "../components/Admin/CUG_Status_Report"
-import Add_New_CUG from "../components/Admin/Add_New_CUG"
-import Upload_CUG_Bill from "../components/Admin/Upload_CUG_Bill"
-import Upload_New_CUG_Nos from "../components/Admin/Upload_New_CUG_Nos"
-import Allocation_WIse_Report from "../components/Dealer/Allocation_WIse_Report"
-import Plan_Wise_Billing_Report from "../components/Dealer/Plan_Wise_Billing_Report"
+import Activate_Deactivate_Report from "../Components/Admin/Activate_Deactivate_Report"
+import Allocation_Wise_Report from "../Components/Admin/Allocation_Wise_Report"
+import Allotment_history from "../Components/Admin/Allotment_History"
+import CUG_details from "../Components/Admin/CUG_Details"
+import CUG_Status_Report from "../Components/Admin/CUG_Status_Report"
+import Add_New_CUG from "../Components/Admin/Add_New_CUG"
+import Upload_CUG_Bill from "../Components/Admin/Upload_CUG_Bill"
+import Upload_New_CUG_Nos from "../Components/Admin/Upload_New_CUG_Nos"
+import Allocation_WIse_Report from "../Components/Dealer/Allocation_WIse_Report"
+import Plan_Wise_Billing_Report from "../Components/Dealer/Plan_Wise_Billing_Report"
 
 
 const router= createBrowserRouter([

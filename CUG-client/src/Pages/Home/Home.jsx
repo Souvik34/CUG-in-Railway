@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
-import Nav from "../../components/Navbar/Nav"
+import Nav from "../../Components/Navbar/Nav"
 
 const Home = () => {
   return (
