@@ -1,11 +1,11 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
-import Nav from "../../Components/Navbar/Nav"
+
 
 const Home = () => {
   return (
     <>
-    <Nav/>
+    This is home page
     </>
   )
 }

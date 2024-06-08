@@ -5,7 +5,6 @@ const Admin = () => {
   return (
     <div>
       Admin Home 
-
       <Outlet/>
     </div>
   )
