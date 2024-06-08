@@ -1,12 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Display:ital,wght@0,100..900;1,100..900&display=swap');
+
 .navbar
 
 {
     display: flex;
     align-items: stretch;
     justify-content: space-between;
-    padding: 40px 20px;
+    padding: 10px 20px;
     position: sticky;
     top: 0;
     z-index: 200;
     background: var(--gradient);
+    font-family: "Noto Sans"
 }

@@ -8,4 +8,8 @@
 :root
 {
     --gradient:linear-gradient(to right, #ffff 0%, #c6ddf1 100%);
+    --font-noto: "Noto Sans";
 }
+
+   
+  
