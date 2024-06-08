@@ -1,6 +1,7 @@
+/* eslint-disable no-unused-vars */
 import React from 'react'
 
-const Add_new_CUG = () => {
+const Add_New_CUG = () => {
   return (
     <div>
       add new cug
@@ -8,4 +9,4 @@ const Add_new_CUG = () => {
   )
 }
 
-export default Add_new_CUG
+export default Add_New_CUG
