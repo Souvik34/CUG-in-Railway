@@ -7,7 +7,7 @@ const Home = () => {
     <>
       <div className='items-center text-center justify-center h-full'>
         <h1 className='text-5xl text-[#048DC8] font-semibold m-10'>CLOSED USER GROUP</h1>
-        <div className='items-center text-center justify-center md:mt-20 p-6  md:flex md:space-x-[20%] space-y-8 '>
+        <div className='items-center text-center justify-center md:mt-10 p-6  md:flex md:space-x-[20%] space-y-8 '>
           {/* admin card */}
           <div className='justify-center text-center items-center bg-[#F4F4F4] px-[70px] py-[30px] rounded-[15px_50px_30px] shadow-lg'>
             <img src="../../../public/images/Admin_logo.png" alt="Admin" />
