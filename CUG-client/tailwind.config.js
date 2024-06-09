@@ -11,6 +11,9 @@ export default {
       },
     },
   },
+  fontFamily: {
+    sans: ["var(--font-noto)"]
+  },
   plugins: [],
 }
 
