@@ -5,12 +5,15 @@ import { Outlet } from 'react-router-dom'
 const Admin = () => {
   return (
     <div>
-      <nav className="w-full text-center bg-custom-gradient">
+      <nav className="w-full text-center bg-admin-gradient">
         <h1 className="text-4xl font-semibold py-5 text-white">ADMIN PORTAL</h1>
       </nav>
       <div className="bg-gray-100 min-h-screen flex">
         <div className="bg-gray-800 w-64 p-4">
           <div>
+          <button className="bg-purple-500 hover:bg-purple-700 text-white text-2xl font-bold py-2 px-4 rounded mb-2 border-solid border-2 w-56">
+            CREATE DEALER
+            </button>
             <button className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mb-2 border-solid border-2 w-56">
             Create Dealer
             </button>
