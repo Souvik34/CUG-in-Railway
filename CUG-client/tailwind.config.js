@@ -1,3 +1,4 @@
+/* eslint-disable no-irregular-whitespace */
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
