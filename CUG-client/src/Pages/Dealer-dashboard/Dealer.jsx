@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react'
 import { Outlet } from 'react-router-dom'
 
@@ -10,7 +11,7 @@ const Dealer = () => {
     </nav>
     {/* Side bar for dealer */}
     <div className="bg-white-500 flex flex-col md:flex-row h-screen">
-      <div className="bg-gray-800 w-1/4 md:w-1/8 h-full p-4 text-white">
+    <div className="bg-gray-800 w-64 p-4">
         <button className="bg-blue-700 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded mb-4 border-2 w-full">
           Activate / De-Activate CUG
         </button>
