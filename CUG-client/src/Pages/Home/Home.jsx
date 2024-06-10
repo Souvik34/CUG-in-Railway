@@ -3,6 +3,7 @@ import React from 'react'
 
 
 const Home = () => {
+  
   return (
     <>
       <div className='items-center text-center justify-center h-full'>
