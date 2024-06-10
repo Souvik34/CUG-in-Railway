@@ -12,6 +12,9 @@ const Admin = () => {
         <div className="bg-gray-800 w-64 p-4">
           <div>
             <button className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mb-2 border-solid border-2 w-56">
+            Create Dealer
+            </button>
+            <button className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mb-2 border-solid border-2 w-56">
             CUG DETAILS
             </button>
             <button className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mb-2 border-solid border-2 w-56">
