@@ -7,7 +7,7 @@ import "./Nav.css"
 const Nav = () => {
   return (
 
-    <nav className='navbar drop-shadow-lg'   >
+    <nav className='navbar drop-shadow-lg' >
       <div className="flex flex-col items-center">
         <h1 className='text-4xl  font-bold tracking-tight text-[#3271B8] drop-shadow-lg flex items-center'>
           <img src="../../../public/images/logo.png" alt="Logo" className="h-20 w-20 mr-2" />
