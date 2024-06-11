@@ -1,13 +1,31 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
-import { Outlet } from 'react-router-dom'
+import { Link, Outlet } from 'react-router-dom'
+import { useAuth } from '../../store/Auth';
 
 const Admin = () => {
+  const { isLoggedIn } = useAuth();
   return (
     <div>
-      <nav className="w-full text-center bg-admin-gradient">
-        <h1 className="text-4xl font-semibold py-5 text-white">ADMIN PORTAL</h1>
-      </nav>
+     <nav className="w-full bg-admin-gradient flex items-center justify-between">
+
+    <h1 className="text-4xl font-semibold py-5 text-white text-center flex-grow">
+        ADMIN PORTAL
+    </h1>
+    {/* logout button */}
+    <div className="text-base font-medium lg:block">
+        {isLoggedIn ? (
+            <Link
+                to="/"
+                className="py-2 px-5 border rounded text-white bg-[ #C77DFF] hover:bg-[#C77DFF] ml-5"
+            >
+                Logout
+            </Link>
+        ) : ""}
+    </div>
+    <div className="w-10"></div>
+</nav>
+
       <div className="bg-gray-100 min-h-screen flex">
         <div className="bg-gray-800 w-64 p-4">
           <div>
