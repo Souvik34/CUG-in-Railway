@@ -6,7 +6,7 @@ const Dealer = () => {
   return (
     <div className='overflow-y-hidden'>
     {/* dealer navbar */} 
-    <nav className='h-full text-center bg-custom-gradient'>
+    <nav className='h-full text-center bg-custom-gradient drop-shadow-xl'>
       <h1 className="text-4xl font-semibold py-5  text-white">DEALER PORTAL</h1>
     </nav>
     {/* Side bar for dealer */}

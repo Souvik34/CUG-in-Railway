@@ -5,7 +5,7 @@ import { Outlet } from 'react-router-dom'
 const Admin = () => {
   return (
     <div>
-      <nav className="w-full text-center bg-admin-gradient">
+      <nav className="w-full text-center bg-admin-gradient drop-shadow-xl">
         <h1 className="text-4xl font-semibold py-5 text-white">ADMIN PORTAL</h1>
       </nav>
       <div className="bg-gray-100 min-h-screen flex">
