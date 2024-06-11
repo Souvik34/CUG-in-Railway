@@ -68,7 +68,7 @@ const AdminLogin = () => {
        <section className="flex justify-center items-center">          
           {/* for registration form */}
           <div className="md:w-[20vw] p-5 space-y-6 bg-white shadow-md rounded-lg mt-20">
-            <h1 className="text-2xl font-bold text-center">Login</h1>
+            <h1 className="text-2xl font-bold text-center text-[#7B2CBF]">Login</h1>
             <br />
 
             <form action="" onSubmit={handleSubmit} className="space-y-6">
@@ -91,7 +91,9 @@ const AdminLogin = () => {
 
                 {/* for password */}
                 <label htmlFor="username">password</label>
-                <div>
+                <div className='flex'>
+                
+              
                 <input
                   type={visible?"text":"password"}
                   name="password"
@@ -110,7 +112,7 @@ const AdminLogin = () => {
 
               </div>
               <br />
-              <button type="submit" className="w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">Login now</button>
+              <button type="submit" className="w-full py-2 px-4 bg-[#7B2CBF] hover:bg-blue-700 text-white font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">Login now</button>
             </form>
           </div>
   </section>
