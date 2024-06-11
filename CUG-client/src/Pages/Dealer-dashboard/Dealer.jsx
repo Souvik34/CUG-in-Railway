@@ -4,14 +4,14 @@ import { Outlet } from 'react-router-dom'
 
 const Dealer = () => {
   return (
-    <div>
+    <div className='overflow-y-hidden'>
     {/* dealer navbar */} 
-    <nav className='w-full text-center bg-custom-gradient'>
+    <nav className='h-full text-center bg-custom-gradient drop-shadow-xl'>
       <h1 className="text-4xl font-semibold py-5  text-white">DEALER PORTAL</h1>
     </nav>
     {/* Side bar for dealer */}
-    <div className="bg-white-500 flex flex-col md:flex-row h-screen">
-    <div className="bg-gray-800 w-64 p-4">
+    <div className="bg-white-500 flex flex-col md:flex-row  h-screen">
+    <div className="bg-gray-800 w-64 p-4 h-screen overflow-y-auto">
         <button className="bg-blue-700 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded mb-4 border-2 w-full">
           Activate / De-Activate CUG
         </button>

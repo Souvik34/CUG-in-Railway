@@ -91,7 +91,9 @@ const AdminLogin = () => {
 
                 {/* for password */}
                 <label htmlFor="username">password</label>
-                <div>
+                <div className='flex'>
+                
+              
                 <input
                   type={visible?"text":"password"}
                   name="password"
