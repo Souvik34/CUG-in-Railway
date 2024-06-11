@@ -10,18 +10,18 @@ const Dealer = () => {
       <h1 className="text-4xl font-semibold py-5  text-white">DEALER PORTAL</h1>
     </nav>
     {/* Side bar for dealer */}
-    <div className="bg-white-500 flex flex-col md:flex-row  h-screen">
-    <div className="bg-gray-800 w-64 p-4 h-screen overflow-y-auto">
+    <div className="bg-white-500 flex flex-col md:flex-row h-screen">
+      <div className="bg-gray-800 w-1/4 md:w-1/8 h-full p-4 text-white">
         <button className="bg-blue-700 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded mb-4 border-2 w-full">
           Activate / De-Activate CUG
         </button>
-        <button className="bg-blue-700 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded mb-4 border-2 w-full">
+        <button className="bg-blue-700 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded mb-2 border-2 w-full">
           Add New CUG
         </button>
-        <button className="bg-blue-700 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded mb-4 border-2 w-full">
+        <button className="bg-blue-700 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded mb-2 border-2 w-full">
           Allocation-Wise Report
         </button>
-        <button className="bg-blue-700 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded mb-4 border-2 w-full">
+        <button className="bg-blue-700 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded mb-2 border-2 w-full">
           Plan-Wise Billing Report
         </button>
       </div>
