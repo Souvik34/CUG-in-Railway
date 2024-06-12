@@ -54,10 +54,14 @@ const Admin = () => {
               Active/De-Active Report
             </button>
             <button className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mb-2 border-solid border-2 w-56">
+              <Link to='upload_cug_bill'>
               Upload CUG Bill
+              </Link>
             </button>
             <button className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mb-2 border-solid border-2 w-56">
+              <Link to='upload_new_cug_nos'>
               Upload New CUG Nos
+              </Link>
             </button>
             <button className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded border-solid border-2 w-56">
               Provider
