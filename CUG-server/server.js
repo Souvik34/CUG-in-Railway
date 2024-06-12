@@ -23,8 +23,8 @@ app.use("/api/admin",adminRouter);
 app.use(errorMiddleware);
 
 
-const PORT=3000;
-const hostname='127.0.0.5';
+const PORT=4000;
+const hostname='127.0.0.2';
 
 connectDb().then(()=>{
     app.listen(PORT,hostname,()=>{
