@@ -15,6 +15,10 @@ import Upload_CUG_Bill from "../Components/Admin/Upload_CUG_Bill"
 import Upload_New_CUG_Nos from "../Components/Admin/Upload_New_CUG_Nos"
 import Allocation_WIse_Report from "../Components/Dealer/Allocation_WIse_Report"
 import Plan_Wise_Billing_Report from "../Components/Dealer/Plan_Wise_Billing_Report"
+import DealerLogin from "../Pages/Login/DealerLogin"
+import AdminLogin from "../Pages/Login/AdminLogin";
+import AdminRegistration from "../Pages/Registration/AdminRegistration";
+import DealerRegistration from "../Pages/Registration/DealerRegistration";
 
 
 const router= createBrowserRouter([
@@ -87,7 +91,22 @@ const router= createBrowserRouter([
 
                 ]
             },
-            
+            {
+                path:"/adminLogin",
+                element:<AdminLogin/>
+            },
+            {
+                path:"/dealerLogin",
+                element:<DealerLogin/>
+            },
+            {
+                path:"/adminRegistration",
+                element:<AdminRegistration/>
+            },
+            {
+                path:"/dealerRegistration",
+                element:<DealerRegistration/>
+            }
         ]
        }
     ]);
