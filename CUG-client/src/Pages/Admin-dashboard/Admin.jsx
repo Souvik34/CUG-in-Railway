@@ -24,9 +24,10 @@ const Admin = () => {
         ADMIN PORTAL
     </h1>
 
-    <div className="w-20"></div> {/* This div is a placeholder to keep the spacing correct */}
+        <div className='w-20'></div>
+   {/* // This div is a placeholder to keep the spacing correct */}
 </nav>
-      <div className="bg-gray-100 min-h-screen flex">
+      <div className="bg-gray-100  min-h-screen flex">
         <div className="bg-gray-800 w-64 p-4">
           
           <button className="bg-purple-500 hover:bg-purple-700 text-white text-2xl font-bold py-2 px-4 rounded mb-2 border-solid border-2 w-56">
@@ -63,10 +64,9 @@ const Admin = () => {
             </button>
           
         </div>
-        <div className="flex-1 p-4">
-        </div>
-      </div>
+        
       <Outlet/>
+      </div>
     </div>
   )
 }
