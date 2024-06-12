@@ -3,7 +3,7 @@ import React from 'react'
 const DealerRegistration = () => {
   return (
     <div>
-      Dealer registration
+      Dealer registration..
     </div>
   )
 }
