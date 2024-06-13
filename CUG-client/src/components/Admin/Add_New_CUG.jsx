@@ -1,6 +1,9 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
 import { useForm } from 'react-hook-form';
+import {Controller } from "react-hook-form";
+import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
+
 
 
 const Add_New_CUG = () => {
@@ -8,6 +11,7 @@ const Add_New_CUG = () => {
     register,
     handleSubmit,
     formState: { errors },
+    control,
   } = useForm()
 
   const onSubmit = (data) => {
@@ -24,16 +28,27 @@ const Add_New_CUG = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
 
 
-        <div className="mb-4">
+        <div className="mb-4 ">
           <label htmlFor="cugno" className="block text-gray-700 font-bold mb-2">
             CUG No.
           </label>
-          <input
-            type="tel"
-            id="cugno"
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            {...register('cugno', { required: true })}
-          />
+          <Controller
+          name="cugno"
+          control={control}
+          rules={{
+            validate: (value) => isValidPhoneNumber(value)
+          }}
+          render={({ field: { onChange, value } }) => (
+            <PhoneInput
+              value={value}
+              onChange={onChange}
+              defaultCountry="IN"
+              id="cugno"
+            
+              {...register('cugno', { required: true })}
+            />
+          )}
+        />
           {errors.cugno && <p className="text-red-500">Enter valid CUG number</p>}
         </div>
 
