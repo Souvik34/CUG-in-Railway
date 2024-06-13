@@ -10,44 +10,44 @@ function Upload_New_CUG_Nos() {
 
   const onSubmit = data => console.log(data);
   return (
-    <div style={{display:'flex', justifyContent: 'center',alignItems: 'center',flexDirection:'column', maxWidth:'250px', height: '100vh', margin: 'auto'}}>
-      <div style={{background: '#f0f0f0', padding: '20px', borderRadius: '8px', maxWidth: '400px', width: '100%'}}>
+    <div style={{display:'flex',justifyContent: 'flex-end',alignItems: 'center',height: '100vh'}}>
+      <div style={{background: '#f0f0f0', padding: '20px', borderRadius: '8px', maxWidth: '1000px', width: '100%'}}>
         <div style={{marginBottom: '10px', textAlign: 'center'}}>Upload_New_CUG_Nos</div>
         <form onSubmit = {handleSubmit(onSubmit)}>
           <div style={{marginBottom: '20px', marginTop: '10px'}}>
-            <input placeholder = "CUG NO" {...register("CUGNO", { required: true, minLength:{value:4,message:"length must be 4"}, maxLength:{value:8,message:"length greater than 8"}})} type="text"/>  
+            <input placeholder = "CUG NO" {...register("CUGNO", { required: true, minLength:{value:4,message:"length must be 4"}, maxLength:{value:8,message:"length greater than 8"}})} type="text" style={{width: '100%', padding: '8px', borderRadius: '4px', border: '1 px solid #ccc'}}/>  
             {errors.CUGNO && <div style={{color: 'red'}}>{errors.CUGNO.message}</div>}
           </div>
           <div style={{marginBottom: '10px'}}>
-            <input placeholder = "EMP NO" {...register("EMPNO", { required: true, minLength:{value:5, message:"length must be 5"}, maxLength:{value:10, message:"length greater than 10"}})} type="text"/>
+            <input placeholder = "EMP NO" {...register("EMPNO", { required: true, minLength:{value:5, message:"length must be 5"}, maxLength:{value:10, message:"length greater than 10"}})} type="text" style={{width: '100%', padding: '8px', borderRadius: '4px', border: '1 px solid #ccc'}}/>
             {errors.EMPNO && <div style={{color: 'red'}}>{errors.EMPNO.message}</div>}
           </div>
           <div style={{marginBottom: '10px'}}>
-            <input placeholder = "NAME" {...register("NAME", { required: true, maxLength:{value:20, message:"length greater than 20"}})} type="text"/>
+            <input placeholder = "NAME" {...register("NAME", { required: true, maxLength:{value:20, message:"length greater than 20"}})} type="text" style={{width: '100%', padding: '8px', borderRadius: '4px', border: '1 px solid #ccc'}}/>
             {errors.NAME && <div style={{color: 'red'}}>{errors.NAME.message}</div>}
           </div>
           <div style={{marginBottom: '10px'}}>
-            <input placeholder = "DESIGNATION" {...register("DESIGNATION", { required: true, minLength:{value:5, message:"length must be 5"}, maxLength:{value:15, message:"length greater than 15"}})} type="text"/>
+            <input placeholder = "DESIGNATION" {...register("DESIGNATION", { required: true, minLength:{value:5, message:"length must be 5"}, maxLength:{value:15, message:"length greater than 15"}})} type="text" style={{width: '100%', padding: '8px', borderRadius: '4px', border: '1 px solid #ccc'}}/>
             {errors.DESIGNATION && <div style={{color: 'red'}}>{errors.DESIGNATION.message}</div>}
           </div>
           <div style={{marginBottom: '10px'}}>
-            <input placeholder = "DIVISION" {...register("DIVISION", { required: true, minLength:{value:7, message:"length must be 7"}, maxLength:{value:15, message:"length greater than 15"}})} type="text"/>
+            <input placeholder = "DIVISION" {...register("DIVISION", { required: true, minLength:{value:7, message:"length must be 7"}, maxLength:{value:15, message:"length greater than 15"}})} type="text" style={{width: '100%', padding: '8px', borderRadius: '4px', border: '1 px solid #ccc'}}/>
             {errors.DIVISION && <div style={{color: 'red'}}>{errors.DIVISION.message}</div>}
           </div>
           <div style={{marginBottom: '10px'}}>
-            <input placeholder = "DEPARTMENT" {...register("DEPARTMENT", { required: true, minLength:{value:5, message:"length must be 5"}, maxLength:{value:15, message:"length greater than 15"}})} type="text"/>
+            <input placeholder = "DEPARTMENT" {...register("DEPARTMENT", { required: true, minLength:{value:5, message:"length must be 5"}, maxLength:{value:15, message:"length greater than 15"}})} type="text" style={{width: '100%', padding: '8px', borderRadius: '4px', border: '1 px solid #ccc'}}/>
             {errors.DEPARTMENT && <div style={{color: 'red'}}>{errors.DEPARTMENT.message}</div>}
           </div>
           <div style={{marginBottom: '10px'}}>
-            <input placeholder = "BILL UNIT" {...register("BILLUNIT", { required: true, minLength:{value:3, message:"length must be 3"}, maxLength:{value:10, message:"length greater than 10"}})} type="text"/>
+            <input placeholder = "BILL UNIT" {...register("BILLUNIT", { required: true, minLength:{value:3, message:"length must be 3"}, maxLength:{value:10, message:"length greater than 10"}})} type="text" style={{width: '100%', padding: '8px', borderRadius: '4px', border: '1 px solid #ccc'}}/>
             {errors.BILLUNIT && <div style={{color: 'red'}}>{errors.BILLUNIT.message}</div>}
           </div>
           <div style={{marginBottom: '10px'}}>
-            <input placeholder = "ALLOCATION" {...register("ALLOCATION", { required: true, minLength:{value:3, message:"length must be 3"}, maxLength:{value:10, message:"length greater than 10"}})} type="text"/>
+            <input placeholder = "ALLOCATION" {...register("ALLOCATION", { required: true, minLength:{value:3, message:"length must be 3"}, maxLength:{value:10, message:"length greater than 10"}})} type="text" style={{width: '100%', padding: '8px', borderRadius: '4px', border: '1 px solid #ccc'}}/>
             {errors.ALLOCATION && <div style={{color: 'red'}}>{errors.ALLOCATION.message}</div>}
           </div>
           <div style={{marginBottom: '10px'}}>
-            <input placeholder = "PLAN" {...register("PLAN", { required: true, minLength:{value:20, message:"length must be 1"}})} type="text"/>
+            <input placeholder = "PLAN" {...register("PLAN", { required: true, minLength:{value:20, message:"length must be 1"}})} type="text" style={{width: '100%', padding: '8px', borderRadius: '4px', border: '1 px solid #ccc'}}/>
             {errors.PLAN && <div style={{color: 'red'}}>{errors.PLAN.message}</div>}
           </div>
           <button type="submit" style={{backgroundColor: '#007bff', padding: '8px 16px', cursor: 'pointer', borderRadius: '8px',color: 'white', border: 'none', width: '100px'}}>Activate</button>
