@@ -1,128 +1,66 @@
-/* eslint-disable no-unused-vars */
-import React from 'react'
-import { useForm } from 'react-hook-form'
+import React from 'react';
+import { useForm } from 'react-hook-form';
 
 function Upload_CUG_Bill() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { handleSubmit } = useForm();
 
   const onSubmit = (data) => console.log(data);
 
+  const handleFileUpload = (event) => {
+    const file = event.target.files[0];
+    console.log('File uploaded:', file);
+    // Add file handling logic here (e.g., parsing CSV/Excel)
+  };
+
   return (
-    <div className="container mx-auto my-auto">
+    <div className="container mx-20 my-20">
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="mb-4">
-          <label htmlFor="cug_no" className="block text-gray-700 font-bold mb-2">
-            CUG NO
+          <label htmlFor="file_upload" className="block text-gray-700 font-bold mb-2">
+            Upload CSV/Excel
           </label>
           <input
-            type="tel"
-            id="cug_no"
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            {...register('cug_no', { required: true })}
+            type="file"
+            id="file_upload"
+            className="shadow appearance-none border rounded w-150 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+            onChange={handleFileUpload}
           />
-          {errors.cug_no && <p className="text-red-500">CUG NO is required</p>}
         </div>
 
-        <div className="mb-4">
-          <label htmlFor="periodic_charge" className="block text-gray-700 font-bold mb-2">
-            PERIODIC CHARGE
-          </label>
-          <input
-            type="text"
-            id="periodic_charge"
-            className="shadow appearance-none border rounded w-72 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            {...register('periodic_charge', { required: true })}
-          />
-          {errors.periodic_charge && <p className="text-red-500">Enter Periodic charge</p>}
-        </div>
-
-
-        <div className="mb-4">
-          <label htmlFor="usage_amount" className="block text-gray-700 font-bold mb-2">
-            USAGE AMOUNT
-          </label>
-          <input
-            type="text"
-            id="usage_amount"
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            {...register('usage_amount', { required: true })}
-          />
-          {errors.usage_amount && <p className="text-red-500">Enter Usage Amount</p>}
-        </div>
-        <div className="mb-4">
-          <label htmlFor="data_amount" className="block text-gray-700 font-bold mb-2">
-            DATA AMOUNT
-          </label>
-          <input
-            type="number"
-            id="data_amount"
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            {...register('data_amount', { required: true })}
-          />
-          {errors.data_amount && <p className="text-red-500">Enter Data amount</p>}
-        </div>
-        <div className="mb-4">
-          <label htmlFor="voice" className="block text-gray-700 font-bold mb-2">
-            VOICE
-          </label>
-          <input
-            type="text"
-            id="voice"
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            {...register('voice', { required: true })}
-          />
-          {errors.voice}
-        </div>
-        
-        <div className="mb-4">
-          <label htmlFor="video" className="block text-gray-700 font-bold mb-2">
-            VIDEO
-          </label>
-          <input
-            type="text"
-            id="video"
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            {...register('video', { required: true })}
-          />
-          {errors.video}
-        </div>
-
-        <div className="mb-4">
-          <label htmlFor="sms" className="block text-gray-700 font-bold mb-2">
-            SMS
-          </label>
-          <input
-            type="text"
-            id="sms"
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            {...register('sms', { required: true })}
-          />
-          {errors.sms}
-        </div>
-        
-        <div className="mb-4">
-          <label htmlFor="vas" className="block text-gray-700 font-bold mb-2">
-            VAS
-          </label>
-          <input
-            type="text"
-            id="vas"
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            {...register('vas', { required: true })}
-          />
-          {errors.voice}
-        </div>
-
+        <button
+          type="submit"
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        >
+          Submit
+        </button>
       </form>
+
+      <div className="mt-8">
+        <table className="min-w-full bg-white">
+          <thead>
+            <tr>
+              <th className="py-2">PF No</th>
+              <th className="py-2">Plan</th>
+              <th className="py-2">Amount Charged</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td className="border px-4 py-2">123456</td>
+              <td className="border px-4 py-2">Basic Plan</td>
+              <td className="border px-4 py-2">100</td>
+            </tr>
+            <tr>
+              <td className="border px-4 py-2">789012</td>
+              <td className="border px-4 py-2">Premium Plan</td>
+              <td className="border px-4 py-2">200</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
 
-export default Upload_CUG_Bill
-
-
-
+export default Upload_CUG_Bill;
