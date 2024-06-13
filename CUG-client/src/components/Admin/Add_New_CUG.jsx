@@ -16,7 +16,7 @@ const Add_New_CUG = () => {
   };
   return (
     
-    <div className="container mx-auto my-4 p-4 bg-slate-100">
+    <div className="container mx-auto my-4 p-10 bg-slate-100">
       <h1 className="text-2xl font-bold mb-4">Your account</h1>
       <p className="text-gray-600 mb-6">
         Provide information about yourself for identity
