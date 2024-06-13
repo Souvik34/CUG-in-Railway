@@ -25,7 +25,7 @@ const Admin = () => {
     </h1>
 
     <div className="w-20"></div> {/* This div is a placeholder to keep the spacing correct */}
-</nav>
+     </nav>
       <div className="bg-gray-100 min-h-screen flex">
         <div className="bg-gray-800 w-64 p-4">
           <div>
@@ -33,9 +33,9 @@ const Admin = () => {
             CREATE DEALER
             </button>
     
-            <button className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mb-2 border-solid border-2 w-56">
+             <Link to="/admin/cug_details"> <button className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mb-2 border-solid border-2 w-56"> 
             CUG DETAILS
-            </button>
+            </button> </Link>
             <button className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mb-2 border-solid border-2 w-56">
               Add New CUG
             </button>
@@ -63,6 +63,7 @@ const Admin = () => {
           </div>
         </div>
         <div className="flex-1 p-4">
+        {/* <img src="../../../public/images/logo.png" alt="" /> */}
         </div>
       </div>
       <Outlet/>

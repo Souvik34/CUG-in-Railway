@@ -1,12 +1,72 @@
-/* eslint-disable no-unused-vars */
-import React from 'react'
+import React, { useState } from 'react'
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
-const CUG_details = () => {
+const DealerLogin = () => {
+  const [user, setuser] = useState({
+    email:"",
+    password:"",
+  })  
+
+  const [visible, setvisible] = useState(false)
+
+  const handleInput=(e)=>{
+    console.log(e)
+    let name=e.target.name
+    let value=e.target.value
+
+    setuser({
+      ...user,
+      [name]:value
+    })
+  }
+  const handleSubmit=async(e)=>{
+    e.preventDefault()
+    console.log(user);
+}
   return (
-    <div>
-      CUG details
+      <div className='min-h-screen'>
+       <nav className="w-full text-center bg-dealer-gradient">
+        <h1 className="text-4xl font-semibold py-5 text-white">CUG NO</h1>
+      </nav>
+       <section className="flex justify-center items-center">          
+          {/* for registration form */}
+          <div className="md:w-[20vw] p-5 space-y-6 bg-white shadow-md rounded-lg mt-20">
+            <h1 className="text-2xl font-bold text-center text-[#2E2D93]">CUG NO</h1>
+            <br />
+            <form action="" onSubmit={handleSubmit} className="space-y-6">
+              <div>
+                
+                {/* for CUG No. */}
+                <label htmlFor="username" className="block text-sm font-medium text-gray-700">CUG No.</label>
+                
+                <input
+                  type="tel"
+                  name="phone"
+                  placeholder="Enter your CUG No."
+                  id="phone"
+                  required
+                  autoComplete="off"
+                  value={user.phone}
+                  onChange={handleInput}
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                />
+
+               
+
+              </div>
+              <div>
+
+                    {/* for employee no. */}
+                    
+              </div>
+              <div>
+               <button type="submit" className="w-full py-2 px-4 bg-[#2E2D93] hover:bg-blue-700 text-white font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">GO</button>
+              </div>
+            </form>
+          </div>
+  </section>
     </div>
   )
 }
 
-export default CUG_details
+export default DealerLogin
