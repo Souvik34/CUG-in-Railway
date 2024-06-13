@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
 import { useForm } from 'react-hook-form';
+import { useState } from 'react';
 import {Controller } from "react-hook-form";
 import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
 
@@ -13,6 +14,8 @@ const Add_New_CUG = () => {
     formState: { errors },
     control,
   } = useForm()
+
+
 
   const onSubmit = (data) => {
     console.log('Submitted:', data);
@@ -42,6 +45,8 @@ const Add_New_CUG = () => {
             <PhoneInput
               value={value}
               onChange={onChange}
+                initialValueFormat="national"
+                countryCallingCodeEditable={false}
               defaultCountry="IN"
               id="cugno"
             
