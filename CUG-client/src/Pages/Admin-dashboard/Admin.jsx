@@ -24,29 +24,18 @@ const Admin = () => {
         ADMIN PORTAL
     </h1>
 
-<<<<<<< HEAD
-    <div className="w-20"></div> {/* This div is a placeholder to keep the spacing correct */}
-     </nav>
-      <div className="bg-gray-100 min-h-screen flex">
-=======
         <div className='w-20'></div>
    {/* // This div is a placeholder to keep the spacing correct */}
 </nav>
       <div className="bg-gray-100  min-h-screen flex">
->>>>>>> aace2eac48da61dc62eec6e5ecec80b1c75daf78
         <div className="bg-gray-800 w-64 p-4">
           
           <button className="bg-purple-500 hover:bg-purple-700 text-white text-2xl font-bold py-2 px-4 rounded mb-2 border-solid border-2 w-56">
             CREATE DEALER
             </button>
-<<<<<<< HEAD
-    
-             <Link to="/admin/cug_details"> <button className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mb-2 border-solid border-2 w-56"> 
-=======
             <button className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mb-2 border-solid border-2 w-56">
->>>>>>> aace2eac48da61dc62eec6e5ecec80b1c75daf78
-            CUG DETAILS
-            </button> </Link>
+            <Link to="cug_details"> CUG DETAILS </Link>
+            </button> 
             <button className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mb-2 border-solid border-2 w-56">
               <Link to="add_new_cug">
               Add New CUG
@@ -79,14 +68,7 @@ const Admin = () => {
             </button>
           
         </div>
-<<<<<<< HEAD
-        <div className="flex-1 p-4">
-        {/* <img src="../../../public/images/logo.png" alt="" /> */}
-        </div>
-      </div>
-=======
         
->>>>>>> aace2eac48da61dc62eec6e5ecec80b1c75daf78
       <Outlet/>
       </div>
     </div>
