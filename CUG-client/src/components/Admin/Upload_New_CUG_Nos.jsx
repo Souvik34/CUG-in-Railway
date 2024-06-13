@@ -11,11 +11,13 @@ function Upload_New_CUG_Nos() {
 
   const onSubmit = data => console.log(data);
   return (
-    <div style={{display:'flex',justifyContent: 'flex-end',alignItems: 'center',height: '100vh'}}>
-      <div style={{background: '#f0f0f0', padding: '20px', borderRadius: '8px', maxWidth: '1000px', width: '100%'}}>
-        <div style={{marginBottom: '10px', textAlign: 'center'}}>Upload_New_CUG_Nos</div>
+    <div style={{display:'flex',justifyContent: 'flex-end',alignItems: 'center',width: '100%', height: '100vh', paddingRight: '0%'}}>
+      <div style={{background: '#f0f0f0', padding: '20px', borderRadius: '8px', width: '100%'}}>
+        <div style={{marginBottom: '10px', textAlign: 'center', background: 'green', padding: '10px', borderRadius: '8px'}}>
+          <h2 style={{margin: '0', color: 'white'}}>ALLOTMENT OF NEW CUG</h2>
+        </div>
         <form onSubmit = {handleSubmit(onSubmit)}>
-          <div style={{marginBottom: '20px', marginTop: '10px'}}>
+          <div style={{marginBottom: '10px', marginTop: '10px'}}>
             <input placeholder = "CUG NO" {...register("CUGNO", { required: true, minLength:{value:4,message:"length must be 4"}, maxLength:{value:8,message:"length greater than 8"}})} type="text" style={{width: '100%', padding: '8px', borderRadius: '4px', border: '1 px solid #ccc'}}/>  
             {errors.CUGNO && <div style={{color: 'red'}}>{errors.CUGNO.message}</div>}
           </div>
