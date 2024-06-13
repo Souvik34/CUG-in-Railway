@@ -21,7 +21,7 @@ function Upload_CUG_Bill() {
           <input
             type="tel"
             id="cug_no"
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-150 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             {...register('cug_no', { required: true })}
           />
           {errors.cug_no && <p className="text-red-500">CUG NO is required</p>}
@@ -34,7 +34,7 @@ function Upload_CUG_Bill() {
           <input
             type="text"
             id="periodic_charge"
-            className="shadow appearance-none border rounded w-72 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-150 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             {...register('periodic_charge', { required: true })}
           />
           {errors.periodic_charge && <p className="text-red-500">Enter Periodic charge</p>}
@@ -48,11 +48,13 @@ function Upload_CUG_Bill() {
           <input
             type="text"
             id="usage_amount"
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-150 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             {...register('usage_amount', { required: true })}
           />
           {errors.usage_amount && <p className="text-red-500">Enter Usage Amount</p>}
         </div>
+
+
         <div className="mb-4">
           <label htmlFor="data_amount" className="block text-gray-700 font-bold mb-2">
             DATA AMOUNT
@@ -60,11 +62,13 @@ function Upload_CUG_Bill() {
           <input
             type="number"
             id="data_amount"
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-150 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             {...register('data_amount', { required: true })}
           />
           {errors.data_amount && <p className="text-red-500">Enter Data amount</p>}
         </div>
+
+
         <div className="mb-4">
           <label htmlFor="voice" className="block text-gray-700 font-bold mb-2">
             VOICE
@@ -72,12 +76,13 @@ function Upload_CUG_Bill() {
           <input
             type="text"
             id="voice"
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-150 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             {...register('voice', { required: true })}
           />
           {errors.voice}
         </div>
         
+
         <div className="mb-4">
           <label htmlFor="video" className="block text-gray-700 font-bold mb-2">
             VIDEO
@@ -85,11 +90,12 @@ function Upload_CUG_Bill() {
           <input
             type="text"
             id="video"
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-150 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             {...register('video', { required: true })}
           />
           {errors.video}
         </div>
+
 
         <div className="mb-4">
           <label htmlFor="sms" className="block text-gray-700 font-bold mb-2">
@@ -98,12 +104,13 @@ function Upload_CUG_Bill() {
           <input
             type="text"
             id="sms"
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-150 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             {...register('sms', { required: true })}
           />
           {errors.sms}
         </div>
         
+
         <div className="mb-4">
           <label htmlFor="vas" className="block text-gray-700 font-bold mb-2">
             VAS
@@ -111,11 +118,12 @@ function Upload_CUG_Bill() {
           <input
             type="text"
             id="vas"
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-150 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             {...register('vas', { required: true })}
           />
           {errors.voice}
         </div>
+
 
       </form>
     </div>
