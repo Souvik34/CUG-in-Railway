@@ -12,7 +12,7 @@ function Upload_CUG_Bill() {
   const onSubmit = (data) => console.log(data);
 
   return (
-    <div className="container">
+    <div className="container mx-auto my-auto">
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="mb-4">
           <label htmlFor="cug_no" className="block text-gray-700 font-bold mb-2">
@@ -26,6 +26,7 @@ function Upload_CUG_Bill() {
           />
           {errors.cug_no && <p className="text-red-500">CUG NO is required</p>}
         </div>
+
         <div className="mb-4">
           <label htmlFor="periodic_charge" className="block text-gray-700 font-bold mb-2">
             PERIODIC CHARGE
@@ -33,11 +34,13 @@ function Upload_CUG_Bill() {
           <input
             type="text"
             id="periodic_charge"
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-72 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             {...register('periodic_charge', { required: true })}
           />
           {errors.periodic_charge && <p className="text-red-500">Enter Periodic charge</p>}
         </div>
+
+
         <div className="mb-4">
           <label htmlFor="usage_amount" className="block text-gray-700 font-bold mb-2">
             USAGE AMOUNT
