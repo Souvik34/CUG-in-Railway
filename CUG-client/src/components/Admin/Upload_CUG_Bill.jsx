@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react'
 import { useForm } from 'react-hook-form'
 
@@ -25,7 +26,7 @@ function Upload_CUG_Bill() {
           />
           {errors.cug_no && <p className="text-red-500">CUG NO is required</p>}
         </div>
-        <div classname="mb-4">
+        <div className="mb-4">
           <label htmlFor="periodic_charge" className="block text-gray-700 font-bold mb-2">
             PERIODIC CHARGE
           </label>
