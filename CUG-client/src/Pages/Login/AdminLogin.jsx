@@ -67,7 +67,7 @@ const AdminLogin = () => {
       </nav>
        <section className="flex justify-center items-center">          
           {/* for registration form */}
-          <div className="md:w-[20vw] p-5 space-y-6 bg-white shadow-md rounded-lg mt-20">
+          <div className="md:w-[20vw] p-5 space-y-6 bg-white shadow-md rounded-lg mt-5">
             <h1 className="text-2xl font-bold text-center text-[#7B2CBF]">Login</h1>
             <br />
 
