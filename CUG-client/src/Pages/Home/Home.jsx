@@ -1,10 +1,15 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { useAuth } from '../../store/Auth'
 
 
 const Home = () => {
-  
+  const {isLoggedIn}=useAuth();
+  const navigate=useNavigate();
+  if(isLoggedIn){
+    navigate("/admin")
+  }
   return (
     <>
       <div className='items-center text-center justify-center h-full'>

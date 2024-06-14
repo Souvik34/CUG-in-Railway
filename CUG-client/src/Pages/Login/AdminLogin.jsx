@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { Navigate, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../store/Auth';
+import { ToastContainer, toast } from 'react-toastify';
 
 const AdminLogin = () => {
   const [user, setuser] = useState({
@@ -19,46 +22,46 @@ const AdminLogin = () => {
       [name]:value
     })
   }
-// // for navigator
-// const navigate= useNavigate();
-// // for call the Auth.jsx using useContext
-// const {storeTokenInLs}=useAuth();
+// for navigator
+const navigate= useNavigate();
+// for call the Auth.jsx using useContext
+const {storeTokenInLs}=useAuth();
 
 
   const handleSubmit=async(e)=>{
     e.preventDefault()
     console.log(user);
 
-    // try {
-    //   const loginURL= "http://127.0.0.2:3000/api/auth/login";
-    //   const response=await fetch(loginURL,{
-    //     method:"POST",
-    //     headers:{
-    //       "Content-Type":"application/json"
-    //     },
-    //     body:JSON.stringify(user),
-    //   });
-    //   console.log(response);
+    try {
+      const loginURL= "http://127.0.0.2:4000/api/auth/login";
+      const response=await fetch(loginURL,{
+        method:"POST",
+        headers:{
+          "Content-Type":"application/json"
+        },
+        body:JSON.stringify(user),
+      });
+      console.log(response);
 
-    //   const res_data= await response.json();
-    //   console.log("response data",res_data);
+      const res_data= await response.json();
+      console.log("response data",res_data);
 
-    //   if(response.ok){
-    //     console.log("login successful");
-    //     toast.success("Login successfull");
-    //     navigate("/")
+      if(response.ok){
+        console.log("login successful");
+        toast.success("Login successfull");
+        navigate("/admin")
 
 
-    //     //store in local storage
-    //     // localStorage.setItem("token",res_data.token)
-    //     storeTokenInLs(res_data.token);
-    //   }else{
-    //     console.log("Invalid credentials")
-    //     toast.error(res_data.extraDetails? res_data.extraDetails: res_data.message);
-    //   }
-    // } catch (error) {
-    //   console.log(error)
-    // }
+        //store in local storage
+        // localStorage.setItem("token",res_data.token)
+        storeTokenInLs(res_data.token);
+      }else{
+        console.log("Invalid credentials")
+        toast.error(res_data.extraDetails? res_data.extraDetails: res_data.message);
+      }
+    } catch (error) {
+      console.log(error)
+    }
   }
   return (
     <div className='min-h-screen'>
