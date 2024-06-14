@@ -19,6 +19,7 @@ import DealerLogin from "../Pages/Login/DealerLogin"
 import AdminLogin from "../Pages/Login/AdminLogin";
 import AdminRegistration from "../Pages/Registration/AdminRegistration";
 import DealerRegistration from "../Pages/Registration/DealerRegistration";
+import Logout from "../Pages/Logout/Logout";
 
 
 const router= createBrowserRouter([
@@ -106,6 +107,10 @@ const router= createBrowserRouter([
             {
                 path:"/dealerRegistration",
                 element:<DealerRegistration/>
+            },
+            {
+                path:"/logout",
+                element:<Logout/>
             }
         ]
        }
