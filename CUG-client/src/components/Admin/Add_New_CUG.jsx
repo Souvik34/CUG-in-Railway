@@ -101,15 +101,15 @@ const Add_New_CUG = () => {
         </div>
         <hr />
         <div className="mb-4">
-          <label htmlFor="designation" className="block text-gray-700 font-bold mb-2">
+          <label htmlFor="designation" className="block text-gray-700 font-bold mt-5">
             Designation
-          </label>
           <input
             type="text"
             id="designation"
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-80  ml-20  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             {...register('designation', { required: true })}
-          />
+            />
+            </label>
           {errors.designation && <p className="text-red-500">Enter your Designation</p>}
         </div>
         <div className="mb-4">
