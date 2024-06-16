@@ -19,6 +19,9 @@ import DealerLogin from "../Pages/Login/DealerLogin"
 import AdminLogin from "../Pages/Login/AdminLogin";
 import AdminRegistration from "../Pages/Registration/AdminRegistration";
 import DealerRegistration from "../Pages/Registration/DealerRegistration";
+import Logout from "../Pages/Logout/Logout";
+import AdminWelcome from "../Pages/Admin-dashboard/AdminWelcome";
+import Create_Dealer from "../Components/Admin/Create_Dealer";
 
 
 const router= createBrowserRouter([
@@ -34,6 +37,14 @@ const router= createBrowserRouter([
                 path:'/admin',
                 element:<Admin/>,
                 children:[
+                    {
+                        index: true, // This will render DefaultAdminPage when path is exactly /admin
+                        element: <AdminWelcome/>, 
+                      },
+                      {
+                        path:'create_dealer',
+                        element:<Create_Dealer/>
+                      },
                     {
                         path:'provider',
                         element:<Providers/>
@@ -106,6 +117,10 @@ const router= createBrowserRouter([
             {
                 path:"/dealerRegistration",
                 element:<DealerRegistration/>
+            },
+            {
+                path:"/logout",
+                element:<Logout/>
             }
         ]
        }

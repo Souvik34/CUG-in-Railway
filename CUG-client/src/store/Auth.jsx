@@ -31,7 +31,7 @@ export const AuthProvider=({children})=>{
           }
         try {
             setisLoading(true)
-            const response= await fetch("http://127.0.0.2:3000/api/auth/user",{
+            const response= await fetch("http://127.0.0.2:4000/api/auth/user",{
                 method:"GET",
                 headers:{
                     Authorization: UserAuthorization,
