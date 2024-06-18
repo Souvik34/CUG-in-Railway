@@ -66,7 +66,7 @@ const Add_New_CUG = () => {
           <input
             type="text"
             id="empno"
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-80 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             {...register('empno', { required: true })}
           />
           {errors.empno && <p className="text-red-500">Enter valid employment number</p>}
@@ -81,7 +81,7 @@ const Add_New_CUG = () => {
             <input
               type="text"
               id="firstName"
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border rounded w-80 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               {...register('firstName', { required: true })}
             />
             {errors.firstName && <p className="text-red-500">First name is required</p>}
@@ -93,7 +93,7 @@ const Add_New_CUG = () => {
             <input
               type="text"
               id="lastName"
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border rounded w-80 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               {...register('lastName', { required: true })}
             />
             {errors.lastName && <p className="text-red-500">Last name is required</p>}
@@ -106,34 +106,34 @@ const Add_New_CUG = () => {
           <input
             type="text"
             id="designation"
-            className="shadow appearance-none border rounded w-80  ml-20  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-80  ml-[30rem]  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             {...register('designation', { required: true })}
             />
-            </label>
+            </label>        
           {errors.designation && <p className="text-red-500">Enter your Designation</p>}
         </div>
         <div className="mb-4">
           <label htmlFor="division" className="block text-gray-700 font-bold mb-2">
-            Division
-          </label>
+            Division&nbsp;
           <input
             type="text"
             id="division"
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-80 ml-96 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             {...register('division', { required: true })}
-          />
+            />
+            </label>
           {errors.division && <p className="text-red-500">Invalid division</p>}
         </div>
         <div className="mb-4">
           <label htmlFor="department" className="block text-gray-700 font-bold mb-2">
             Department
-          </label>
           <input
             type="text"
             id="department"
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-80  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             {...register('department', { required: true })}
-          />
+            />
+            </label>
           {errors.department && <p className="text-red-500">Enter your department</p>}
         </div>
 
@@ -142,26 +142,26 @@ const Add_New_CUG = () => {
           <div className="mb-4">
           <label htmlFor="billUnit" className="block text-gray-700 font-bold mb-2">
             Bill Unit
-          </label>
           <input
             type="number"
             id=""
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-80   py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             {...register('billUnit', { required: true })}
-          />
+            />
+            </label>
           {errors.billUnit && <p className="text-red-500">Enter your bill unit</p>}
         </div>
 
           <div className="mb-4">
           <label htmlFor="allocation" className="block text-gray-700 font-bold mb-2">
-            Allocation
-          </label>
+            Allocation&nbsp;
           <input
             type="text"
             id="allocation"
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-80 ml-96 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             {...register('allocation', { required: true })}
-          />
+            />
+            </label>
           {errors.allocation && <p className="text-red-500">Enter the allocation</p>}
         </div>
 
@@ -169,31 +169,31 @@ const Add_New_CUG = () => {
         <div className="mb-4">
   <label htmlFor="operator" className="block text-gray-700 font-bold mb-2">
     Operator
-  </label>
   <select
     id="operator"
-    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+    className="shadow appearance-none border rounded w-80 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
     {...register('operator', { required: true })}
-  >
+    >
     <option value="">Select an operator</option>
     <option value="operator1">Operator 1</option>
     <option value="operator2">Operator 2</option>
     <option value="operator3">Operator 3</option>
     
   </select>
+    </label>
   {errors.operator && <p className="text-red-500">Choose your operator</p>}
 </div>
 
           <div className="mb-4">
           <label htmlFor="plan" className="block text-gray-700 font-bold mb-2">
             Plan
-          </label>
           <input
             type="text"
             id="plan"
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-80 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             {...register('plan', { required: true })}
-          />
+            />
+            </label>
           {errors.plan && <p className="text-red-500">Enter your plan</p>}
         </div>
 
