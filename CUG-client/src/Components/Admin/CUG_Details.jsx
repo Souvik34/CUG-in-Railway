@@ -26,11 +26,11 @@ const DealerLogin = () => {
   return (
       <div className='min-h-screen'>
        <nav className="w-full text-center bg-dealer-gradient">
-        <h1 className="text-4xl font-semibold py-5 text-white">CUG NO</h1>
-      </nav>
-       <section className="flex justify-center items-center">          
+        <h1 className="text-4xl font-semibold py-5 text-white"></h1>
+       </nav>
+       <section className="flex justify-center items-center ml-72">       
           {/* for registration form */}
-          <div className="md:w-[20vw] p-5 space-y-6 bg-white shadow-md rounded-lg mt-20">
+          <div className="md:w-[35vw] md:h-[50vh] p-5 space-y-6 bg-white shadow-md rounded-lg mt-20">
             <h1 className="text-2xl font-bold text-center text-[#2E2D93]">CUG NO</h1>
             <br />
             <form action="" onSubmit={handleSubmit} className="space-y-6">
@@ -64,7 +64,7 @@ const DealerLogin = () => {
               </div>
             </form>
           </div>
-  </section>
+       </section>
     </div>
   )
 }
