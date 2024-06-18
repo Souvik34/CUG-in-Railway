@@ -18,11 +18,11 @@ function Upload_New_CUG_Nos() {
         </div>
         <form onSubmit = {handleSubmit(onSubmit)}>
           <div style={{marginBottom: '10px', marginTop: '10px'}}>
-            <input placeholder = "CUG NO" {...register("CUGNO", { required: true, minLength:{value:4,message:"length must be 4"}, maxLength:{value:8,message:"length greater than 8"}})} type="text" style={{width: '100%', padding: '8px', borderRadius: '4px', border: '1 px solid #ccc'}}/>  
+            <input placeholder = "CUG NO" {...register("CUGNO", { required: true, minLength:{value:4,message:"length must be 4"}, maxLength:{value:8,message:"length greater than 8"}})} type="number" style={{width: '100%', padding: '8px', borderRadius: '4px', border: '1 px solid #ccc'}}/>  
             {errors.CUGNO && <div style={{color: 'red'}}>{errors.CUGNO.message}</div>}
           </div>
           <div style={{marginBottom: '10px'}}>
-            <input placeholder = "EMP NO" {...register("EMPNO", { required: true, minLength:{value:5, message:"length must be 5"}, maxLength:{value:10, message:"length greater than 10"}})} type="text" style={{width: '100%', padding: '8px', borderRadius: '4px', border: '1 px solid #ccc'}}/>
+            <input placeholder = "EMP NO" {...register("EMPNO", { required: true, minLength:{value:5, message:"length must be 5"}, maxLength:{value:10, message:"length greater than 10"}})} type="number" style={{width: '100%', padding: '8px', borderRadius: '4px', border: '1 px solid #ccc'}}/>
             {errors.EMPNO && <div style={{color: 'red'}}>{errors.EMPNO.message}</div>}
           </div>
           <div style={{marginBottom: '10px'}}>
@@ -50,10 +50,10 @@ function Upload_New_CUG_Nos() {
             {errors.ALLOCATION && <div style={{color: 'red'}}>{errors.ALLOCATION.message}</div>}
           </div>
           <div style={{marginBottom: '10px'}}>
-            <input placeholder = "PLAN" {...register("PLAN", { required: true, minLength:{value:20, message:"length must be 1"}})} type="text" style={{width: '100%', padding: '8px', borderRadius: '4px', border: '1 px solid #ccc'}}/>
+            <input placeholder = "PLAN" {...register("PLAN", { required: true})} type="text" style={{width: '100%', padding: '8px', borderRadius: '4px', border: '1 px solid #ccc'}}/>
             {errors.PLAN && <div style={{color: 'red'}}>{errors.PLAN.message}</div>}
           </div>
-          <button type="submit" style={{backgroundColor: '#007bff', padding: '8px 16px', cursor: 'pointer', borderRadius: '8px',color: 'white', border: 'none', width: '100px'}}>Activate</button>
+          <button type="submit" style={{backgroundColor: '#007bff',alignContent: 'center',padding: '10px 20px', cursor: 'pointer', borderRadius: '8px',color: 'white', border: 'none'}}>Activate</button>
         </form>
       </div>
     </div>
