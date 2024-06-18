@@ -7,6 +7,7 @@ const authRouter = require("./router/auth-router");
 const contactRouter=require("./router/contact-router");
 const serviceRouter= require("./router/service-router");
 const adminRouter=require("./router/admin-router");
+const add_cugRouter = require("./router/add_cug-router");
 
 //mongodb connection
 const connectDb= require("./utils/db");
@@ -18,6 +19,7 @@ app.use(express.json());
 app.use("/api/auth",authRouter);
 app.use("/api/form",contactRouter);
 app.use("/api/services",serviceRouter);
+app.use("/api/add_cug", add_cugRouter);
 app.use("/api/admin",adminRouter);
 //calling error middleware
 app.use(errorMiddleware);
