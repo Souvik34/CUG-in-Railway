@@ -158,7 +158,8 @@ const Add_New_CUG = () => {
           <input
             type="text"
             id="allocation"
-            className="shadow appearance-none border rounded w-5/12 ml-[20.7rem] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            placeholder="Allocation"
+            className="shadow appearance-none border rounded w-5/12 ml-[20.7rem] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline font-light"
             {...register('allocation', { required: true })}
             />
             </label>
