@@ -6,7 +6,7 @@ import { useAuth } from "../../store/Auth";
 const Dealer = () => {
   const { isLoggedIn } = useAuth();
   return (
-    <div className="overflow-y-hidden">
+    <div className="">
       {/* dealer navbar */}
       <nav className="w-full bg-admin-gradient flex items-center justify-between">
         {/* logout button */}
@@ -28,8 +28,8 @@ const Dealer = () => {
         </h1>
       </nav>
       {/* Side bar for dealer */}
-      <div className="bg-white min-h-screen flex">
-        <div className="bg-gray-800 w-64 p-4 h-screen overflow-y-auto">
+      <div className=" min-h-screen flex">
+        <div className="bg-gray-800 w-64 p-4">
           <Link to="activate_deactivate_cug">
             <button className="bg-blue-700 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded mb-4 border-2 w-full">
               Activate / De-Activate CUG
@@ -46,9 +46,7 @@ const Dealer = () => {
             </button>
           </Link>
         </div>
-        <div className="bg-white w-2/3 md:w-3/4 p-8 text-gray-800">
-          {/* Content for the Dealer Portal */}
-        </div>
+       
         <Outlet />
       </div>
     </div>

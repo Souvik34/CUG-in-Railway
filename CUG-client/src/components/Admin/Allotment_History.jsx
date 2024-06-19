@@ -1,9 +1,11 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
-import React from 'react'
-import { useState } from 'react';
+// import React from 'react'
+// import { useState } from 'react';
+import React, { useState, useEffect } from "react";
 
 const Allotment_history = () => {
-  const [cugNo, setCugNo] = useState('');
+  const [cugNo, setCugNo] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 2;
 
