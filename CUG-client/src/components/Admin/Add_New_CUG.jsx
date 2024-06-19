@@ -13,6 +13,7 @@ const Add_New_CUG = () => {
     handleSubmit,
     formState: { errors },
     control,
+    reset
   } = useForm()
 
 
@@ -20,6 +21,15 @@ const Add_New_CUG = () => {
   const onSubmit = (data) => {
     console.log('Submitted:', data);
     // Handle form submission here
+  };
+
+  const handleCancel = () => {
+    const confirmClear = window.confirm('Are you sure you want to clear all data?');
+    if (confirmClear) {
+      // Clear the data here
+      console.log('Data cleared!');
+    }
+    reset(); 
   };
   return (
     
@@ -211,8 +221,9 @@ const Add_New_CUG = () => {
           <button
             type="button"
             className="bg-gray-300 hover:bg-gray-400 text-gray-700 font-bold py-2 px-4 rounded mr-2"
+            onClick={handleCancel}
           >
-            Cancel
+            Clear All
           </button>
           <button
             type="submit"
