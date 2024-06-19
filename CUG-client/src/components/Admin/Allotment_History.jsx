@@ -4,10 +4,33 @@ import { useState } from 'react';
 
 const Allotment_history = () => {
   const [cugNo, setCugNo] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 2;
 
   const handleCugNoChange = (event) => {
     setCugNo(event.target.value);
   };
+  // Pagignation function
+
+  const calculatePageRange = () => {
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+
+    return { startIndex, endIndex };
+  };
+
+  const nextPage = () => {
+    if (currentPage < Math.ceil(filteredItems.length / itemsPerPage)) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const previousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+  const { startIndex, endIndex } = calculatePageRange();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -60,34 +83,39 @@ const Allotment_history = () => {
                 {/* <div className="mt-2 bg-gray-200 rounded-md p-2 h-8" /> */}
               </div>
               <div className="flex border border-gray-400 rounded-md py-2 px-3">
-                Employee ID
+                Employee ID:
+                <h1>DEE123</h1>
                 {/* <div className="mt-2 bg-gray-200 rounded-md p-2 h-8" /> */}
               </div>
               <div className="flex border border-gray-400 rounded-md py-2 px-3">
-                Plan
+                Plan:
+                <h1>Monthly</h1>
                 {/* <div className="mt-2 bg-gray-200 rounded-md p-2 h-8" /> */}
               </div>
               <div className="flex border border-gray-400 rounded-md py-2 px-3">
-                Date
+                Date:
+                <h1>
+                  2/3/2024
+                </h1>
                 {/* <div className="mt-2 bg-gray-200 rounded-md p-2 h-8" /> */}
               </div>
             </td>
             {/* Current c3 */}
             <td className="px-4 py-2">
               <div className="flex border border-gray-400 rounded-md py-2 px-3">
-                Name
+                Name:
                 {/* <div className="mt-2 bg-gray-200 rounded-md p-2 h-8" /> */}
               </div>
               <div className="flex border border-gray-400 rounded-md py-2 px-3">
-                Employee ID
+                Employee ID:
                 {/* <div className="mt-2 bg-gray-200 rounded-md p-2 h-8" /> */}
               </div>
               <div className="flex border border-gray-400 rounded-md py-2 px-3">
-                Plan
+                Plan:
                 {/* <div className="mt-2 bg-gray-200 rounded-md p-2 h-8" /> */}
               </div>
               <div className="flex border border-gray-400 rounded-md py-2 px-3">
-                Date
+                Date:
                 {/* <div className="mt-2 bg-gray-200 rounded-md p-2 h-8" /> */}
               </div>
             </td>
@@ -99,8 +127,30 @@ const Allotment_history = () => {
           </tr>
         </tbody>
       </table>
+
+      
+      {/* {result.length > 0 && ( */}
+            <div className="flex justify-center mt-4 space-x-8">
+              <button onClick={previousPage} className="hover:underline">
+                Previous
+              </button>
+              <span>
+                Page {currentPage} of{" "}
+                {Math.ceil(filteredItems.length / itemsPerPage)}
+              </span>
+              <button
+                onClick={nextPage}
+                disabled={
+                  currentPage === Math.ceil(filteredItems.length / itemsPerPage)
+                }
+                className="hover:underline"
+              >
+                Next
+              </button>
+            </div>
+          {/* )} */}
      
-      <div className="flex justify-center mt-4">
+      {/* <div className="flex justify-center mt-4">
         <button className="bg-gray-300 hover:bg-gray-400 text-gray-700 font-bold py-2 px-4 rounded-md mr-2">
           Prev
         </button>
@@ -110,7 +160,7 @@ const Allotment_history = () => {
         <button className="bg-gray-300 hover:bg-gray-400 text-gray-700 font-bold py-2 px-4 rounded-md">
           Next
         </button>
-      </div>
+      </div> */}
     </div>
   );
 }
