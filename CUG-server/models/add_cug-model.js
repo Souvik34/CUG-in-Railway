@@ -48,6 +48,6 @@ const add_cugSchema = new Schema({
   }
   });
   
-  const  Add_cug =new model("add_cug",add_cugSchema);
+  const  Add_cug =new model("Add_cug",add_cugSchema);
   
   module.exports= Add_cug;
