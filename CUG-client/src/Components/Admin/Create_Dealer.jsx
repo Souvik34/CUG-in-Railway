@@ -7,7 +7,8 @@ import { useAuth } from '../../store/Auth';
 const Create_Dealer = () => {
   const [user, setuser] = useState({
     username: "",
-    email: "",
+    employeeid: "",
+    department:"",
     phone: "",
     password: "",
   });
@@ -72,7 +73,7 @@ const navigate= useNavigate();
          <div className="container grid grid-two-cols ">
           
         {/* for registration form */}
-           <div className="registration-form  bg-slate-200 mt-10   md:w-[30vw]  m-auto rounded-2xl shadow-2xl">
+           <div className="registration-form mt-10 md:w-[30vw] m-auto">
              <h1 className="main-heading text-center text-2xl font-bold text-[#7B2CBF]  pt-10 pb-5">
                Create Dealer
              </h1>
