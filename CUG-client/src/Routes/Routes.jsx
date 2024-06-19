@@ -23,6 +23,7 @@ import Logout from "../Pages/Logout/Logout";
 import AdminWelcome from "../Pages/Admin-dashboard/AdminWelcome";
 import Create_Dealer from "../Components/Admin/Create_Dealer";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import DealerWelcome from "../Pages/Dealer-dashboard/DealerWelcome";
 
 
 const router= createBrowserRouter([
@@ -88,6 +89,10 @@ const router= createBrowserRouter([
                 path:'/dealer',
                 element:<Dealer/>,
                 children:[
+                    {
+                        index: true, // This will render DefaultAdminPage when path is exactly /admin
+                        element:<DealerWelcome/>, 
+                      },
                     {
                         path:'activate_deactivate_cug',
                         element:<Activate_Deactivate_CUG/>,
