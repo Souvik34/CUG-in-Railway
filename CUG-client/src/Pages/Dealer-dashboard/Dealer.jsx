@@ -1,13 +1,29 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
+import { useAuth } from "../../store/Auth";
 
 const Dealer = () => {
+  const { isLoggedIn } = useAuth();
   return (
     <div className="overflow-y-hidden">
       {/* dealer navbar */}
-      <nav className="h-full text-center bg-custom-gradient drop-shadow-2xl">
-        <h1 className="text-4xl font-semibold py-5  text-white">
+      <nav className="w-full bg-admin-gradient flex items-center justify-between">
+        {/* logout button */}
+        <div className="text-base font-medium space-x-5 lg:block">
+          {isLoggedIn ? (
+            <Link
+              to="/logout"
+              className="py-2 px-5 border rounded text-white bg-[#C77DFF] hover:bg-[#3C096C] ml-5"
+            >
+              Logout
+            </Link>
+          ) : (
+            ""
+          )}
+        </div>
+
+        <h1 className="text-4xl font-semibold py-5 text-white text-center flex-grow">
           DEALER PORTAL
         </h1>
       </nav>
