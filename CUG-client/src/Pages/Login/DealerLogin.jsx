@@ -25,12 +25,12 @@ const DealerLogin = () => {
 }
   return (
       <div className='min-h-screen'>
-       <nav className='h-full text-center bg-custom-gradient drop-shadow-2xl'>
+       <nav className='h-full text-center bg-custom-gradient '>
         <h1 className="text-4xl font-semibold py-5 text-white">DEALER LOGIN</h1>
       </nav>
        <section className="flex justify-center items-center">          
           {/* for registration form */}
-          <div className="md:w-[20vw] p-5 space-y-6 bg-white shadow-md rounded-lg mt-20">
+          <div className="md:w-[20vw] p-5 space-y-1 bg-white shadow-md rounded-lg mt-5">
             <h1 className="text-2xl font-bold text-center text-[#2E2D93]">Login</h1>
             <br />
 
