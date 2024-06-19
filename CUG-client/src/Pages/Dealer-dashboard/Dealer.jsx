@@ -8,13 +8,13 @@ const Dealer = () => {
   return (
     <div className="">
       {/* dealer navbar */}
-      <nav className="w-full bg-admin-gradient flex items-center justify-between">
+      <nav className="w-full bg-custom-gradient flex items-center justify-between">
         {/* logout button */}
         <div className="text-base font-medium space-x-5 lg:block">
           {isLoggedIn ? (
             <Link
               to="/logout"
-              className="py-2 px-5 border rounded text-white bg-[#C77DFF] hover:bg-[#3C096C] ml-5"
+              className="py-2 px-5 border rounded text-white bg-[#4895EF] hover:bg-[#3C096C] ml-5"
             >
               Logout
             </Link>
