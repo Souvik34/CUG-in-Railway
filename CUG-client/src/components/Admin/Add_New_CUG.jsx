@@ -24,6 +24,11 @@ const Add_New_CUG = () => {
   };
 
   const handleCancel = () => {
+    const confirmClear = window.confirm('Are you sure you want to clear all data?');
+    if (confirmClear) {
+      // Clear the data here
+      console.log('Data cleared!');
+    }
     reset(); 
   };
   return (
