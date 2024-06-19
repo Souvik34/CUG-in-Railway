@@ -31,31 +31,31 @@ const Add_New_CUG = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
 
 
-        <div className="mb-4 ">
-          <label htmlFor="cugno" className="block text-gray-700 font-bold mb-2">
-            CUG No.
-          </label>
-          <Controller
-          name="cugno"
-          control={control}
-          rules={{
-            validate: (value) => isValidPhoneNumber(value)
-          }}
-          render={({ field: { onChange, value } }) => (
-            <PhoneInput
-              value={value}
-              onChange={onChange}
-                initialValueFormat="national"
-                countryCallingCodeEditable={false}
-              defaultCountry="IN"
-              id="cugno"
-            
-              {...register('cugno', { required: true })}
-            />
-          )}
-        />
-          {errors.cugno && <p className="text-red-500">Enter valid CUG number</p>}
-        </div>
+      <div className="mb-4 flex items-center">
+  <label htmlFor="cugno" className="block font-bold mb-2">
+    CUG No.
+  </label>
+  <Controller
+    name="cugno"
+    control={control}
+    rules={{
+      validate: (value) => isValidPhoneNumber(value)
+    }}
+    render={({ field: { onChange, value } }) => (
+      <PhoneInput
+        value={value}
+        onChange={onChange}
+        initialValueFormat="national"
+        countryCallingCodeEditable={false}
+        defaultCountry="IN"
+        id="cugno"
+        className="w-5/12 ml-[21.8rem] shadow appearance-none border rounded  text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        {...register('cugno', { required: true })}
+      />
+    )}
+  />
+  {errors.cugno && <p className="text-red-500 ml-2">Enter valid CUG number</p>}
+</div>
 
       {/* Employment no */}
 
@@ -139,7 +139,7 @@ const Add_New_CUG = () => {
 
         <hr />
         {/* Bill unit */}
-          <div className="mb-4">
+          <div className="mb-4 mt-8">
           <label htmlFor="billUnit" className="block text-gray-700 font-bold mb-2">
             Bill Unit
           <input
