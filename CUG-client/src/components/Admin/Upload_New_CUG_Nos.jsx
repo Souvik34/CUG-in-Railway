@@ -1,63 +1,52 @@
-/* eslint-disable no-unused-vars */
-import React from 'react'
-import { useForm } from 'react-hook-form'
+import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
 
 function Upload_New_CUG_Nos() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit, setValue, formState: { errors } } = useForm();
+  const [selectedFile, setSelectedFile] = useState(null);
 
-  const onSubmit = data => console.log(data);
+  const onSubmit = (data) => {
+    if (!selectedFile) {
+      alert('Please upload a file');
+      return;
+    }
+    console.log(data);
+  };
+
+  const handleFileUpload = (event) => {
+    const file = event.target.files[0];
+    setSelectedFile(file);
+    setValue('file', file); 
+    console.log('File uploaded:', file);
+  };
+
   return (
-    <div style={{display:'flex',justifyContent: 'flex-end',alignItems: 'center',width: '100%', height: '100vh', paddingRight: '0%'}}>
-      <div style={{background: '#f0f0f0', padding: '20px', borderRadius: '8px', width: '100%'}}>
-        <div style={{marginBottom: '10px', textAlign: 'center', background: 'green', padding: '10px', borderRadius: '8px'}}>
-          <h2 style={{margin: '0', color: 'white'}}>ALLOTMENT OF NEW CUG</h2>
-        </div>
-        <form onSubmit = {handleSubmit(onSubmit)}>
-          <div style={{marginBottom: '10px', marginTop: '10px'}}>
-            <input placeholder = "CUG NO" {...register("CUGNO", { required: true, minLength:{value:4,message:"length must be 4"}, maxLength:{value:8,message:"length greater than 8"}})} type="number" style={{width: '100%', padding: '8px', borderRadius: '4px', border: '1 px solid #ccc'}}/>  
-            {errors.CUGNO && <div style={{color: 'red'}}>{errors.CUGNO.message}</div>}
+    <div className='flex justify-center items-start min-h-screen mt-20'>
+      <div className="w-full max-w-md p-5 space-y-6 bg-white shadow-md rounded-lg ml-60">
+        <h1 className="text-2xl font-bold text-center text-[#2E2D93]">Upload NEW CUG Numbers</h1>
+        <br />
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+          <div>
+            <label htmlFor="file_upload" className="block text-sm font-medium text-gray-700">Upload CSV/Excel</label>
+            <input
+              type="file"
+              id="file_upload"
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+              accept=".csv, .csvs, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+              {...register('file', { required: true })}
+              onChange={handleFileUpload}
+              aria-label="Upload CSV or Excel file"
+            />
+            {errors.file && <p className="text-red-500 text-xs italic">File is required.</p>}
+            {selectedFile && <p className="mt-2 text-gray-600">{selectedFile.name}</p>}
           </div>
-          <div style={{marginBottom: '10px'}}>
-            <input placeholder = "EMP NO" {...register("EMPNO", { required: true, minLength:{value:5, message:"length must be 5"}, maxLength:{value:10, message:"length greater than 10"}})} type="number" style={{width: '100%', padding: '8px', borderRadius: '4px', border: '1 px solid #ccc'}}/>
-            {errors.EMPNO && <div style={{color: 'red'}}>{errors.EMPNO.message}</div>}
+          <div>
+            <button type="submit" className="w-full py-2 px-4 bg-[#2E2D93] hover:bg-blue-700 text-white font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">Submit</button>
           </div>
-          <div style={{marginBottom: '10px'}}>
-            <input placeholder = "NAME" {...register("NAME", { required: true, maxLength:{value:20, message:"length greater than 20"}})} type="text" style={{width: '100%', padding: '8px', borderRadius: '4px', border: '1 px solid #ccc'}}/>
-            {errors.NAME && <div style={{color: 'red'}}>{errors.NAME.message}</div>}
-          </div>
-          <div style={{marginBottom: '10px'}}>
-            <input placeholder = "DESIGNATION" {...register("DESIGNATION", { required: true, minLength:{value:5, message:"length must be 5"}, maxLength:{value:15, message:"length greater than 15"}})} type="text" style={{width: '100%', padding: '8px', borderRadius: '4px', border: '1 px solid #ccc'}}/>
-            {errors.DESIGNATION && <div style={{color: 'red'}}>{errors.DESIGNATION.message}</div>}
-          </div>
-          <div style={{marginBottom: '10px'}}>
-            <input placeholder = "DIVISION" {...register("DIVISION", { required: true, minLength:{value:7, message:"length must be 7"}, maxLength:{value:15, message:"length greater than 15"}})} type="text" style={{width: '100%', padding: '8px', borderRadius: '4px', border: '1 px solid #ccc'}}/>
-            {errors.DIVISION && <div style={{color: 'red'}}>{errors.DIVISION.message}</div>}
-          </div>
-          <div style={{marginBottom: '10px'}}>
-            <input placeholder = "DEPARTMENT" {...register("DEPARTMENT", { required: true, minLength:{value:5, message:"length must be 5"}, maxLength:{value:15, message:"length greater than 15"}})} type="text" style={{width: '100%', padding: '8px', borderRadius: '4px', border: '1 px solid #ccc'}}/>
-            {errors.DEPARTMENT && <div style={{color: 'red'}}>{errors.DEPARTMENT.message}</div>}
-          </div>
-          <div style={{marginBottom: '10px'}}>
-            <input placeholder = "BILL UNIT" {...register("BILLUNIT", { required: true, minLength:{value:3, message:"length must be 3"}, maxLength:{value:10, message:"length greater than 10"}})} type="text" style={{width: '100%', padding: '8px', borderRadius: '4px', border: '1 px solid #ccc'}}/>
-            {errors.BILLUNIT && <div style={{color: 'red'}}>{errors.BILLUNIT.message}</div>}
-          </div>
-          <div style={{marginBottom: '10px'}}>
-            <input placeholder = "ALLOCATION" {...register("ALLOCATION", { required: true, minLength:{value:3, message:"length must be 3"}, maxLength:{value:10, message:"length greater than 10"}})} type="text" style={{width: '100%', padding: '8px', borderRadius: '4px', border: '1 px solid #ccc'}}/>
-            {errors.ALLOCATION && <div style={{color: 'red'}}>{errors.ALLOCATION.message}</div>}
-          </div>
-          <div style={{marginBottom: '10px'}}>
-            <input placeholder = "PLAN" {...register("PLAN", { required: true})} type="text" style={{width: '100%', padding: '8px', borderRadius: '4px', border: '1 px solid #ccc'}}/>
-            {errors.PLAN && <div style={{color: 'red'}}>{errors.PLAN.message}</div>}
-          </div>
-          <button type="submit" style={{backgroundColor: '#007bff',alignContent: 'center',padding: '10px 20px', cursor: 'pointer', borderRadius: '8px',color: 'white', border: 'none'}}>Activate</button>
         </form>
       </div>
     </div>
   );
 }
-export default Upload_New_CUG_Nos
 
+export default Upload_New_CUG_Nos;
