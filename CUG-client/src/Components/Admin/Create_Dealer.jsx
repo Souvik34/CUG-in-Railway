@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from "react-router-dom";
-// import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import { FaEye ,FaEyeSlash } from "react-icons/fa";
 import { useAuth } from '../../store/Auth';
 
@@ -35,46 +35,43 @@ const navigate= useNavigate();
     e.preventDefault();
     console.log(user);
 
-    // try {
-    //   const registerURL = "http://127.0.0.2:3000/api/auth/register";
-    //   const response = await fetch(registerURL, {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(user),
-    //   });
-    //   const res_data= await response.json();
-    //     console.log("response data",res_data);
+    try {
+      const registerURL = "http://127.0.0.2:4000/api/auth/dealer_register";
+      const response = await fetch(registerURL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user),
+      });
+      const res_data= await response.json();
+        console.log("response data",res_data);
        
-    //   if(response.ok){
-    //       //store in local storage
-    //       // localStorage.setItem("token",res_data.token)
-    //       toast.success("Registration successfully")
-    //       storeTokenInLs(res_data.token);
-    //       navigate("/")
+      if(response.ok){
+          //store in local storage
+          // localStorage.setItem("token",res_data.token)
+          toast.success("Dealer created successfully")
+          storeTokenInLs(res_data.token);
+          navigate("/admin")
 
-    //   }else{
-    //     toast.error(res_data.extraDetails? res_data.extraDetails: res_data.message);
-    //   }
-    //   console.log(response);
-    // } catch (error) {
-    //   console.log(error);
-    // }
+      }else{
+        toast.error(res_data.extraDetails? res_data.extraDetails: res_data.message);
+      }
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
-    <div className=' '>
-    {/* <nav className="w-full text-center bg-admin-gradient">
-     <h1 className="text-4xl font-semibold py-5 text-white">ADMIN REGISTRATION</h1>
-   </nav> */}
-   <section className=" h-screen  items-center justify-center">
+
+   <section className=" h-screen w-full flex justify-center items-center">
      <main>
        <div className="section-registration ">
          <div className="container grid grid-two-cols ">
           
         {/* for registration form */}
-           <div className="registration-form mt-10 md:w-[30vw] m-auto">
-             <h1 className="main-heading text-center text-2xl font-bold text-[#7B2CBF]  pt-10 pb-5">
+           <div className="registration-form md:w-[30vw] m-auto">
+             <h1 className="main-heading text-center text-4xl font-bold text-[#7B2CBF]  pb-5">
                Create Dealer
              </h1>
              <br />
@@ -82,7 +79,7 @@ const navigate= useNavigate();
              <form
                action=""
                onSubmit={handleSubmit}
-               className=" px-10 pb-10 "
+               className="  pb-10 "
              >
                <div className="space-y-5 ">
                  {/* for username */}
@@ -104,12 +101,12 @@ const navigate= useNavigate();
                        value={user.username}
                        onChange={handleInput}
                        className="black flex-1 border-0 
-                   py-1.5 pl-8 text-gray-900 placeholder:text-gray-400 focus:outline-none rounded-md sm:text-sm sm:leading-6 "
+                   py-1.5 pl-4 text-gray-900 placeholder:text-gray-400 focus:outline-none rounded-md sm:text-sm sm:leading-6 "
                      />
                    </div>
                  </div>
 
-                 {/* for email */}
+                 {/* for employee id */}
                  <div className="space-y-2">
                    <label htmlFor="username">Employee Id</label>
                    <br />
@@ -121,10 +118,10 @@ const navigate= useNavigate();
                      id="employeeid"
                      required
                      autoComplete="off"
-                     value={user.email}
+                     value={user.employeeid}
                      onChange={handleInput}
                      className="black flex-1 border-0 
-                   py-1.5 pl-8 text-gray-900 placeholder:text-gray-400 focus:outline-none rounded-md sm:text-sm sm:leading-6 "
+                   py-1.5 pl-4 text-gray-900 placeholder:text-gray-400 focus:outline-none rounded-md sm:text-sm sm:leading-6 "
                    />
                    </div>
                  </div>
@@ -140,10 +137,10 @@ const navigate= useNavigate();
                      id="department"
                      required
                      autoComplete="off"
-                     value={user.phone}
+                     value={user.department}
                      onChange={handleInput}
                      className="black flex-1 border-0 
-                   py-1.5 pl-8 text-gray-900 placeholder:text-gray-400 focus:outline-none rounded-md sm:text-sm sm:leading-6 "
+                   py-1.5 pl-4 text-gray-900 placeholder:text-gray-400 focus:outline-none rounded-md sm:text-sm sm:leading-6 "
                    />
                    </div>
                  </div>
@@ -162,7 +159,7 @@ const navigate= useNavigate();
                      value={user.phone}
                      onChange={handleInput}
                      className="black flex-1 border-0 
-                   py-1.5 pl-8 text-gray-900 placeholder:text-gray-400 focus:outline-none rounded-md sm:text-sm sm:leading-6 "
+                   py-1.5 pl-4 text-gray-900 placeholder:text-gray-400 focus:outline-none rounded-md sm:text-sm sm:leading-6 "
                    />
                    </div>
                  </div>
@@ -182,7 +179,7 @@ const navigate= useNavigate();
                      value={user.password}
                      onChange={handleInput}
                      className="black flex-1 border-0 
-                   py-1.5 pl-8 text-gray-900 placeholder:text-gray-400 focus:outline-none rounded-md sm:text-sm sm:leading-6 "
+                   py-1.5 pl-4 text-gray-900 placeholder:text-gray-400 focus:outline-none rounded-md sm:text-sm sm:leading-6 "
                    />
                    <div className=" mt-2.5 ml-2 text-gray-600 " onClick={()=>{setvisible(!visible)}}>
                        {visible? <FaEye />:<FaEyeSlash />}
@@ -205,7 +202,6 @@ const navigate= useNavigate();
        </div>
      </main>
    </section>
- </div>
   )
 }
 

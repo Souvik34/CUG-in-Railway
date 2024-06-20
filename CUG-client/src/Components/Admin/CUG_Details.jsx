@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
@@ -46,6 +47,30 @@ const DealerLogin = () => {
     }
   };
 
+  const handleDeactivate = async () => {
+    try {
+      const response = await fetch('https://your-api-endpoint.com/deactivateCugNo', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          cugNo: user.cugNo
+        })
+      });
+
+      if (response.ok) {
+        alert('CUG No. deactivated successfully');
+        setEmployeeData(null);
+        setIsVisible(false);
+      } else {
+        console.error('Failed to deactivate CUG No.');
+      }
+    } catch (error) {
+      console.error('Error deactivating CUG No.:', error);
+    }
+  };
+
   return (
     <div className='min-h-screen'>
       <nav className="w-full text-center bg-dealer-gradient">
@@ -85,7 +110,12 @@ const DealerLogin = () => {
                   <h2 className="p-4 bg-gray-100 rounded shadow">ALLOCATION: <span>{employeeData.allocation}</span></h2>
                   <h2 className="p-4 bg-gray-100 rounded shadow">EMPLOYEE STATUS: <span>{employeeData.status}</span></h2>
                   <h2 className="p-4 bg-gray-100 rounded shadow">PLAN: <span>{employeeData.plan}</span></h2>
-                  <h2 className="p-4 bg-gray-100 rounded shadow">DEACTIVATE</h2>  
+                  <button
+                    onClick={handleDeactivate}
+                    className="p-4 bg-blue-500 text-white rounded shadow mt-2 hover:bg-blue-700"
+                  >
+                    DEACTIVATE
+                  </button>
                 </div>
               )}
             </div>
@@ -97,4 +127,3 @@ const DealerLogin = () => {
 };
 
 export default DealerLogin;
-
