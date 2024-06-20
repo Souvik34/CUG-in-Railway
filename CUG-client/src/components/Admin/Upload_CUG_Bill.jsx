@@ -15,20 +15,11 @@ function Upload_CUG_Bill() {
     const file = event.target.files[0];
     const fileType = file.type;
 
-    const filterData = (data) => {
-      const filteredData = data.filter(
-        (bill) => parseFloat(bill['Periodic Charge']) > 74.61 &&
-                  parseFloat(bill['Periodic Charge']) > 59.05 &&
-                  parseFloat(bill['Periodic Charge']) > 39.9
-      );
-      setBills(filteredData);
-    };
-
     const parseCSV = (file) => {
       Papa.parse(file, {
         header: true,
         complete: (result) => {
-          filterData(result.data);
+          setBills(result.data);
         },
       });
     };
@@ -50,7 +41,7 @@ function Upload_CUG_Bill() {
             return acc;
           }, {})
         );
-        filterData(parsedData);
+        setBills(parsedData);
       };
       reader.readAsArrayBuffer(file);
     };
