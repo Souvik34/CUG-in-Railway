@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import {Controller } from "react-hook-form";
 import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
+import axios from 'axios'; 
 
 
 
@@ -18,12 +19,24 @@ const Add_New_CUG = () => {
 
 
 
-  const onSubmit = (data) => {
-    console.log('Submitted:', data);
-    // Handle form submission here
+  const onSubmit = async (data) => {
+    try {
+      const response = await axios.post('https://your-backend-url.com/api/add-new-cug', data);
+      console.log(response.data);
+ 
+    } catch (error) {
+      console.error(error);
+      // Handle error response from backend
+    }
+ 
   };
 
   const handleCancel = () => {
+    const confirmClear = window.confirm('Are you sure you want to clear all data?');
+    if (confirmClear) {
+      // Clear the data here
+      console.log('Data cleared!');
+    }
     reset(); 
   };
   return (
@@ -92,19 +105,20 @@ const Add_New_CUG = () => {
             {errors.firstName && <p className="text-red-500">First name is required</p>}
           </div>
           <div>
-            <label htmlFor="lastName" className="block font-bold mb-2">
+            <label htmlFor="lastName" className="block font-bold mb-2 ">
 
             <input
               type="text"
               id="lastName"
-              className="shadow appearance-none border rounded w-2/5 ml-[1.5rem] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border rounded w-2/5 ml-[1.5rem] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline "
               {...register('lastName', { required: true })}
               />
               </label>
             {errors.lastName && <p className="text-red-500">Last name is required</p>}
           </div>
         </div>
-        <hr />
+        <hr className='border-[1.1px] border-blue-300 rounded'/>
+        
         <div className="mb-4">
           <label htmlFor="designation" className="block text-gray-700 font-bold mt-5">
             Designation
@@ -142,7 +156,7 @@ const Add_New_CUG = () => {
           {errors.department && <p className="text-red-500">Enter your department</p>}
         </div>
 
-        <hr />
+        <hr className='border-[1.1px] border-blue-300 rounded' />
         {/* Bill unit */}
           <div className="mb-4 mt-8">
           <label htmlFor="billUnit" className="block text-gray-700 font-bold mb-2">

@@ -1,4 +1,5 @@
 const User = require("../models/user-model");
+const Dealer=require("../models/dealer_registrataion");
 const bcrypt = require("bcryptjs");
 
 const home = async (req, res) => {
@@ -36,6 +37,34 @@ const register = async (req, res) => {
   }
 };
 
+// dealer-register function
+const dealer_register = async (req, res) => {
+  try {
+    console.log("register :",req.body);
+    const { username, employeeid,department, phone, password } = req.body;
+    
+    const userExist = await Dealer.findOne({ employeeid });
+    if (userExist) {
+      return res.status(400).json({ message: "Employee id already exist" });
+    }
+
+    // const salt=10;
+    // const hash_pass= await bcrypt.hash(password,salt);
+    const userCreated = await Dealer.create({ 
+      username,
+      employeeid,
+      department,
+      phone,
+      password,
+    });
+    // dealer_token: await userCreated.generateToken(),
+    res.status(201).json({ msg:"Registration successfully",userId: userCreated._id.toString(),});
+  } catch (error) {
+    res.status(500).json({ msg: "Internal server error" });
+  }
+};
+
+//Admin login
 const login= async (req,res)=>{
   try {
     console.log(req.body);
@@ -57,7 +86,28 @@ const login= async (req,res)=>{
     res.status(500).json({message:"Internal server error"});
   }
 };
+//Dealer Login
+const dealer_login= async (req,res)=>{
+  try {
+    console.log(req.body);
+    const {employeeid,password} =req.body;
+    const userExist= await Dealer.findOne({employeeid});
+    if(!userExist){
+      return res.status(401).json({message:"Invalid credentials"});
+    }
+    // const user= await bcrypt.compare(password,userExist.password);
 
+    const user= await userExist.comparePassword(password);
+    
+    if(user){
+      res.status(200).json({message:"Login successfully",token: await userExist.generateToken(),userId: userExist._id.toString()});
+    }else{
+      res.status(401).json({message:"Invalid employee id or password"});
+    }
+  } catch (error) {
+    res.status(500).json({message:"Internal server error"});
+  }
+};
 //For sending user data 
 const user=async(req,res)=>{
   try {
@@ -69,4 +119,4 @@ const user=async(req,res)=>{
   }
  
 }
-module.exports = { home, register,login,user };
+module.exports = { home, register,dealer_register,login,dealer_login,user };
