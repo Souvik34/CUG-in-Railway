@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
-
+import React, { useState, useEffect } from 'react';
 const Allocation_Wise_Report = () => {
 
   return (
