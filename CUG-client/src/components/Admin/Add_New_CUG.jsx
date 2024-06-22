@@ -5,6 +5,7 @@ import { useState } from 'react';
 import {Controller } from "react-hook-form";
 import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
 import axios from 'axios'; 
+import { toast } from 'react-toastify';
 
 
 
@@ -19,14 +20,18 @@ const Add_New_CUG = () => {
 
 
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data, event) => {
+    event.preventDefault();
     try {
+      
       const response = await axios.post('http://127.0.0.2:4000/api/add_cug', data);
-      console.log(response.data);
+      toast.success('Data submitted successfully!');
+      // console.log(response.data);
  
     } catch (error) {
-      console.error(error);
+      // console.error(error);
       // Handle error response from backend
+      toast.error('Failed to submit data!');
     }
  
   };
@@ -35,7 +40,8 @@ const Add_New_CUG = () => {
     const confirmClear = window.confirm('Are you sure you want to clear all data?');
     if (confirmClear) {
       // Clear the data here
-      console.log('Data cleared!');
+      // console.log('Data cleared!');
+      toast.info('Data cleared!');
     }
     reset(); 
   };
@@ -49,45 +55,34 @@ const Add_New_CUG = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
 
 
-      <div className="mb-4 flex items-center">
-  <label htmlFor="cugno" className="block font-bold mb-2">
+      <div className="mb-4">
+  <label htmlFor="cugNo" className="block font-bold mb-2">
     CUG No.
-  </label>
-  <Controller
-    name="cugno"
-    control={control}
-    rules={{
-      validate: (value) => isValidPhoneNumber(value)
-    }}
-    render={({ field: { onChange, value } }) => (
-      <PhoneInput
-        value={value}
-        onChange={onChange}
-        initialValueFormat="national"
-        countryCallingCodeEditable={false}
-        defaultCountry="IN"
-        id="cugno"
-        className="w-5/12 ml-[21.8rem] shadow appearance-none border rounded  text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-        {...register('cugno', { required: true })}
-      />
-    )}
-  />
-  {errors.cugno && <p className="text-red-500 ml-2">Enter valid CUG number</p>}
-</div>
+  <input
+            type="number"
+            id="cugNo"
+            className="shadow appearance-none border rounded w-5/12 ml-[17.6rem] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            {...register('cugNo', { required: true })}
+            />
+            </label>
+            
+          {errors.empNo && <p className="text-red-500">Enter valid employment number</p>}
+        </div>
+ 
 
       {/* Employment no */}
 
         <div className="mb-4">
-          <label htmlFor="empno" className="block text-gray-700 font-bold mb-2">
+          <label htmlFor="empNo" className="block text-gray-700 font-bold mb-2">
             Employement No.
           <input
             type="text"
-            id="empno"
+            id="empNo"
             className="shadow appearance-none border rounded w-5/12 ml-[17.6rem] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            {...register('empno', { required: true })}
+            {...register('empNo', { required: true })}
             />
             </label>
-          {errors.empno && <p className="text-red-500">Enter valid employment number</p>}
+          {errors.empNo && <p className="text-red-500">Enter valid employment number</p>}
         </div>
 
         {/* Personal details */}
@@ -104,6 +99,7 @@ const Add_New_CUG = () => {
               </label>
             {errors.firstName && <p className="text-red-500">First name is required</p>}
           </div>
+          
           <div>
             <label htmlFor="lastName" className="block font-bold mb-2 ">
 
@@ -187,22 +183,17 @@ const Add_New_CUG = () => {
 
        
         <div className="mb-4">
-  <label htmlFor="operator" className="block text-gray-700 font-bold mb-2">
-    Operator
-  <select
-    id="operator"
-    className="shadow appearance-none border rounded w-5/12 ml-[21.3rem] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-    {...register('operator', { required: true })}
-    >
-    <option value="">Select an operator</option>
-    <option value="operator1">Operator 1</option>
-    <option value="operator2">Operator 2</option>
-    <option value="operator3">Operator 3</option>
-    
-  </select>
-    </label>
-  {errors.operator && <p className="text-red-500">Choose your operator</p>}
-</div>
+          <label htmlFor="operator" className="block text-gray-700 font-bold mb-2">
+            Operator
+          <input
+            type="text"
+            id="operator"
+            className="shadow appearance-none border rounded w-5/12  ml-[21.3rem] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            {...register('operator', { required: true })}
+            />
+            </label>
+          {errors.operator && <p className="text-red-500">Enter your operator</p>}
+        </div>
 
           <div className="mb-4">
           <label htmlFor="plan" className="block text-gray-700 font-bold mb-2">

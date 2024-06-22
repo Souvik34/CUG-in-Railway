@@ -4,44 +4,37 @@ import React, { useEffect, useState } from 'react';
 const CUG_Status_Report = () => {
   const [activeCUGs, setActiveCUGs] = useState([]);
   const [deactivatedCUGs, setDeactivatedCUGs] = useState([]);
-  const token = 'your_jwt_token'; // Replace with actual token
-
+  
   useEffect(() => {
     const fetchActiveCUGs = async () => {
       try {
-        const response = await fetch('/api/cug/active', {
+        const response = await fetch('http://127.0.0.2:4000/api/add_cug/all_data', {
           method: 'GET',
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json',
-          },
+          
         });
         const data = await response.json();
         setActiveCUGs(data);
+        console.log(data.allData);
       } catch (error) {
         console.error('Error fetching active CUG numbers:', error);
       }
     };
 
-    const fetchDeactivatedCUGs = async () => {
-      try {
-        const response = await fetch('/api/cug/deactivated', {
-          method: 'GET',
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json',
-          },
-        });
-        const data = await response.json();
-        setDeactivatedCUGs(data);
-      } catch (error) {
-        console.error('Error fetching deactivated CUG numbers:', error);
-      }
-    };
+    // const fetchDeactivatedCUGs = async () => {
+    //   try {
+    //     const response = await fetch('/api/cug/deactivated', {
+    //       method: 'GET',
+    //     });
+    //     const data = await response.json();
+    //     setDeactivatedCUGs(data);
+    //   } catch (error) {
+    //     console.error('Error fetching deactivated CUG numbers:', error);
+    //   }
+    // };
 
     fetchActiveCUGs();
-    fetchDeactivatedCUGs();
-  }, [token]);
+    // fetchDeactivatedCUGs();
+  }, []);
 
   return (
     <div className="container mx-auto p-6 bg-blue-50 min-h-screen flex flex-col items-center">
@@ -50,9 +43,9 @@ const CUG_Status_Report = () => {
         <h2 className="text-2xl font-semibold text-blue-800 mb-4 border-b-2 border-blue-200 pb-2">Active CUG Numbers</h2>
         {activeCUGs.length > 0 ? (
           <ul className="list-disc pl-8 space-y-2">
-            {activeCUGs.map(cug => (
-              <li key={cug._id} className="text-blue-700">
-                <span className="font-medium">{cug.number}</span> - {cug.status}
+            {activeCUGs.map((Data) => (
+              <li key={Data._id} className="text-blue-700">
+                <span className="font-medium">{Data.cugNo}</span>
               </li>
             ))}
           </ul>
@@ -66,7 +59,7 @@ const CUG_Status_Report = () => {
           <ul className="list-disc pl-8 space-y-2">
             {deactivatedCUGs.map(cug => (
               <li key={cug._id} className="text-blue-700">
-                <span className="font-medium">{cug.number}</span> - {cug.status}
+                <span className="font-medium">{cug.number}</span>
               </li>
             ))}
           </ul>
@@ -79,3 +72,7 @@ const CUG_Status_Report = () => {
 };
 
 export default CUG_Status_Report;
+
+
+
+

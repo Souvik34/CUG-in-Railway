@@ -8,6 +8,7 @@ const contactRouter=require("./router/contact-router");
 const serviceRouter= require("./router/service-router");
 const adminRouter=require("./router/admin-router");
 const add_cugRouter = require("./router/add_cug-router");
+const cug_activate_deactivate=require("./router/cug_status-router");
 
 //mongodb connection
 const connectDb= require("./utils/db");
@@ -21,6 +22,7 @@ app.use("/api/form",contactRouter);
 app.use("/api/services",serviceRouter);
 app.use("/api/add_cug", add_cugRouter);
 app.use("/api/admin",adminRouter);
+app.use("/api/cug_staus",cug_activate_deactivate);
 //calling error middleware
 app.use(errorMiddleware);
 
