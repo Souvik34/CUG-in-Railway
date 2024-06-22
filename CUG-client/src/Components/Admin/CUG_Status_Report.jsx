@@ -46,7 +46,7 @@ const CUG_Status_Report = () => {
             {activeCUGs.map((Data) => (
               <li key={Data._id} className="text-blue-700">
                 <span className="font-medium">{Data.cugNo}</span>
-              </li>
+              </li> 
             ))}
           </ul>
         ) : (
