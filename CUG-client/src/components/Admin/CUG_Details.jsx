@@ -1,12 +1,13 @@
-import React, { useState } from 'react'
+
+
+
+import React, { useState } from 'react';
 
 const CUG_Details = () => {
-  const [user, setUser] = useState({
-    cugNo: ""
-  });
-
+  const [user, setUser] = useState({ cugNo: "" });
   const [isVisible, setIsVisible] = useState(false);
   const [employeeData, setEmployeeData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
 
   const handleInput = (e) => {
     let name = e.target.name;
@@ -30,8 +31,13 @@ const CUG_Details = () => {
       if (response.ok) {
         const data = await response.json();
         setEmployeeData(data.allData);
+        
+        // Filter the data based on the CUG number
+        const filtered = data.allData.filter((item) => item.cugNo === user.cugNo);
+        setFilteredData(filtered);
+        
         setIsVisible(true);
-        console.log("data",data.allData)
+        console.log("filtered data", filtered);
       } else {
         console.error('Failed to fetch employee data');
       }
@@ -39,6 +45,7 @@ const CUG_Details = () => {
       console.error('Error fetching employee data:', error);
     }
   };
+
   const handleDeactivate = async () => {
     try {
       const response = await fetch('https://your-api-endpoint.com/deactivateCugNo', {
@@ -53,7 +60,7 @@ const CUG_Details = () => {
 
       if (response.ok) {
         alert('CUG No. deactivated successfully');
-        setEmployeeData(null);
+        setFilteredData([]);
         setIsVisible(false);
       } else {
         console.error('Failed to deactivate CUG No.');
@@ -63,20 +70,17 @@ const CUG_Details = () => {
     }
   };
 
-
-  return ( 
+  return (
     <div className='min-h-screen'>
       <nav className="w-full text-center bg-dealer-gradient">
         <h1 className="text-4xl font-semibold py-5 text-white"></h1>
       </nav>
       <section className="flex justify-center items-center ml-72">
-        {/* for registration form */}
         <div className="md:w-[35vw] md:h-[full] p-5 space-y-6 bg-white shadow-md rounded-lg mt-10">
           <h1 className="text-2xl font-bold text-center text-[#2E2D93]">CUG NO</h1>
           <br />
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              {/* for CUG No. */}
               <label htmlFor="cugNo" className="block text-sm font-medium text-gray-700">CUG No.</label>
               <input
                 type="text"
@@ -92,10 +96,8 @@ const CUG_Details = () => {
             </div>
             <div>
               <button type="submit" className="w-full py-2 px-4 bg-[#2E2D93] hover:bg-blue-700 text-white font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">GO</button>
-              {/* {isVisible && employeeData && ( */}
-              {employeeData.map((Data)=>{
-
-               return <div className="flex flex-col space-y-2 mt-4" key={Data._id}>
+              {filteredData.map((Data) => (
+                <div className="flex flex-col space-y-2 mt-4" key={Data._id}>
                   <h2 className="p-4 bg-gray-100 rounded shadow">EMP NO: <span>{Data.empNo}</span></h2>
                   <h2 className="p-4 bg-gray-100 rounded shadow">NAME: <span>{Data.name}</span></h2>
                   <h2 className="p-4 bg-gray-100 rounded shadow">DESIGNATION: <span>{Data.designation}</span></h2>
@@ -112,14 +114,13 @@ const CUG_Details = () => {
                     DEACTIVATE
                   </button>
                 </div>
-              })}
-              {/* )} */}
+              ))}
             </div>
           </form>
         </div>
       </section>
     </div>
-  )
-}
+  );
+};
 
-export default CUG_Details
+export default CUG_Details;

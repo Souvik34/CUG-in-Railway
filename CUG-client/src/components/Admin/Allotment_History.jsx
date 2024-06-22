@@ -85,74 +85,72 @@ const Allotment_history = () => {
           </tr>
         </thead>
         <tbody>
-          { }
-          <tr className="border border-black">
-            {/* CUG no C1 */}
-            <td className="flex text-center justify-center items-center px-4 py-2  ">
-              <div className="font-semiboldbold text-center">
-                CUG No:
-                {/* <div className="mt-2 bg-gray-200 rounded-md p-2 h-8" /> */}
-              </div>
-              <div><h4>123455</h4></div>
-            </td>
-            {/* previous c2 */}
-            <td className="px-4 py-2 border border-black">
-              <div className="flex rounded-md py-2 px-3">
-                Name:
-                <h1>Deedhiti</h1>
-                {/* <div className="mt-2 bg-gray-200 rounded-md p-2 h-8" /> */}
-              </div>
-              <div className="flex rounded-md py-2 px-3">
-                Employee ID:
-                <h1>DEE123</h1>
-                {/* <div className="mt-2 bg-gray-200 rounded-md p-2 h-8" /> */}
-              </div>
-              <div className="flex rounded-md py-2 px-3">
-                Plan:
-                <h1>Monthly</h1>
-                {/* <div className="mt-2 bg-gray-200 rounded-md p-2 h-8" /> */}
-              </div>
-              <div className="flex rounded-md py-2 px-3">
-                Date:
-                <h1>
-                  2/3/2024  
-                </h1>
-                {/* <div className="mt-2 bg-gray-200 rounded-md p-2 h-8" /> */}
-              </div>
-            </td>
-            {/* Current c3 */}
-            <td className="">
-            {employees.map((i) => {
-          return <div key={i.id} className="border-y-[1px]  border-black">
-          <div className="flex rounded-md py-2 px-3">
-                Name:{i.name}
-                {/* <div className="mt-2 bg-gray-200 rounded-md p-2 h-8" /> */}
-              </div>
-              <div className="flex rounded-md py-2 px-3">
-                Employee ID: {i.empNo}
-                {/* <div className="mt-2 bg-gray-200 rounded-md p-2 h-8" /> */}
-              </div>
-              <div className="flex rounded-md py-2 px-3">
-                Plan:{i.plan}
-                {/* <div className="mt-2 bg-gray-200 rounded-md p-2 h-8" /> */}
-              </div>
-              <div className="flex rounded-md py-2 px-3">
-                Date:
-                {/* <div className="mt-2 bg-gray-200 rounded-md p-2 h-8" /> */}
-              </div>
-          </div>
+          {employees.map((i) => {
+            return <tr key={i.id} className="border border-black">
+              {/* CUG no C1 */}
+              <td className="flex text-center justify-center items-center px-4 py-2  ">
+                <div className="font-semiboldbold text-center">
+                  CUG No:{i.cugNo}
+                  {/* <div className="mt-2 bg-gray-200 rounded-md p-2 h-8" /> */}
+                </div>
+              </td>
+              {/* previous c2 */}
+              <td className="px-4 py-2 border border-black">
+                <div className="flex rounded-md py-2 px-3">
+                  Name:
+                  <h1>Deedhiti</h1>
+                  {/* <div className="mt-2 bg-gray-200 rounded-md p-2 h-8" /> */}
+                </div>
+                <div className="flex rounded-md py-2 px-3">
+                  Employee ID:
+                  <h1>DEE123</h1>
+                  {/* <div className="mt-2 bg-gray-200 rounded-md p-2 h-8" /> */}
+                </div>
+                <div className="flex rounded-md py-2 px-3">
+                  Plan:
+                  <h1>Monthly</h1>
+                  {/* <div className="mt-2 bg-gray-200 rounded-md p-2 h-8" /> */}
+                </div>
+                <div className="flex rounded-md py-2 px-3">
+                  Date:
+                  <h1>
+                    2/3/2024
+                  </h1>
+                  {/* <div className="mt-2 bg-gray-200 rounded-md p-2 h-8" /> */}
+                </div>
+              </td>
+              {/* Current c3 */}
+              <td className="">
+                <div  className="">
+                  <div className="flex rounded-md py-2 px-3">
+                    Name:{i.name}
+                    {/* <div className="mt-2 bg-gray-200 rounded-md p-2 h-8" /> */}
+                  </div>
+                  <div className="flex rounded-md py-2 px-3">
+                    Employee ID: {i.empNo}
+                    {/* <div className="mt-2 bg-gray-200 rounded-md p-2 h-8" /> */}
+                  </div>
+                  <div className="flex rounded-md py-2 px-3">
+                    Plan:{i.plan}
+                    {/* <div className="mt-2 bg-gray-200 rounded-md p-2 h-8" /> */}
+                  </div>
+                  <div className="flex rounded-md py-2 px-3">
+                    Date:
+                    {/* <div className="mt-2 bg-gray-200 rounded-md p-2 h-8" /> */}
+                  </div>
+                </div>
 
-        })}
-            </td>
-          </tr>
-          <tr>
+              </td>
+            </tr>
+          })}
+          {/* <tr>
             <td className="px-4 py-2" colSpan={3}>
               <div className="h-48" />
             </td>
-          </tr>
+          </tr> */}
         </tbody>
       </table>
-      
+
 
       {/* {result.length > 0 && ( */}
       {/* <div className="flex justify-center mt-4 space-x-8">
