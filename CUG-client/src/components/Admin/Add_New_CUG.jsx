@@ -21,7 +21,7 @@ const Add_New_CUG = () => {
 
   const onSubmit = async (data) => {
     try {
-      const response = await axios.post('https://your-backend-url.com/api/add-new-cug', data);
+      const response = await axios.post('http://127.0.0.2:4000/api/add_cug', data);
       console.log(response.data);
  
     } catch (error) {
