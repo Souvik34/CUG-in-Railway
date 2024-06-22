@@ -1,14 +1,12 @@
+import React, { useState } from 'react'
 
-import React, { useState } from 'react';
-import { FaEye, FaEyeSlash } from 'react-icons/fa';
-
-const DealerLogin = () => {
+const CUG_Details = () => {
   const [user, setUser] = useState({
     cugNo: ""
   });
 
   const [isVisible, setIsVisible] = useState(false);
-  const [employeeData, setEmployeeData] = useState(null);
+  const [employeeData, setEmployeeData] = useState([]);
 
   const handleInput = (e) => {
     let name = e.target.name;
@@ -25,20 +23,15 @@ const DealerLogin = () => {
     console.log(user);
 
     try {
-      const response = await fetch('https://your-api-endpoint.com/getEmployeeData', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          cugNo: user.cugNo
-        })
+      const response = await fetch("http://127.0.0.2:4000/api/add_cug/all_data", {
+        method: 'GET',
       });
 
       if (response.ok) {
         const data = await response.json();
-        setEmployeeData(data);
+        setEmployeeData(data.allData);
         setIsVisible(true);
+        console.log("data",data.allData)
       } else {
         console.error('Failed to fetch employee data');
       }
@@ -46,7 +39,6 @@ const DealerLogin = () => {
       console.error('Error fetching employee data:', error);
     }
   };
-
   const handleDeactivate = async () => {
     try {
       const response = await fetch('https://your-api-endpoint.com/deactivateCugNo', {
@@ -71,7 +63,8 @@ const DealerLogin = () => {
     }
   };
 
-  return (
+
+  return ( 
     <div className='min-h-screen'>
       <nav className="w-full text-center bg-dealer-gradient">
         <h1 className="text-4xl font-semibold py-5 text-white"></h1>
@@ -99,17 +92,19 @@ const DealerLogin = () => {
             </div>
             <div>
               <button type="submit" className="w-full py-2 px-4 bg-[#2E2D93] hover:bg-blue-700 text-white font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">GO</button>
-              {isVisible && employeeData && (
-                <div className="flex flex-col space-y-2 mt-4">
-                  <h2 className="p-4 bg-gray-100 rounded shadow">EMP NO: <span>{employeeData.empNo}</span></h2>
-                  <h2 className="p-4 bg-gray-100 rounded shadow">NAME: <span>{employeeData.name}</span></h2>
-                  <h2 className="p-4 bg-gray-100 rounded shadow">DESIGNATION: <span>{employeeData.designation}</span></h2>
-                  <h2 className="p-4 bg-gray-100 rounded shadow">DIVISION: <span>{employeeData.division}</span></h2>
-                  <h2 className="p-4 bg-gray-100 rounded shadow">DEPARTMENT: <span>{employeeData.department}</span></h2>
-                  <h2 className="p-4 bg-gray-100 rounded shadow">BILL UNIT: <span>{employeeData.billUnit}</span></h2>
-                  <h2 className="p-4 bg-gray-100 rounded shadow">ALLOCATION: <span>{employeeData.allocation}</span></h2>
-                  <h2 className="p-4 bg-gray-100 rounded shadow">EMPLOYEE STATUS: <span>{employeeData.status}</span></h2>
-                  <h2 className="p-4 bg-gray-100 rounded shadow">PLAN: <span>{employeeData.plan}</span></h2>
+              {/* {isVisible && employeeData && ( */}
+              {employeeData.map((Data)=>{
+
+               return <div className="flex flex-col space-y-2 mt-4" key={Data._id}>
+                  <h2 className="p-4 bg-gray-100 rounded shadow">EMP NO: <span>{Data.empNo}</span></h2>
+                  <h2 className="p-4 bg-gray-100 rounded shadow">NAME: <span>{Data.name}</span></h2>
+                  <h2 className="p-4 bg-gray-100 rounded shadow">DESIGNATION: <span>{Data.designation}</span></h2>
+                  <h2 className="p-4 bg-gray-100 rounded shadow">DIVISION: <span>{Data.division}</span></h2>
+                  <h2 className="p-4 bg-gray-100 rounded shadow">DEPARTMENT: <span>{Data.department}</span></h2>
+                  <h2 className="p-4 bg-gray-100 rounded shadow">BILL UNIT: <span>{Data.billUnit}</span></h2>
+                  <h2 className="p-4 bg-gray-100 rounded shadow">ALLOCATION: <span>{Data.allocation}</span></h2>
+                  <h2 className="p-4 bg-gray-100 rounded shadow">EMPLOYEE STATUS: <span>{Data.status}</span></h2>
+                  <h2 className="p-4 bg-gray-100 rounded shadow">PLAN: <span>{Data.plan}</span></h2>
                   <button
                     onClick={handleDeactivate}
                     className="p-4 bg-blue-500 text-white rounded shadow mt-2 hover:bg-blue-700"
@@ -117,13 +112,14 @@ const DealerLogin = () => {
                     DEACTIVATE
                   </button>
                 </div>
-              )}
+              })}
+              {/* )} */}
             </div>
           </form>
         </div>
       </section>
     </div>
-  );
-};
+  )
+}
 
-export default DealerLogin;
+export default CUG_Details
