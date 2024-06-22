@@ -88,18 +88,30 @@ const Add_New_CUG = () => {
         {/* Personal details */}
         <div className="grid grid-cols-2 gap-0 mb-4">
           <div>
-            <label htmlFor="name" className="block text-gray-700 font-bold mb-2">
+            <label htmlFor="firstName" className="block text-gray-700 font-bold mb-2">
               Name
             <input
               type="text"
-              id="name"
+              id="firstName"
               className="shadow appearance-none border rounded w-2/5  ml-[22.5rem] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              {...register('name', { required: true })}
+              {...register('firstName', { required: true })}
               />
               </label>
-            {errors.name && <p className="text-red-500">First name is required</p>}
+            {errors.firstName && <p className="text-red-500">First name is required</p>}
           </div>
-         
+          
+          <div>
+            <label htmlFor="lastName" className="block font-bold mb-2 ">
+
+            <input
+              type="text"
+              id="lastName"
+              className="shadow appearance-none border rounded w-2/5 ml-[1.5rem] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline "
+              {...register('lastName', { required: true })}
+              />
+              </label>
+            {errors.lastName && <p className="text-red-500">Last name is required</p>}
+          </div>
         </div>
         <hr className='border-[1.1px] border-blue-300 rounded'/>
         

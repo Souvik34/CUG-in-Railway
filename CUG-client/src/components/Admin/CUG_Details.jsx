@@ -3,6 +3,7 @@
 
 import React, { useState } from 'react';
 
+
 const CUG_Details = () => {
   const [user, setUser] = useState({ cugNo: "" });
   const [isVisible, setIsVisible] = useState(false);
@@ -96,9 +97,7 @@ const CUG_Details = () => {
             </div>
             <div>
               <button type="submit" className="w-full py-2 px-4 bg-[#2E2D93] hover:bg-blue-700 text-white font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">GO</button>
-
               {filteredData.map((Data) => ( 
-
                 <div className="flex flex-col space-y-2 mt-4" key={Data._id}>
                   <h2 className="p-4 bg-gray-100 rounded shadow">EMP NO: <span>{Data.empNo}</span></h2>
                   <h2 className="p-4 bg-gray-100 rounded shadow">NAME: <span>{Data.name}</span></h2>
