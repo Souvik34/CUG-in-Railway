@@ -13,7 +13,7 @@ const CUG_Status_Report = () => {
           
         });
         const data = await response.json();
-        setActiveCUGs(data);
+        setActiveCUGs(data.allData);
         console.log(data.allData);
       } catch (error) {
         console.error('Error fetching active CUG numbers:', error);
@@ -46,7 +46,7 @@ const CUG_Status_Report = () => {
             {activeCUGs.map((Data) => (
               <li key={Data._id} className="text-blue-700">
                 <span className="font-medium">{Data.cugNo}</span>
-              </li>
+              </li> 
             ))}
           </ul>
         ) : (
