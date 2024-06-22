@@ -42,6 +42,12 @@ const add_cugSchema = new Schema({
     required: true
   },
 
+  operator:{
+    type: String,
+    required: true,
+    
+  },
+
   plan: {
     type: String,
     required: true
