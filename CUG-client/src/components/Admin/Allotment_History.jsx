@@ -121,9 +121,9 @@ const Allotment_history = () => {
               </div>
             </td>
             {/* Current c3 */}
-            <td className="px-4 py-2 border border-black">
+            <td className="">
             {employees.map((i) => {
-          return <div key={i.id}>
+          return <div key={i.id} className="border-y-[1px]  border-black">
           <div className="flex rounded-md py-2 px-3">
                 Name:{i.name}
                 {/* <div className="mt-2 bg-gray-200 rounded-md p-2 h-8" /> */}
