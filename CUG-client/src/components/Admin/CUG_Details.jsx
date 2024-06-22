@@ -41,7 +41,7 @@ const CUG_Details = () => {
   };
   const handleDeactivate = async () => {
     try {
-      const response = await fetch('https://your-api-endpoint.com/deactivateCugNo', {
+      const response = await fetch('', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
