@@ -8,7 +8,6 @@ import App from "../App";
 import Activate_Deactivate_Report from "../Components/Admin/Activate_Deactivate_Report"
 import Allocation_Wise_Report from "../Components/Admin/Allocation_Wise_Report"
 import Allotment_history from "../Components/Admin/Allotment_History"
-import CUG_details from "../Components/Admin/CUG_Details"
 import CUG_Status_Report from "../Components/Admin/CUG_Status_Report"
 import Add_New_CUG from "../Components/Admin/Add_New_CUG"
 import Upload_CUG_Bill from "../Components/Admin/Upload_CUG_Bill"
@@ -24,6 +23,7 @@ import AdminWelcome from "../Pages/Admin-dashboard/AdminWelcome";
 import Create_Dealer from "../Components/Admin/Create_Dealer";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import DealerWelcome from "../Pages/Dealer-dashboard/DealerWelcome";
+import CUG_Details from "../Components/Admin/CUG_Details";
 
 
 const router= createBrowserRouter([
@@ -69,7 +69,7 @@ const router= createBrowserRouter([
                     },
                     {
                         path:'cug_details',
-                        element:<CUG_details/>
+                        element:<CUG_Details/>
                     },
                     {
                         path:'cug_status_report',
