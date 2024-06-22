@@ -54,4 +54,6 @@ const getAllData = async (req, res) => {
     console.log(error);
   }
 };
+
+
 module.exports = { create, getAllData };
