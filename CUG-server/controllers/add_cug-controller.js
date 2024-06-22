@@ -13,8 +13,8 @@ const create = async (req, res) => {
       allocation,
       plan,
     } = req.body;
-    const employeerExist = await Add_cug.findOne({cugNo,empNo});
-    if (employeerExistExist) {
+    const employeerExist = await Add_cug.find({cugNo,empNo});
+    if (employeerExist) {
       return res.status(400).json({ message: "Employeer and Cug no  already exist" });
     }
     const userCreated = await Add_cug.create({
