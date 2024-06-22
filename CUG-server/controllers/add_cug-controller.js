@@ -11,4 +11,15 @@ const Add_cug = require("../models/add_cug-model");
         }
       }; 
       
-      module.exports = {create};
+      const getAllData= async(req,res)=>{
+          try {
+            const allData= await Add_cug.find();
+            if(!allData){
+              res.status(404).json({message: "No data found"});
+            }
+            res.status(200).json({allData});
+          } catch (error) {
+            console.log(error);
+          }
+      }
+      module.exports = {create,getAllData};
