@@ -61,7 +61,7 @@ const Add_New_CUG = () => {
   <input
             type="number"
             id="cugNo"
-            className="shadow appearance-none border rounded w-5/12 ml-[17.6rem] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-5/12 ml-[21.8rem] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             {...register('cugNo', { required: true })}
             />
             </label>
