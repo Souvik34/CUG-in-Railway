@@ -1,13 +1,8 @@
-
-
-
 import React, { useState } from 'react';
-
 
 const CUG_Details = () => {
   const [user, setUser] = useState({ cugNo: "" });
   const [isVisible, setIsVisible] = useState(false);
-  const [employeeData, setEmployeeData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
 
   const handleInput = (e) => {
@@ -31,7 +26,6 @@ const CUG_Details = () => {
 
       if (response.ok) {
         const data = await response.json();
-        setEmployeeData(data.allData);
         
         // Filter the data based on the CUG number
         const filtered = data.allData.filter((item) => item.cugNo === user.cugNo);
@@ -49,7 +43,7 @@ const CUG_Details = () => {
 
   const handleDeactivate = async () => {
     try {
-      const response = await fetch('', {
+      const response = await fetch('http://127.0.0.2:4000/api/add_cug/deactivate', { // Replace with actual API endpoint
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -70,14 +64,6 @@ const CUG_Details = () => {
       console.error('Error deactivating CUG No.:', error);
     }
   };
-
-  const handleSearch = (e) => {
-    setSearchQuery(e.target.value);
-  };
-
-  const filteredResults = filteredData.filter((item) =>
-    item.name.toLowerCase().includes(searchQuery.toLowerCase())
-  );
 
   return (
     <div className='min-h-screen'>
@@ -106,12 +92,10 @@ const CUG_Details = () => {
             <div>
               <button type="submit" className="w-full py-2 px-4 bg-[#2E2D93] hover:bg-blue-700 text-white font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">GO</button>
 
-              
               {filteredData.map((Data) => (
-
                 <div className="flex flex-col space-y-2 mt-4" key={Data._id}>
                   <h2 className="p-4 bg-gray-100 rounded shadow">EMP NO: <span>{Data.empNo}</span></h2>
-                  <h2 className="p-4 bg-gray-100 rounded shadow">NAME: <span>{Data.name}</span></h2>
+                  <h2 className="p-4 bg-gray-100 rounded shadow">NAME: <span>{ Data.firstName+" "+ Data.lastName }</span></h2>
                   <h2 className="p-4 bg-gray-100 rounded shadow">DESIGNATION: <span>{Data.designation}</span></h2>
                   <h2 className="p-4 bg-gray-100 rounded shadow">DIVISION: <span>{Data.division}</span></h2>
                   <h2 className="p-4 bg-gray-100 rounded shadow">DEPARTMENT: <span>{Data.department}</span></h2>

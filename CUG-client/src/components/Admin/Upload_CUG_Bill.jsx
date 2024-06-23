@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Papa from 'papaparse';
@@ -61,7 +62,7 @@ function Upload_CUG_Bill() {
   };
 
   return (
-    <div className="container mx-20 my-20">
+    <div className=" mx-20 my-20">
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="mb-4">
           <label
