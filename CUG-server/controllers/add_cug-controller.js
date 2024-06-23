@@ -5,27 +5,35 @@ const create = async (req, res) => {
     const {
       cugNo,
       empNo,
-      name,
+      firstName,
+      lastName,
       designation,
       division,
       department,
       billUnit,
       allocation,
+      operator,
       plan,
     } = req.body;
-    const employeerExist = await Add_cug.find({cugNo,empNo});
+    const cugExist = await Add_cug.findOne({cugNo});
+    if (cugExist) {
+      return res.status(400).json({ message: "CUG No.  already exist" });
+    }
+    const employeerExist = await Add_cug.findOne({empNo});
     if (employeerExist) {
-      return res.status(400).json({ message: "Employeer and Cug no  already exist" });
+      return res.status(400).json({ message: "Employee No.  already exist" });
     }
     const userCreated = await Add_cug.create({
       cugNo,
       empNo,
-      name,
+      firstName,
+      lastName,
       designation,
       division,
       department,
       billUnit,
       allocation,
+      operator,
       plan,
     });
     return res.status(201).json({ msg: "Add_cug created successfully" });
@@ -46,4 +54,6 @@ const getAllData = async (req, res) => {
     console.log(error);
   }
 };
+
+
 module.exports = { create, getAllData };

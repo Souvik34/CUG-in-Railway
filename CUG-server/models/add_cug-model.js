@@ -17,7 +17,11 @@ const add_cugSchema = new Schema({
     type: String,
     required: true
   },
-  name: {
+  firstName: {
+    type: String,
+    required: true
+  },
+  lastName: {
     type: String,
     required: true
   },
@@ -40,6 +44,12 @@ const add_cugSchema = new Schema({
   allocation: {
     type: String,
     required: true
+  },
+
+  operator:{
+    type: String,
+    required: true,
+    
   },
 
   plan: {
