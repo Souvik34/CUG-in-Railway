@@ -1,15 +1,20 @@
 const {z}= require("zod");
 
 const add_cugSchema = z.object({
+  
   cugNo: z
-    .number({ required_error: 'CUG No. is required' })
-    .min(10, { message: 'Employment No. must be at least 3 characters' })
-    .max(10, { message: 'Employment No. must be at most 20 characters' }),
-  empNo: z
-    .string({ required_error: 'Employment No. is required' })
+  .string({required_error:"cug is required"})
     .trim()
-    .min(3, { message: 'Employment No. must be at least 3 characters' })
-    .max(20, { message: 'Employment No. must be at most 20 characters' }),
+    .min(10,{message: "cug must be at least of 10 chareaters"})
+    .max(20,{message:"cug contains maximum 20"}),
+
+  
+  empNo: z
+  .string({required_error:"emp no is required"})
+  .trim()
+  .min(10,{message: "emp no must be at least of 10 chareaters"})
+  .max(20,{message:"emp no contains maximum 20"}),
+
   firstName: z
     .string({ required_error: 'First name is required' })
     .trim()
@@ -36,12 +41,14 @@ const add_cugSchema = z.object({
     .min(2, { message: 'Department must be at least 2 characters' })
     .max(20, { message: 'Department must be at most 20 characters' }),
   billUnit: z
-    .number({ required_error: 'Bill Unit is required' })
-    .positive('Bill Unit must be a positive number'),
+  .string({ required_error: 'Allocation is required' })
+  .trim()
+  .min(1, { message: 'Allocation must be at least 1 characters' })
+  .max(20, { message: 'Allocation must be at most 20 characters' }),
   allocation: z
     .string({ required_error: 'Allocation is required' })
     .trim()
-    .min(2, { message: 'Allocation must be at least 2 characters' })
+    .min(1, { message: 'Allocation must be at least 1 characters' })
     .max(20, { message: 'Allocation must be at most 20 characters' }),
   operator: z
     .string({ required_error: 'Operator is required' })
@@ -51,7 +58,7 @@ const add_cugSchema = z.object({
   plan: z
     .string({ required_error: 'Plan is required' })
     .trim()
-    .min(2, { message: 'Plan must be at least 2 characters' })
+    .min(1, { message: 'Plan must be at least 1 characters' })
     .max(20, { message: 'Plan must be at most 20 characters' }),
 });
 module.exports= add_cugSchema;
