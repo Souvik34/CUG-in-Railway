@@ -22,7 +22,7 @@ const CUG_Status_Report = () => {
 
     const fetchDeactivatedCUGs = async () => {
       try {
-        const response = await fetch('http://127.0.0.2:4000/api/deactivate_list/all_data', {
+        const response = await fetch('http://127.0.0.2:4000/api/cug_staus/deactivate_data', {
           method: 'GET',
         });
         const data = await response.json();
