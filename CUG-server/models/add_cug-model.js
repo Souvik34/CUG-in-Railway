@@ -55,7 +55,8 @@ const add_cugSchema = new Schema({
   plan: {
     type: String,
     required: true
-  }
+  },
+  createdAt: { type: Date, default: Date.now },
   });
   
   const  Add_cug =new model("Add_cug",add_cugSchema);
