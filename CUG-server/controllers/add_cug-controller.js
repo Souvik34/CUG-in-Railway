@@ -35,6 +35,7 @@ const create = async (req, res) => {
       allocation,
       operator,
       plan,
+      createdAt: new Date(),
     });
     return res.status(201).json({ msg: "Add_cug created successfully" });
   } catch (error) {
