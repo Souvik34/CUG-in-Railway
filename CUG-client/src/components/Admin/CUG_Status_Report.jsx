@@ -20,20 +20,21 @@ const CUG_Status_Report = () => {
       }
     };
 
-    // const fetchDeactivatedCUGs = async () => {
-    //   try {
-    //     const response = await fetch('/api/cug/deactivated', {
-    //       method: 'GET',
-    //     });
-    //     const data = await response.json();
-    //     setDeactivatedCUGs(data);
-    //   } catch (error) {
-    //     console.error('Error fetching deactivated CUG numbers:', error);
-    //   }
-    // };
+    const fetchDeactivatedCUGs = async () => {
+      try {
+        const response = await fetch('http://127.0.0.2:4000/api/cug_staus/deactivate_data', {
+          method: 'GET',
+        });
+        const data = await response.json();
+        setDeactivatedCUGs(data.allData);
+        console.log(data.allData);
+      } catch (error) {
+        console.error('Error fetching deactivated CUG numbers:', error);
+      }
+    };
 
     fetchActiveCUGs();
-    // fetchDeactivatedCUGs();
+    fetchDeactivatedCUGs();
   }, []);
 
   return (
@@ -57,9 +58,9 @@ const CUG_Status_Report = () => {
         <h2 className="text-2xl font-semibold text-blue-800 mb-4 border-b-2 border-blue-200 pb-2">Deactivated CUG Numbers</h2>
         {deactivatedCUGs.length > 0 ? (
           <ul className="list-disc pl-8 space-y-2">
-            {deactivatedCUGs.map(cug => (
-              <li key={cug._id} className="text-blue-700">
-                <span className="font-medium">{cug.number}</span>
+            {deactivatedCUGs.map(Data => (
+              <li key={Data._id} className="text-blue-700">
+                <span className="font-medium">{Data.cugNo}</span>
               </li>
             ))}
           </ul>
