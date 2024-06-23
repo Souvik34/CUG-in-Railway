@@ -108,7 +108,6 @@ const CUG_Details = () => {
 
               
               {filteredData.map((Data) => (
-
                 <div className="flex flex-col space-y-2 mt-4" key={Data._id}>
                   <h2 className="p-4 bg-gray-100 rounded shadow">EMP NO: <span>{Data.empNo}</span></h2>
                   <h2 className="p-4 bg-gray-100 rounded shadow">NAME: <span>{Data.name}</span></h2>
