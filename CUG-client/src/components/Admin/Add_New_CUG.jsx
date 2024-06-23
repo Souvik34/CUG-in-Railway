@@ -31,7 +31,12 @@ const Add_New_CUG = () => {
     } catch (error) {
       // console.error(error);
       // Handle error response from backend
-      toast.error('Failed to submit data!');
+      if (error.response && error.response.status === 409) {
+        // CUG number already exists
+        toast.error('CUG number already exists!');
+      } else {
+        toast.error('Failed to submit data!');
+      }
     }
  
   };
@@ -65,8 +70,8 @@ const Add_New_CUG = () => {
             {...register('cugNo', { required: true })}
             />
             </label>
+            {errors.empNo && <p className="text-red-500">Enter valid CUG number</p>}
             
-          {errors.empNo && <p className="text-red-500">Enter valid employment number</p>}
         </div>
  
 
