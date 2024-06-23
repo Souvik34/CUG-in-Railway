@@ -1,7 +1,8 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
-import { Link, Navigate, Outlet } from "react-router-dom";
+import { NavLink,Link, Navigate, Outlet } from "react-router-dom";
 import { useAuth } from "../../store/Auth";
+import '../../index.css';
 
 const Admin = () => {
   const { isLoggedIn } = useAuth();
@@ -40,56 +41,58 @@ const Admin = () => {
       </nav>
       <div className="bg-gray-100  min-h-screen flex">
         <div className="bg-gray-800 w-64 p-4">
-          <Link to="create_dealer">
-            <button className="bg-purple-500 hover:bg-purple-700 text-white text-2xl font-bold py-2 px-4 rounded mb-2 border-solid border-2 w-56">
+        <NavLink to="create_dealer" activeClassName="active">
+            <button className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mb-2 border-solid border-2 w-56">
               CREATE DEALER
             </button>
-          </Link>
-          <Link to="cug_details">
+          </NavLink>
+          <NavLink to="cug_details" activeClassName="active">
             <button className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mb-2 border-solid border-2 w-56">
               CUG DETAILS
             </button>
-          </Link>
-          <Link to="add_new_cug">
+          </NavLink>
+
+          <NavLink to="add_new_cug" activeClassName="active">
             <button className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mb-2 border-solid border-2 w-56">
               Add New CUG
             </button>
-          </Link>
-          <Link to="allotment_history">
+          </NavLink>
+
+           <NavLink to="allotment_history" activeClassName="active">
             <button className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mb-2 border-solid border-2 w-56">
               Allotment History
             </button>
-          </Link>
-          <Link to="allocation_wise_report">
+          </NavLink>
+          <NavLink to="allocation_wise_report" activeClassName="active">
             <button className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mb-2 border-solid border-2 w-56">
               Allocation-Wise Report
             </button>
-          </Link>
-          <Link to="cug_status_report">
+          </NavLink>
+          <NavLink to="cug_status_report" activeClassName="active">
             <button className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mb-2 border-solid border-2 w-56">
               CUG Status Report
             </button>
-          </Link>
-          <Link to="activate_deactivate_report">
+          </NavLink>
+          <NavLink to="activate_deactivate_report" activeClassName="active">
             <button className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mb-2 border-solid border-2 w-56">
               Active/De-Active Report
             </button>
-          </Link>
-          <Link to="upload_cug_bill">
+          </NavLink>
+          <NavLink to="upload_cug_bill" activeClassName="active">
             <button className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mb-2 border-solid border-2 w-56">
               Upload CUG Bill
             </button>
-          </Link>
-          <Link to="upload_new_cug_nos">
+          </NavLink>
+          <NavLink to="upload_new_cug_nos" activeClassName="active">
             <button className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mb-2 border-solid border-2 w-56">
               Upload New CUG Nos
             </button>
-          </Link>
-          <Link to="provider">
+          </NavLink>
+          <NavLink to="provider" activeClassName="active">
             <button className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded border-solid border-2 w-56">
               Provider
             </button>
-          </Link>
+          </NavLink>
         </div>
           
         <Outlet />

@@ -67,41 +67,41 @@ const Allotment_history = () => {
         </thead>
         <tbody>
           {filteredEmployees.map((i) => (
-            <tr key={i.id} className="border border-black">
+            <tr key={i.id} className="border border-black ">
               {/* CUG no C1 */}
-              <td className="flex text-center justify-center items-center px-4 py-2">
-                <div className="font-semibold text-center">
+              <td className="flex text-center items-center h-full bg-[#C77DFF] justify-center px-4 py-2">
+                <div className="font-semibold text-center text-white">
                   CUG No: {i.cugNo}
                 </div>
               </td>
               {/* previous c2 */}
               <td className="px-4 py-2 border border-black">
                 <div className="flex rounded-md py-2 px-3">
-                  Name: <h1>Deedhiti</h1>
+                  <h1 className="">Name:</h1> <h1 className="text-gray-600"> Deedhiti</h1>
                 </div>
                 <div className="flex rounded-md py-2 px-3">
-                  Employee ID: <h1>DEE123</h1>
+                  Employee ID: <h1 className="text-gray-600"> DEE123</h1>
                 </div>
                 <div className="flex rounded-md py-2 px-3">
-                  Plan: <h1>Monthly</h1>
+                  Plan: <h1 className="text-gray-600"> Monthly</h1>
                 </div>
                 <div className="flex rounded-md py-2 px-3">
-                  Date: <h1>2/3/2024</h1>
+                  Date: <h1 className="text-gray-600"> 2/3/2024</h1>
                 </div>
               </td>
               {/* Current c3 */}
               <td className="px-4 py-2">
                 <div className="flex rounded-md py-2 px-3">
-                  Name: {i.name}
+                  Name: <h1 className="text-gray-600"> {i.firstName} {i.lastName}</h1>
                 </div>
                 <div className="flex rounded-md py-2 px-3">
-                  Employee ID: {i.empNo}
+                  Employee ID: <h1 className="text-gray-600">{i.empNo}</h1>
                 </div>
                 <div className="flex rounded-md py-2 px-3">
-                  Plan: {i.plan}
+                  Plan: <h1 className="text-gray-600">{i.plan}</h1>
                 </div>
                 <div className="flex rounded-md py-2 px-3">
-                  Date:
+                  Date:<h1 className="text-gray-600">{i.createdAt}</h1>
                 </div>
               </td>
             </tr>
