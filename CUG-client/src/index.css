@@ -13,9 +13,11 @@
 } */
 }
 
-.bg-active {
-	background-color: blue;
+.active button {
+	background-color: #3730a3;
   }
-
-
+  
+  .active button:hover {
+	background-color: #6c5ce7;
+  }
   
