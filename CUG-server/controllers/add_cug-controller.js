@@ -17,11 +17,11 @@ const create = async (req, res) => {
     } = req.body;
     const cugExist = await Add_cug.findOne({cugNo});
     if (cugExist) {
-      return res.status(400).json({ message: "CUG No.  already exist" });
+      return res.status(401).json({ message: "CUG No.  already exist" });
     }
     const employeerExist = await Add_cug.findOne({empNo});
     if (employeerExist) {
-      return res.status(400).json({ message: "Employee No.  already exist" });
+      return res.status(402).json({ message: "Employee No.  already exist" });
     }
     const userCreated = await Add_cug.create({
       cugNo,
