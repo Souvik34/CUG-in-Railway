@@ -3,13 +3,14 @@ import React, { useState, useEffect } from "react";
 const Allotment_history = () => {
   const [cugNo, setCugNo] = useState("");
   const [employees, setEmployees] = useState([]);
+  const [deactivatedCug, setdeactivatedCug] = useState([])
   const [filteredEmployees, setFilteredEmployees] = useState([]);
 
   const handleCugNoChange = (event) => {
     setCugNo(event.target.value);
   };
 
-  const fetchAllData = async () => {
+  const fetchAllCugData = async () => {
     try {
       const URL = "http://127.0.0.2:4000/api/add_cug/all_data";
       const response = await fetch(URL, {
@@ -23,8 +24,23 @@ const Allotment_history = () => {
     }
   };
 
+  const fetchAllDeactivatedCugData = async () => {
+    try {
+      const URL = "http://127.0.0.2:4000/api/cug_staus/deactivate_data";
+      const response = await fetch(URL, {
+        method: "GET"
+      });
+      const EmpData = await response.json();
+      console.log("deactivated cug",EmpData.allData);
+      setdeactivatedCug(EmpData.allData);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
-    fetchAllData();
+    fetchAllCugData();
+    fetchAllDeactivatedCugData();
   }, []);
 
 
@@ -75,12 +91,13 @@ const Allotment_history = () => {
                 </div>
               </td>
               {/* previous c2 */}
-              <td className="px-4 py-2 border border-black">
+              {deactivatedCug.map((j)=>{
+              return <td className="px-4 py-2 border border-black">
                 <div className="flex rounded-md py-2 px-3">
-                  <h1 className="">Name:</h1> <h1 className="text-gray-600"> Deedhiti</h1>
+                  <h1 className="">Name:</h1> <h1 className="text-gray-600">{j.firstName} {j.lastName}</h1>
                 </div>
                 <div className="flex rounded-md py-2 px-3">
-                  Employee ID: <h1 className="text-gray-600"> DEE123</h1>
+                  Employee ID: <h1 className="text-gray-600"> {j.cugNo}</h1>
                 </div>
                 <div className="flex rounded-md py-2 px-3">
                   Plan: <h1 className="text-gray-600"> Monthly</h1>
@@ -89,6 +106,7 @@ const Allotment_history = () => {
                   Date: <h1 className="text-gray-600"> 2/3/2024</h1>
                 </div>
               </td>
+              })}
               {/* Current c3 */}
               <td className="px-4 py-2">
                 <div className="flex rounded-md py-2 px-3">
