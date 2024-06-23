@@ -50,7 +50,8 @@ const deactivated_cugSchema = new Schema({
   plan: {
     type: String,
     required: true
-  }
+  },
+  createdAt: { type: Date, default: Date.now },
 });
 
 const Deactivated_cug = model("Deactivated_cug", deactivated_cugSchema);

@@ -82,8 +82,12 @@ const Allotment_history = () => {
           </tr>
         </thead>
         <tbody>
-          {filteredEmployees.map((i) => (
-            <tr key={i.id} className="border border-black ">
+          {filteredEmployees.map((i) => {
+             // Find the corresponding deactivated CUG entry
+             const previousCug = deactivatedCug.find(j => j.cugNo === i.cugNo);
+
+           return (
+           <tr key={i.id} className="border border-black ">
               {/* CUG no C1 */}
               <td className="flex text-center items-center h-full bg-[#C77DFF] justify-center px-4 py-2">
                 <div className="font-semibold text-center text-white">
@@ -91,22 +95,27 @@ const Allotment_history = () => {
                 </div>
               </td>
               {/* previous c2 */}
-              {deactivatedCug.map((j)=>{
-              return <td className="px-4 py-2 border border-black">
-                <div className="flex rounded-md py-2 px-3">
-                  <h1 className="">Name:</h1> <h1 className="text-gray-600">{j.firstName} {j.lastName}</h1>
-                </div>
-                <div className="flex rounded-md py-2 px-3">
-                  Employee ID: <h1 className="text-gray-600"> {j.cugNo}</h1>
-                </div>
-                <div className="flex rounded-md py-2 px-3">
-                  Plan: <h1 className="text-gray-600"> Monthly</h1>
-                </div>
-                <div className="flex rounded-md py-2 px-3">
-                  Date: <h1 className="text-gray-600"> 2/3/2024</h1>
-                </div>
+              <td className="px-4 py-2 border border-black">
+              {previousCug ? (
+                    <>
+                      <div className="flex rounded-md py-2 px-3">
+                        <h1>Name:</h1> <h1 className="text-gray-600">{previousCug.firstName} {previousCug.lastName}</h1>
+                      </div>
+                      <div className="flex rounded-md py-2 px-3">
+                        Employee ID: <h1 className="text-gray-600">{previousCug.empNo}</h1>
+                      </div>
+                      <div className="flex rounded-md py-2 px-3">
+                        Plan: <h1 className="text-gray-600">{previousCug.plan}</h1>
+                      </div>
+                      <div className="flex rounded-md py-2 px-3">
+                        Date: <h1 className="text-gray-600">{previousCug.createdAt}</h1>
+                      </div>
+                    </>
+                  ) : (
+                    <div className="text-gray-600">No previous data</div>
+                  )}
               </td>
-              })}
+    
               {/* Current c3 */}
               <td className="px-4 py-2">
                 <div className="flex rounded-md py-2 px-3">
@@ -123,7 +132,8 @@ const Allotment_history = () => {
                 </div>
               </td>
             </tr>
-          ))}
+            )
+          })}
         </tbody>
       </table>
     </div>
