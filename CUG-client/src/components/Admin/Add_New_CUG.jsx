@@ -56,6 +56,8 @@ const Add_New_CUG = () => {
     }
     reset(); 
   };
+
+
   return (
     
     <div className="container mx-auto my-4 p-10 bg-slate-100">
@@ -72,6 +74,7 @@ const Add_New_CUG = () => {
   <input
             type="number"
             id="cugNo"
+            placeholder='Enter your CUG number'
             className="shadow appearance-none border rounded w-5/12 ml-[21.8rem] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             {...register('cugNo', { required: true })}
             />
@@ -89,6 +92,7 @@ const Add_New_CUG = () => {
           <input
             type="text"
             id="empNo"
+            placeholder='Enter your Employement number'
             className="shadow appearance-none border rounded w-5/12 ml-[17.6rem] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             {...register('empNo', { required: true })}
             />
@@ -104,7 +108,8 @@ const Add_New_CUG = () => {
             <input
               type="text"
               id="firstName"
-              className="shadow appearance-none border rounded w-2/5  ml-[22.5rem] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              placeholder='first name'
+              className="shadow appearance-none border rounded w-[33%]  ml-[22.7rem] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               {...register('firstName', { required: true })}
               />
               </label>
@@ -117,7 +122,8 @@ const Add_New_CUG = () => {
             <input
               type="text"
               id="lastName"
-              className="shadow appearance-none border rounded w-2/5 ml-[1.5rem] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline "
+              placeholder='last name'
+              className="shadow appearance-none border rounded w-[35%] ml-[4.5rem] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline "
               {...register('lastName', { required: true })}
               />
               </label>
@@ -132,6 +138,7 @@ const Add_New_CUG = () => {
           <input
             type="text"
             id="designation"
+            placeholder='Enter your Designation'
             className="shadow appearance-none border rounded w-5/12  ml-[20rem]  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             {...register('designation', { required: true })}
             />
@@ -144,6 +151,7 @@ const Add_New_CUG = () => {
           <input
             type="text"
             id="division"
+            placeholder='Enter your Division'
             className="shadow appearance-none border rounded w-5/12 ml-[21.8rem] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             {...register('division', { required: true })}
             />
@@ -156,6 +164,7 @@ const Add_New_CUG = () => {
           <input
             type="text"
             id="department"
+            placeholder='Enter your Department'
             className="shadow appearance-none border rounded w-5/12 ml-[20rem]  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             {...register('department', { required: true })}
             />
@@ -171,6 +180,7 @@ const Add_New_CUG = () => {
           <input
             type="number"
             id=""
+            placeholder='Enter your Bill Unit'
             className="shadow appearance-none border rounded w-5/12 ml-[21.8rem]  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             {...register('billUnit', { required: true })}
             />
@@ -184,8 +194,8 @@ const Add_New_CUG = () => {
           <input
             type="text"
             id="allocation"
-            placeholder="Allocation"
-            className="shadow appearance-none border rounded w-5/12 ml-[20.7rem] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline font-light"
+            placeholder="Enter your Allocation"
+            className="shadow appearance-none border rounded w-5/12 ml-[20.7rem] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             {...register('allocation', { required: true })}
             />
             </label>
@@ -199,6 +209,7 @@ const Add_New_CUG = () => {
           <input
             type="text"
             id="operator"
+            placeholder='Enter your operator'
             className="shadow appearance-none border rounded w-5/12  ml-[21.3rem] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             {...register('operator', { required: true })}
             />
@@ -212,6 +223,7 @@ const Add_New_CUG = () => {
           <input
             type="text"
             id="plan"
+            placeholder='Enter your plan'
             className="shadow appearance-none border rounded w-5/12  ml-[23.2rem] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             {...register('plan', { required: true })}
             />
