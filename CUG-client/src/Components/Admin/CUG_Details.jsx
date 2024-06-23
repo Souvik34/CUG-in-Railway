@@ -41,22 +41,21 @@ const CUG_Details = () => {
     }
   };
 
-  const handleDeactivate = async () => {
+  const handleDeactivate = async (cugNo) => {
     try {
-      const response = await fetch('http://127.0.0.2:4000/api/add_cug/deactivate', { // Replace with actual API endpoint
+      const response = await fetch('http://127.0.0.2:4000/api/cug_staus/deactivate', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({
-          cugNo: user.cugNo
-        })
+        body: JSON.stringify({ cugNo })
       });
 
       if (response.ok) {
+        // Remove the deactivated CUG from filteredData
+        setFilteredData(filteredData.filter(data => data.cugNo !== cugNo));
+        
         alert('CUG No. deactivated successfully');
-        setFilteredData([]);
-        setIsVisible(false);
       } else {
         console.error('Failed to deactivate CUG No.');
       }
@@ -104,7 +103,7 @@ const CUG_Details = () => {
                   <h2 className="p-4 bg-gray-100 rounded shadow">EMPLOYEE STATUS: <span>{Data.status}</span></h2>
                   <h2 className="p-4 bg-gray-100 rounded shadow">PLAN: <span>{Data.plan}</span></h2>
                   <button
-                    onClick={handleDeactivate}
+                    onClick={() => handleDeactivate(Data.cugNo)}
                     className="p-4 bg-blue-500 text-white rounded shadow mt-2 hover:bg-blue-700"
                   >
                     DEACTIVATE
