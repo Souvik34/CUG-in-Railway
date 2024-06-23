@@ -5,7 +5,8 @@ const create = async (req, res) => {
     const {
       cugNo,
       empNo,
-      name,
+      firstName,
+      lastName,
       designation,
       division,
       department,
@@ -25,7 +26,8 @@ const create = async (req, res) => {
     const userCreated = await Add_cug.create({
       cugNo,
       empNo,
-      name,
+      firstName,
+      lastName,
       designation,
       division,
       department,
@@ -52,4 +54,6 @@ const getAllData = async (req, res) => {
     console.log(error);
   }
 };
+
+
 module.exports = { create, getAllData };

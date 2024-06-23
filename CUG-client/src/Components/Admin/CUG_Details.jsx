@@ -8,6 +8,7 @@ const CUG_Details = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [employeeData, setEmployeeData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const handleInput = (e) => {
     let name = e.target.name;
@@ -48,7 +49,7 @@ const CUG_Details = () => {
 
   const handleDeactivate = async () => {
     try {
-      const response = await fetch('https://your-api-endpoint.com/deactivateCugNo', {
+      const response = await fetch('', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

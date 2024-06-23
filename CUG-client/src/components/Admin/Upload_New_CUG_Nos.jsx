@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Papa from 'papaparse';
@@ -59,7 +60,7 @@ function Upload_New_CUG_Nos() {
   };
 
   return (
-    <div className="flex flex-col items-center min-h-screen mt-20">
+    <div className="flex flex-col items-center min-h-screen mx-auto my-20">
       <div className="w-full max-w-md p-5 space-y-6 bg-white shadow-md rounded-lg">
         <h1 className="text-2xl font-bold text-center text-[#2E2D93]">Upload NEW CUG Numbers</h1>
         <br />
