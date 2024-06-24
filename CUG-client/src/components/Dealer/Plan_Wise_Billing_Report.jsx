@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { useState, useEffect } from 'react';
 
 const Plan_Wise_Billing_Report = () => {
@@ -10,18 +9,22 @@ const Plan_Wise_Billing_Report = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const response = await fetch("http://127.0.0.2:4000/api/add_cug", {
+        const response = await fetch("http://127.0.0.2:4000/api/add_cug/plans_and_departments", {
           method: 'GET',
         });
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
-        setRows(data);
-        setLoading(false);
+        if (Array.isArray(data)) {
+          setRows(data);
+        } else {
+          setError('Invalid response format. Expected an array.');
+        }
       } catch (error) {
         console.error('Error fetching data:', error);
         setError(error.message);
+      } finally {
         setLoading(false);
       }
     };

@@ -56,6 +56,15 @@ const getAllData = async (req, res) => {
   }
 };
 
+const getPlansAndDepartments = async (req, res) => {
+  try {
+    const plansAndDepartments = await Add_cug.find({}, { plan: 1, department: 1 });
+    res.json(plansAndDepartments);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+};
 const saveDraft = async (req, res) => {
   try {
     const {
@@ -107,7 +116,7 @@ const getDraft = async (req, res) => {
   }
 };
 
-module.exports = { create, getAllData, saveDraft, getDraft };
+module.exports = { create, getAllData, getPlansAndDepartments, saveDraft, getDraft };
 
 
 // module.exports = { create, getAllData };
