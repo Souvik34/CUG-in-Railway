@@ -29,41 +29,67 @@ const navigate= useNavigate();
 const {storeTokenInLs}=useAuth();
 
 
-  const handleSubmit=async(e)=>{
-    e.preventDefault()
-    console.log(user);
+  // const handleSubmit=async(e)=>{
+  //   e.preventDefault()
+  //   console.log(user);
 
+  //   try {
+  //     const loginURL= "http://127.0.0.2:4000/api/auth/login";
+  //     const response=await fetch(loginURL,{
+  //       method:"POST",
+  //       headers:{
+  //         "Content-Type":"application/json"
+  //       },
+  //       body:JSON.stringify(user),
+  //     });
+  //     console.log(response);
+
+  //     const res_data= await response.json();
+  //     console.log("response data",res_data);
+
+  //     if(response.ok){
+  //       console.log("login successful");
+  //       toast.success("Logged in as Admin");
+  //       navigate("/admin")
+
+
+  //       //store in local storage
+  //       // localStorage.setItem("token",res_data.token)
+  //       storeTokenInLs(res_data.token);
+  //     }else{
+  //       console.log("Invalid credentials")
+  //       toast.error(res_data.extraDetails? res_data.extraDetails: res_data.message);
+  //     }
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
-      const loginURL= "http://127.0.0.2:4000/api/auth/login";
-      const response=await fetch(loginURL,{
-        method:"POST",
-        headers:{
-          "Content-Type":"application/json"
+      const loginURL = 'http://127.0.0.2:4000/api/auth/login';
+      const response = await fetch(loginURL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
         },
-        body:JSON.stringify(user),
+        body: JSON.stringify(user),
       });
-      console.log(response);
-
-      const res_data= await response.json();
-      console.log("response data",res_data);
-
-      if(response.ok){
-        console.log("login successful");
-        toast.success("Logged in as Admin");
-        navigate("/admin")
-
-
-        //store in local storage
-        // localStorage.setItem("token",res_data.token)
-        storeTokenInLs(res_data.token);
-      }else{
-        console.log("Invalid credentials")
-        toast.error(res_data.extraDetails? res_data.extraDetails: res_data.message);
+  
+      const resData = await response.json();
+  
+      if (response.ok) {
+        toast.success('Logged in as Admin');
+        storeTokenInLs(resData.token);
+        navigate('/admin'); // Navigate to protected route
+      } else {
+        toast.error(resData.extraDetails? resData.extraDetails : resData.message);
       }
     } catch (error) {
-      console.log(error)
+      console.error(error);
+      toast.error('An error occurred while logging in');
     }
-  }
+  };
   return (
     <div className='min-h-screen'>
        <nav className="w-full text-center bg-admin-gradient">
