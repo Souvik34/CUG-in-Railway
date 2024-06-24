@@ -15,11 +15,20 @@ function Upload_CUG_Bill() {
     const file = event.target.files[0];
     const fileType = file.type;
 
+    const filterData = (data) => {
+      const filteredData = data.filter(
+        (bill) => parseFloat(bill['Periodic Charge']) > 74.61 &&
+                  parseFloat(bill['Periodic Charge']) > 59.05 &&
+                  parseFloat(bill['Periodic Charge']) > 39.9
+      );
+      setBills(filteredData);
+    };
+
     const parseCSV = (file) => {
       Papa.parse(file, {
         header: true,
         complete: (result) => {
-          setBills(result.data);
+          filterData(result.data);
         },
       });
     };
@@ -41,7 +50,7 @@ function Upload_CUG_Bill() {
             return acc;
           }, {})
         );
-        setBills(parsedData);
+        filterData(parsedData);
       };
       reader.readAsArrayBuffer(file);
     };
@@ -63,10 +72,10 @@ function Upload_CUG_Bill() {
   return (
     <div className="container mx-20 my-20 flex flex-col items-center">
       <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-sm">
-        <div className="mb-4">
+        <div className="mb-4 text-center">
           <label
             htmlFor="file_upload"
-            className="block text-gray-700 font-bold mb-2 text-center"
+            className="block text-gray-700 font-bold mb-2"
           >
             Upload CSV/Excel
           </label>
