@@ -8,24 +8,27 @@ const Dealer = () => {
   return (
     <div className="">
       {/* dealer navbar */}
-      <nav className="w-full bg-custom-gradient flex items-center justify-between">
-        {/* logout button */}
+      <nav className=" w-full bg-custom-gradient flex items-center justify-between  sticky top-0 z-10">
+       
+
+        <h1 className="text-4xl font-semibold py-5 text-white ml-32 px-96 flex-grow">
+          DEALER PORTAL
+        </h1>
+
+          {/* logout button */}
         <div className="text-base font-medium space-x-5 lg:block">
           {isLoggedIn ? (
             <Link
               to="/logout"
-              className="py-2 px-5 border rounded text-white bg-[#ef4444] hover:bg-[#991b1b] ml-5"
+              className="py-2 px-2 border rounded text-white bg-[#ef4444] hover:bg-[#991b1b] ml-3 mr-3"
             >
               Logout
             </Link>
           ) : (
             ""
           )}
-        </div>
+        </div> 
 
-        <h1 className="text-4xl font-semibold py-5 text-white text-center flex-grow">
-          DEALER PORTAL
-        </h1>
       </nav>
       {/* Side bar for dealer */}
       <div className=" bg-gray-100  min-h-screen flex">
