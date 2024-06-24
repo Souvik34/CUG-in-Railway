@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 
+
 const CUG_Details = () => {
   const [user, setUser] = useState({ cugNo: "" });
   const [isVisible, setIsVisible] = useState(false);
   const [filteredData, setFilteredData] = useState([]);
+  const [alertMessage, setAlertMessage] = useState("");
 
   const handleInput = (e) => {
     let name = e.target.name;
@@ -26,6 +28,13 @@ const CUG_Details = () => {
 
       if (response.ok) {
         const data = await response.json();
+
+        // Check if the CUG number is active
+        const cugData = data.allData.find((item) => item.cugNo === user.cugNo);
+        if (!cugData || cugData.status === 'active') {
+          setAlertMessage('CUG No. is not active');
+          return;
+        }
         
         // Filter the data based on the CUG number
         const filtered = data.allData.filter((item) => item.cugNo === user.cugNo);
@@ -35,34 +44,38 @@ const CUG_Details = () => {
         console.log("filtered data", filtered);
       } else {
         console.error('Failed to fetch employee data');
+        setAlertMessage('Error fetching employee data. Please try again later.');
       }
     } catch (error) {
       console.error('Error fetching employee data:', error);
+      setAlertMessage('Error fetching employee data. Please try again later.');
     }
   };
 
+  
   const handleDeactivate = async (cugNo) => {
-    try {
-      const response = await fetch('http://127.0.0.2:4000/api/cug_staus/deactivate', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ cugNo })
-      });
-
-      if (response.ok) {
-        // Remove the deactivated CUG from filteredData
-        setFilteredData(filteredData.filter(data => data.cugNo !== cugNo));
-        
-        alert('CUG No. deactivated successfully');
-      } else {
-        console.error('Failed to deactivate CUG No.');
-      }
-    } catch (error) {
-      console.error('Error deactivating CUG No.:', error);
-    }
-  };
+        try {
+          const response = await fetch('http://127.0.0.2:4000/api/cug_staus/deactivate', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ cugNo })
+          });
+    
+          if (response.ok) {
+            // Remove the deactivated CUG from filteredData
+            setFilteredData(filteredData.filter(data => data.cugNo !== cugNo));
+            
+            setAlertMessage('CUG No. deactivated successfully');
+          } else {
+            console.error('Failed to deactivate CUG No.');
+            setAlertMessage('Failed to deactivate CUG No.');
+          }
+        } catch (error) {
+          console.error('Error deactivating CUG No.:', error);
+        }
+      };
 
   return (
     <div className='min-h-screen'>
@@ -74,6 +87,11 @@ const CUG_Details = () => {
           <h1 className="text-2xl font-bold text-center text-[#2E2D93]">CUG NO</h1>
           <br />
           <form onSubmit={handleSubmit} className="space-y-6">
+            {alertMessage && (
+              <div className="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg" role="alert">
+                {alertMessage}
+              </div>
+            )}
             <div>
               <label htmlFor="cugNo" className="block text-sm font-medium text-gray-700">CUG No.</label>
               <input
@@ -119,3 +137,14 @@ const CUG_Details = () => {
 };
 
 export default CUG_Details;
+
+
+
+
+
+
+
+
+
+
+
