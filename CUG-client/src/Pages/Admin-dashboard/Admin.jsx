@@ -88,6 +88,11 @@ const Admin = () => {
               Upload New CUG Nos
             </button>
           </NavLink>
+          <NavLink to="discrepency_report" activeClassName="active">
+            <button className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mb-2 border-solid border-2 w-56">
+              Discrepency Report
+            </button>
+          </NavLink>
           <NavLink to="provider" activeClassName="active">
             <button className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded border-solid border-2 w-56">
               Provider
