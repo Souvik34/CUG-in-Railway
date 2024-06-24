@@ -7,6 +7,7 @@ const validate = require("../middlewares/validate-middleware")
 
 router.route("/").post(validate(add_cugSchema), add_cugController.create);
 router.route("/all_data").get(add_cugController.getAllData);
+router.route("/plans_and_departments").get(add_cugController.getPlansAndDepartments);
 
 // New routes for draft functionality
 router.route("/save_draft").post(add_cugController.saveDraft);
