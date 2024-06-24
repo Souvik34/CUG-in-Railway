@@ -24,6 +24,8 @@ const authmiddleware= async(req,res,next)=>{
         req.userId=userData._id;
         next(); 
     } catch (error) {
+        console.error("Error verifying token:", error);
+    return res.status(401).json({ msg: "Invalid token" });
         
     }
     
