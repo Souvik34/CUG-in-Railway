@@ -56,5 +56,58 @@ const getAllData = async (req, res) => {
   }
 };
 
+const saveDraft = async (req, res) => {
+  try {
+    const {
+      cugNo,
+      empNo,
+      firstName,
+      lastName,
+      designation,
+      division,
+      department,
+      billUnit,
+      allocation,
+      operator,
+      plan,
+    } = req.body;
+    const draft = await Add_cug.create({
+      cugNo,
+      empNo,
+      firstName,
+      lastName,
+      designation,
+      division,
+      department,
+      billUnit,
+      allocation,
+      operator,
+      plan,
+      draft: true,
+      createdAt: new Date(),
+    });
+    res.status(201).json({ msg: "Draft saved successfully" });
+  } catch (error) {
+    console.error(error);
+    res.status(400).json({ message: "Failed to save draft" });
+  }
+};
 
-module.exports = { create, getAllData };
+const getDraft = async (req, res) => {
+  const draftId = req.params.draftId;
+  try {
+    const draft = await Add_cug.findById(draftId);
+    if (!draft || !draft.draft) {
+      res.status(404).json({ message: "Draft not found" });
+    } else {
+      res.status(200).json({ draft });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+module.exports = { create, getAllData, saveDraft, getDraft };
+
+
+// module.exports = { create, getAllData };

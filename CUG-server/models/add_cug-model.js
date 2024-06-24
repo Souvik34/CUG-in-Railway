@@ -57,7 +57,13 @@ const add_cugSchema = new Schema({
     required: true
   },
   createdAt: { type: Date, default: Date.now },
+  draft: {
+    type: Boolean,
+    default: false
+  }
   });
+  
+
   
   const  Add_cug =new model("Add_cug",add_cugSchema);
   

@@ -8,5 +8,11 @@ router.route("/").post(validate(add_cugSchema), add_cugController.create);
 router.route("/").get((req, res) => {
   res.send('Server is running!');
 });
+
+
 router.route("/all_data").get(add_cugController.getAllData);
+
+// New routes for draft functionality
+router.route("/save_draft").post(add_cugController.saveDraft);
+router.route("/get_draft/:draftId").get(add_cugController.getDraft);
 module.exports = router;
