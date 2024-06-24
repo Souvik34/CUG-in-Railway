@@ -287,7 +287,7 @@ const Add_New_CUG = () => {
         <div className="flex justify-end">
           <button
             type="button"
-            className="bg-gray-300 hover:bg-gray-400 text-gray-700 font-bold py-2 px-4 rounded mr-2"
+            className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded mr-2"
             onClick={handleCancel}
           >
             Clear All

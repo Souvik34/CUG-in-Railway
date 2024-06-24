@@ -18,8 +18,8 @@ import React from 'react';
 const Providers = () => {
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-2xl font-bold mb-4 text-left">PROVIDERS</h1>
-      <hr className="mb-8 border-t-2 border-[#3F0B71]" />
+      <h1 className="text-2xl font-bold mb-4 text-center">PROVIDERS</h1>
+      <hr className="mb-8 border-t-2 border-[#4cacf5]" />
       <div className=" items-center text-center justify-center md:mt-10 p-6 flex flex-wrap gap-[30vh]">
         <button className="bg-[#FF0000] hover:bg-[#D60000]  py-4 px-8 rounded-lg transition duration-300 ease-in-out w-52 h-52">
        
