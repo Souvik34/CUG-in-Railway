@@ -23,7 +23,7 @@ const Admin = () => {
           {isLoggedIn ? (
             <Link
               to="/logout"
-              className="py-2 px-5 border rounded text-white bg-[#C77DFF] hover:bg-[#3C096C] ml-5"
+              className="py-2 px-5 border rounded text-white bg-[#ef4444] hover:bg-[#991b1b] ml-5"
             >
               Logout
             </Link>
