@@ -172,7 +172,7 @@ const Add_New_CUG = () => {
               type="text"
               id="lastName"
               placeholder='last name'
-              className="shadow appearance-none border rounded w-[35%] ml-[4.5rem] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline "
+              className="shadow appearance-none border rounded w-[35%] ml-[2.5rem] mt-[2] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline "
               {...register('lastName', { required: true })}
               />
               </label>
