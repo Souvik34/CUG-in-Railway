@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react'
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { Navigate, useNavigate } from 'react-router-dom';
@@ -48,7 +49,7 @@ const {storeTokenInLs}=useAuth();
 
       if(response.ok){
         console.log("login successful");
-        toast.success("Login successfull");
+        toast.success("Logged in as Admin");
         navigate("/admin")
 
 
