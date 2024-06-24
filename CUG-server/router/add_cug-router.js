@@ -5,11 +5,6 @@ const add_cugSchema = require("../validators/add_cug-validator");
 const validate = require("../middlewares/validate-middleware")
 
 router.route("/").post(validate(add_cugSchema), add_cugController.create);
-router.route("/").get((req, res) => {
-  res.send('Server is running!');
-});
-
-
 router.route("/all_data").get(add_cugController.getAllData);
 
 // New routes for draft functionality

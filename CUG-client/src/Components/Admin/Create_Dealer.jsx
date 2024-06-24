@@ -52,7 +52,7 @@ const navigate= useNavigate();
           // localStorage.setItem("token",res_data.token)
           toast.success("Dealer created successfully")
           storeTokenInLs(res_data.token);
-          navigate("/admin")
+          navigate("/adminLogin")
 
       }else{
         toast.error(res_data.extraDetails? res_data.extraDetails: res_data.message);
