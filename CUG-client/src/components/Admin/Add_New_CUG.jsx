@@ -1,7 +1,7 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { useState } from 'react';
 import {Controller } from "react-hook-form";
 import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
 import axios from 'axios'; 
@@ -15,35 +15,62 @@ const Add_New_CUG = () => {
     handleSubmit,
     formState: { errors },
     control,
+    getValues,
     reset
   } = useForm()
 
+  const [draftData, setDraftData] = useState({});
+  const [isDraft, setIsDraft] = useState(false);
+  const [showDraft, setShowDraft] = useState(false);
 
+  useEffect(() => {
+    // Load draft data from localStorage when the component mounts
+    const storedDraftData = localStorage.getItem('draftData');
+    if (storedDraftData) {
+      setDraftData(JSON.parse(storedDraftData));
+      setIsDraft(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    // Save draft data to localStorage when it changes
+    if (isDraft) {
+      localStorage.setItem('draftData', JSON.stringify(draftData));
+    }
+  }, [draftData, isDraft]);
 
   const onSubmit = async (data, event) => {
     event.preventDefault();
-    try {
+    if (isDraft) {
+      setDraftData(data);
+      toast.info('Draft updated!');
+    }
+    else
+    {
+      try {
       
-      const response = await axios.post('http://127.0.0.2:4000/api/add_cug', data);
-      toast.success('Data submitted successfully!');
-      // console.log(response.data);
- 
-    } catch (error) {
-      // console.error(error);
-      // Handle error response from backend
-      if (error.response?.status === 401)  {
-        // CUG number already exists
-        toast.error('CUG number already exists!');
-      } 
-      if (error.response?.status === 402)  {
-        // CUG number already exists
-        toast.error('Employee number already exists!');
-      } 
-      
-      else {
-        toast.error('Failed to submit data!');
+        const response = await axios.post('http://127.0.0.2:4000/api/add_cug', data);
+        toast.success('Data submitted successfully!');
+        // console.log(response.data);
+   
+      } catch (error) {
+        // console.error(error);
+        // Handle error response from backend
+        if (error.response?.status === 401)  {
+          // CUG number already exists
+          toast.error('CUG number already exists!');
+        } 
+        if (error.response?.status === 402)  {
+          // CUG number already exists
+          toast.error('Employee number already exists!');
+        } 
+        
+        else {
+          toast.error('Failed to submit data!');
+        }
       }
     }
+  
  
   };
 
@@ -57,6 +84,28 @@ const Add_New_CUG = () => {
     reset(); 
   };
 
+  const handleSaveDraft = () => {
+    const formData = getValues();
+    console.log(formData); // Check the console for the form data
+    setDraftData(formData);
+    setIsDraft(true);
+    console.log(draftData); // Check the console for the updated draft data
+    console.log(isDraft); // Check the console for the updated isDraft state
+    toast.info('Draft saved!');
+  };
+
+  const handleModifyDraft = () => {
+    reset(draftData); // Reset the form to the draft values
+    toast.info('Form reset to draft values!');
+  };
+
+  const handleShowDraft = () => {
+    setShowDraft(true);
+  };
+
+  const handleHideDraft = () => {
+    setShowDraft(false);
+  };
 
   return (
     
@@ -248,6 +297,53 @@ const Add_New_CUG = () => {
           >
             Clear All
           </button>
+        
+          {isDraft ? (
+            <div>
+              <button
+                type="button"
+                className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded mr-2"
+                onClick={handleModifyDraft}
+              >
+                Modify Draft
+              </button>
+              <button
+                type="button"
+                className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded mr-2"
+                onClick={handleShowDraft}
+              >
+                View Draft
+              </button>
+              {showDraft && (
+                <div>
+                  <h2>Draft Data:</h2>
+                  <ul>
+                    {Object.keys(draftData).map((key, index) => (
+                      <li key={index}>
+                        <strong>{key}</strong>: {draftData[key]}
+                      </li>
+                    ))}
+                  </ul>
+                  <button
+                    type="button"
+                    className="bg-gray-300 hover:bg-gray-400 text-gray-700 font-bold py-2 px-4 rounded"
+                    onClick={handleHideDraft}
+                  >
+                    Hide Draft
+                  </button>
+                </div>
+              )}
+            </div>
+          ) : (
+            <button
+              type="button"
+              className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded mr-2"
+              onClick={handleSaveDraft}
+            >
+              Save Draft
+            </button>
+          )}
+         
           <button
             type="submit"
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
