@@ -25,6 +25,7 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import DealerWelcome from "../Pages/Dealer-dashboard/DealerWelcome";
 import CUG_Details from "../Components/Admin/CUG_Details";
 import Add_new_cug from "../Components/Dealer/Add_new_cug";
+import Discrepency_report from "../Components/Admin/Discrepency_report";
 
 const router= createBrowserRouter([
     {
@@ -82,7 +83,12 @@ const router= createBrowserRouter([
                     {
                         path:'upload_new_cug_nos',
                         element:<Upload_New_CUG_Nos/>
+                    },
+                    {
+                       path:'discrepency_report',
+                       element: <Discrepency_report/>
                     }
+
                 ]
             },
             {
