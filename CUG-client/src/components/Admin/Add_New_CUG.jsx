@@ -41,12 +41,7 @@ const Add_New_CUG = () => {
 
   const onSubmit = async (data, event) => {
     event.preventDefault();
-    if (isDraft) {
-      setDraftData(data);
-      toast.info('Draft updated!');
-    }
-    else
-    {
+    
       try {
       
         const response = await axios.post('http://127.0.0.2:4000/api/add_cug', data);
@@ -69,7 +64,7 @@ const Add_New_CUG = () => {
           toast.error('Failed to submit data!');
         }
       }
-    }
+    
   
  
   };
@@ -297,8 +292,9 @@ const Add_New_CUG = () => {
           >
             Clear All
           </button>
-        
-          {isDraft ? (
+
+      {/* Draft to modified    */}
+          {/* {isDraft ? (
             <div>
               <button
                 type="button"
@@ -342,7 +338,7 @@ const Add_New_CUG = () => {
             >
               Save Draft
             </button>
-          )}
+          )} */}
          
           <button
             type="submit"

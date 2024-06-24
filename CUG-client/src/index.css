@@ -21,3 +21,12 @@
 	background-color: #6c5ce7;
   }
   
+  .current  
+  {
+	background-color:#9333ea ;
+  }
+
+  .current button:hover
+  {
+	background-color:  #3b0764;
+  }
