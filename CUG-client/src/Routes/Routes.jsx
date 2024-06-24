@@ -24,7 +24,7 @@ import Create_Dealer from "../Components/Admin/Create_Dealer";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import DealerWelcome from "../Pages/Dealer-dashboard/DealerWelcome";
 import CUG_Details from "../Components/Admin/CUG_Details";
-
+import Add_new_cug from "../Components/Dealer/Add_new_cug";
 
 const router= createBrowserRouter([
     {
@@ -92,6 +92,11 @@ const router= createBrowserRouter([
                     {
                         index: true, // This will render DefaultAdminPage when path is exactly /admin
                         element:<DealerWelcome/>, 
+                      },
+
+                      {
+                        path: 'add_new_cug',
+                        element: <Add_new_cug/>,
                       },
                     {
                         path:'activate_deactivate_cug',
