@@ -73,11 +73,11 @@ const Admin = () => {
               CUG Status Report
             </button>
           </NavLink>
-          <NavLink to="activate_deactivate_report" activeClassName="active">
+          {/* <NavLink to="activate_deactivate_report" activeClassName="active">
             <button className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mb-2 border-solid border-2 w-56">
               Active/De-Active Report
             </button>
-          </NavLink>
+          </NavLink> */}
           <NavLink to="upload_cug_bill" activeClassName="active">
             <button className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mb-2 border-solid border-2 w-56">
               Upload CUG Bill

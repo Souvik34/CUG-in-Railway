@@ -62,7 +62,10 @@ function Upload_CUG_Bill() {
   };
 
   return (
+    
     <div className=" mx-20 my-20">
+    
+    <h2 className="text-left md:text-left text-xl font-bold mb-4 text-black py-1">Upload CUG Bill</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="mb-4">
           <label
