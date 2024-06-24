@@ -143,7 +143,7 @@ const Add_New_CUG = () => {
             id="empNo"
             placeholder='Enter your Employement number'
             className="shadow appearance-none border rounded w-5/12 ml-[17.6rem] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            {...register('empNo', { required: true })}
+            {...register('empNo', { required: true,   pattern: /^\d{11}$/  })}
             />
             </label>
           {errors.empNo && <p className="text-red-500">Enter valid employment number</p>}

@@ -30,6 +30,11 @@ const Dealer = () => {
       {/* Side bar for dealer */}
       <div className=" min-h-screen flex">
         <div className="bg-gray-800 w-64 p-4">
+          <Link to="add_new_cug">
+            <button className="bg-blue-700 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded mb-4 border-2 w-full">
+              Add New CUG
+            </button>
+          </Link>
           <Link to="activate_deactivate_cug">
             <button className="bg-blue-700 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded mb-4 border-2 w-full">
               Activate / De-Activate CUG
