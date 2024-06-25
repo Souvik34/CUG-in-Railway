@@ -6,7 +6,7 @@ import { useAuth } from '../../store/Auth';
 import { ToastContainer, toast } from 'react-toastify';
 
 const AdminLogin = () => {
-  const [user, setuser] = useState({
+  const [users, setusers] = useState({
     employeeid:"",
     password:"",
   })  
@@ -18,15 +18,15 @@ const AdminLogin = () => {
     let name=e.target.name
     let value=e.target.value
 
-    setuser({
-      ...user,
+    setusers({
+      ...users,
       [name]:value
     })
   }
 // for navigator
 const navigate= useNavigate();
 // for call the Auth.jsx using useContext
-const {storeTokenInLs}=useAuth();
+const {storeTokenInLs,setUser}=useAuth();
 
 
   
@@ -39,7 +39,7 @@ const {storeTokenInLs}=useAuth();
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(user),
+        body: JSON.stringify(users),
       });
   
       const resData = await response.json();
@@ -47,7 +47,13 @@ const {storeTokenInLs}=useAuth();
       if (response.ok) {
         toast.success('Logged in as Admin');
         storeTokenInLs(resData.token);
-        navigate('/admin'); // Navigate to protected route
+        // setUser(resData.user);
+        // if (resData.user.isAdmin) {
+        //   navigate("/admin");
+        // } else {
+        //   navigate("/");
+        // }
+        navigate("/admin")
       } else {
         toast.error(resData.extraDetails? resData.extraDetails : resData.message);
       }
@@ -80,7 +86,7 @@ const {storeTokenInLs}=useAuth();
                   id="employeeid"
                   required
                   autoComplete="off"
-                  value={user.employeeid}
+                  value={users.employeeid}
                   onChange={handleInput}
                   className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                 />
@@ -97,7 +103,7 @@ const {storeTokenInLs}=useAuth();
                   id="password"
                   required
                   autoComplete="off"
-                  value={user.password}
+                  value={users.password}
                   onChange={handleInput}
                   className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                 />
