@@ -82,8 +82,9 @@ const CUG_Details = () => {
       <nav className="w-full text-center bg-dealer-gradient">
         <h1 className="text-4xl font-semibold py-5 text-white"></h1>
       </nav>
-      <section className="flex justify-center items-center ml-72">
-        <div className="md:w-[35vw] md:h-[full] p-5 space-y-6 bg-white shadow-md rounded-lg mt-10">
+      <section className="flex justify-center items-center ml-48">
+        <div className="md:w-[60vw] md:h-[full] p-5 space-y-6 bg-white shadow-md rounded-lg mt-10 ml-3">
+          
           <h1 className="text-2xl font-bold text-center text-[#2E2D93]">CUG NO</h1>
           <br />
           <form onSubmit={handleSubmit} className="space-y-6">
@@ -111,21 +112,31 @@ const CUG_Details = () => {
 
               {filteredData.map((Data) => (
                 <div className="flex flex-col space-y-2 mt-4" key={Data._id}>
-                  <h2 className="p-4 bg-gray-100 rounded shadow">EMP NO: <span>{Data.empNo}</span></h2>
-                  <h2 className="p-4 bg-gray-100 rounded shadow">NAME: <span>{ Data.firstName+" "+ Data.lastName }</span></h2>
-                  <h2 className="p-4 bg-gray-100 rounded shadow">DESIGNATION: <span>{Data.designation}</span></h2>
-                  <h2 className="p-4 bg-gray-100 rounded shadow">DIVISION: <span>{Data.division}</span></h2>
-                  <h2 className="p-4 bg-gray-100 rounded shadow">DEPARTMENT: <span>{Data.department}</span></h2>
-                  <h2 className="p-4 bg-gray-100 rounded shadow">BILL UNIT: <span>{Data.billUnit}</span></h2>
-                  <h2 className="p-4 bg-gray-100 rounded shadow">ALLOCATION: <span>{Data.allocation}</span></h2>
-                  <h2 className="p-4 bg-gray-100 rounded shadow">EMPLOYEE STATUS: <span>{Data.status}</span></h2>
-                  <h2 className="p-4 bg-gray-100 rounded shadow">PLAN: <span>{Data.plan}</span></h2>
-                  <button
-                    onClick={() => handleDeactivate(Data.cugNo)}
-                    className="p-4 bg-blue-500 text-white rounded shadow mt-2 hover:bg-blue-700"
-                  >
-                    DEACTIVATE
-                  </button>
+                  <div className="flex flex-row ml-4 justify-around min-w-max">
+                    <div className="w-1/3">
+                    <h2 className="p-4 bg-gray-100 rounded shadow">EMP NO: <span>{Data.empNo}</span></h2>
+                    <h2 className="p-4 bg-gray-100 rounded shadow">NAME: <span>{ Data.firstName+" "+ Data.lastName }</span></h2>
+                    <h2 className="p-4 bg-gray-100 rounded shadow">DESIGNATION: <span>{Data.designation}</span></h2>
+                    </div>
+                    <div className="w-1/3">
+                    <h2 className="p-4 bg-gray-100 rounded shadow">DIVISION: <span>{Data.division}</span></h2>
+                    <h2 className="p-4 bg-gray-100 rounded shadow">DEPARTMENT: <span>{Data.department}</span></h2>
+                    <h2 className="p-4 bg-gray-100 rounded shadow">BILL UNIT: <span>{Data.billUnit}</span></h2>
+                    </div>
+                    <div className="w-1/3">
+                    <h2 className="p-4 bg-gray-100 rounded shadow">ALLOCATION: <span>{Data.allocation}</span></h2>
+                    <h2 className="p-4 bg-gray-100 rounded shadow">EMPLOYEE STATUS: <span>{Data.status}</span></h2>
+                    <h2 className="p-4 bg-gray-100 rounded shadow">PLAN: <span>{Data.plan}</span></h2>
+                    </div>
+                  </div>
+                  <div className="flex justify-center">
+                    <button
+                      onClick={() => handleDeactivate(Data.cugNo)}
+                      className="p-4 bg-blue-500 text-white rounded shadow mt-2 hover:bg-blue-700 w-96"
+                    >
+                      DEACTIVATE
+                    </button>
+                  </div>
                 </div>
               ))}
             </div>
@@ -137,14 +148,3 @@ const CUG_Details = () => {
 };
 
 export default CUG_Details;
-
-
-
-
-
-
-
-
-
-
-
