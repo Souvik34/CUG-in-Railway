@@ -1,5 +1,4 @@
 const User = require("../models/user-model");
-const Dealer=require("../models/dealer_registrataion");
 const bcrypt = require("bcryptjs");
 
 const home = async (req, res) => {
@@ -10,113 +9,82 @@ const home = async (req, res) => {
   }
 };
 
-const register = async (req, res) => {
+// user-register function
+const user_register = async (req, res) => {
   try {
-    console.log("register :",req.body);
-    const { username, email, phone, password } = req.body;
-    console.log(req.body.username);
-    console.log(req.body.email);
-    console.log(req.body.phone);
-    
-    const userExist = await User.findOne({ email });
+    console.log("register:", req.body);
+    const { username, employeeid, department, phone, password } = req.body;
+
+    const userExist = await User.findOne({ employeeid });
     if (userExist) {
-      return res.status(400).json({ message: "Email already exist" });
+      return res.status(400).json({ message: "Employee id already exists" });
     }
 
-    // const salt=10;
-    // const hash_pass= await bcrypt.hash(password,salt);
-    const userCreated = await User.create({ 
-      username,
-      email,
-      phone,
-      password,
-    });
-    res.status(201).json({ msg:"Registration successfully",token: await userCreated.generateToken(),userId: userCreated._id.toString(),});
-  } catch (error) {
-    res.status(500).json({ msg: "Internal server error" });
-  }
-};
-
-// dealer-register function
-const dealer_register = async (req, res) => {
-  try {
-    console.log("register :",req.body);
-    const { username, employeeid,department, phone, password } = req.body;
-    
-    const userExist = await Dealer.findOne({ employeeid });
-    if (userExist) {
-      return res.status(400).json({ message: "Employee id already exist" });
-    }
-
-    // const salt=10;
-    // const hash_pass= await bcrypt.hash(password,salt);
-    const userCreated = await Dealer.create({ 
+    const userCreated = await User.create({
       username,
       employeeid,
       department,
       phone,
       password,
     });
-    // dealer_token: await userCreated.generateToken(),
-    res.status(201).json({ msg:"Registration successfully",userId: userCreated._id.toString(),});
+
+    res.status(201).json({ msg: "Registration successful", userId: userCreated._id.toString() });
   } catch (error) {
     res.status(500).json({ msg: "Internal server error" });
   }
 };
 
-//Admin login
-const login= async (req,res)=>{
+// user Login
+const user_login = async (req, res) => {
   try {
     console.log(req.body);
-    const {email,password} =req.body;
-    const userExist= await User.findOne({email});
-    if(!userExist){
-      return res.status(401).json({message:"Invalid credentials"});
+    const { employeeid, password } = req.body;
+    const userExist = await User.findOne({ employeeid });
+    if (!userExist) {
+      return res.status(401).json({ message: "Invalid credentials" });
     }
-    // const user= await bcrypt.compare(password,userExist.password);
 
-    const user= await userExist.comparePassword(password);
-    
-    if(user){
-      res.status(200).json({message:"Login successfully",token: await userExist.generateToken(),userId: userExist._id.toString()});
-    }else{
-      res.status(401).json({message:"Invalid email or password"});
+    const isPasswordCorrect = await userExist.comparePassword(password);
+
+    if (isPasswordCorrect) {
+      res.status(200).json({ message: "Login successful", token: await userExist.generateToken(), userId: userExist._id.toString() });
+    } else {
+      res.status(401).json({ message: "Invalid employee id or password" });
     }
   } catch (error) {
-    res.status(500).json({message:"Internal server error"});
+    res.status(500).json({ message: "Internal server error" });
   }
 };
-//Dealer Login
-const dealer_login= async (req,res)=>{
+// dealer Login
+const dealer_login = async (req, res) => {
   try {
     console.log(req.body);
-    const {employeeid,password} =req.body;
-    const userExist= await Dealer.findOne({employeeid});
-    if(!userExist){
-      return res.status(401).json({message:"Invalid credentials"});
+    const { employeeid, password } = req.body;
+    const userExist = await User.findOne({ employeeid });
+    if (!userExist) {
+      return res.status(401).json({ message: "Invalid credentials" });
     }
-    // const user= await bcrypt.compare(password,userExist.password);
 
-    const user= await userExist.comparePassword(password);
-    
-    if(user){
-      res.status(200).json({message:"Login successfully",token: await userExist.generateToken(),userId: userExist._id.toString()});
-    }else{
-      res.status(401).json({message:"Invalid employee id or password"});
+    const isPasswordCorrect = await userExist.comparePassword(password);
+
+    if (isPasswordCorrect) {
+      res.status(200).json({ message: "Login successful", token: await userExist.generateToken(), userId: userExist._id.toString() });
+    } else {
+      res.status(401).json({ message: "Invalid employee id or password" });
     }
   } catch (error) {
-    res.status(500).json({message:"Internal server error"});
+    res.status(500).json({ message: "Internal server error" });
   }
 };
-//For sending user data 
-const user=async(req,res)=>{
+// For sending user data 
+const user = async (req, res) => {
   try {
-    const userData= req.user;
-    console.log("data from auth controller user",userData);
-    res.status(200).json({userData});
+    const userData = req.user;
+    console.log("data from auth controller user", userData);
+    res.status(200).json({ userData });
   } catch (error) {
     console.log(`Error from the user route ${error}`);
   }
- 
-}
-module.exports = { home, register,dealer_register,login,dealer_login,user };
+};
+
+module.exports = { home, user_register, user_login,dealer_login, user };

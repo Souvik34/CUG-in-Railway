@@ -7,7 +7,7 @@ import { ToastContainer, toast } from 'react-toastify';
 
 const AdminLogin = () => {
   const [user, setuser] = useState({
-    email:"",
+    employeeid:"",
     password:"",
   })  
 
@@ -29,41 +29,7 @@ const navigate= useNavigate();
 const {storeTokenInLs}=useAuth();
 
 
-  // const handleSubmit=async(e)=>{
-  //   e.preventDefault()
-  //   console.log(user);
-
-  //   try {
-  //     const loginURL= "http://127.0.0.2:4000/api/auth/login";
-  //     const response=await fetch(loginURL,{
-  //       method:"POST",
-  //       headers:{
-  //         "Content-Type":"application/json"
-  //       },
-  //       body:JSON.stringify(user),
-  //     });
-  //     console.log(response);
-
-  //     const res_data= await response.json();
-  //     console.log("response data",res_data);
-
-  //     if(response.ok){
-  //       console.log("login successful");
-  //       toast.success("Logged in as Admin");
-  //       navigate("/admin")
-
-
-  //       //store in local storage
-  //       // localStorage.setItem("token",res_data.token)
-  //       storeTokenInLs(res_data.token);
-  //     }else{
-  //       console.log("Invalid credentials")
-  //       toast.error(res_data.extraDetails? res_data.extraDetails: res_data.message);
-  //     }
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // }
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -105,16 +71,16 @@ const {storeTokenInLs}=useAuth();
               <div>
                 
                 {/* for email */}
-                <label htmlFor="username" className="block text-sm font-medium text-gray-700">Admin Id</label>
+                <label htmlFor="username" className="block text-sm font-medium text-gray-700">Employee Id</label>
                 
                 <input
-                  type="email"
-                  name="email"
-                  placeholder="Enter your email"
-                  id="email"
+                  type="text"
+                  name="employeeid"
+                  placeholder="Enter your employeeid"
+                  id="employeeid"
                   required
                   autoComplete="off"
-                  value={user.email}
+                  value={user.employeeid}
                   onChange={handleInput}
                   className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                 />
