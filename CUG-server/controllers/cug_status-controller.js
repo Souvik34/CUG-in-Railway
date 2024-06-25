@@ -43,20 +43,27 @@ exports.deactivate = async (req, res) => {
   }
 };
 
-// Remove the CUG from the deactivated collection
-exports.reactivate = async(req, res) => {
+
+/// Delete a CUG number from the deactivated list
+exports.deleteDeactivated = async (req, res) => {
   const { cugNo } = req.body;
-  try{
+  try {
     const deactivatedCug = await Deactivated_cug.findOne({ cugNo });
-    if(deactivatedCug){
+    if (deactivatedCug) {
       // Remove the CUG from the deactivated collection
-       await Deactivated_cug.deleteOne({ cugNo });
+      await Deactivated_cug.deleteOne({ cugNo });
+      res.json({ message: 'CUG No. deleted from deactivated list successfully' });
+    } else {
+      res.status(404).json({ message: 'CUG No. not found in deactivated list' });
     }
-  }catch (error) {
-        console.error('Error reactivating CUG No.:', error);
-        res.status(500).json({ message: 'Internal Server Error' });
-      }
-}
+  } catch (error) {
+    console.error('Error deleting CUG No.:', error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+};
+
+
+
 
 
 // Get all deactivated CUG data
@@ -71,13 +78,35 @@ exports.getAllDeactivatedData = async (req, res) => {
 };
 
 
+//...
 
+// controller.js
+exports.reactivate = async (req, res) => {
+  const { cugNo } = req.body;
+  try {
+    const deactivatedCug = await Deactivated_cug.findOne({ cugNo });
+    if (!deactivatedCug) {
+      return res.status(404).json({ message: 'CUG No. not found in deactivated list' });
+    }
 
-
-
-
-
-
-
-
-
+    const session = await mongoose.startSession();
+    try {
+      await session.withTransaction(async () => {
+        const reactivatedCug = new Add_cug(deactivatedCug.toObject());
+        await reactivatedCug.save({ session });
+        console.log(`Reactivated CUG No. ${cugNo} and saving to Add_cug collection`);
+        await Deactivated_cug.deleteOne({ cugNo }, { session });
+        console.log(`Deleted CUG No. ${cugNo} from Deactivated_cug collection`);
+      });
+      res.json({ message: 'CUG No. reactivated successfully' });
+    } catch (error) {
+      console.error('Error reactivating CUG No.:', error);
+      res.status(500).json({ message: 'Internal Server Error' });
+    } finally {
+      await session.endSession();
+    }
+  } catch (error) {
+    console.error('Error reactivating CUG No.:', error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+};

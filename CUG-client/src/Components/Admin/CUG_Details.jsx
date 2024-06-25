@@ -83,7 +83,7 @@ const CUG_Details = () => {
         <h1 className="text-4xl font-semibold py-5 text-white"></h1>
       </nav>
       <section className="flex justify-center items-center ml-48">
-        <div className="md:w-[60vw] md:h-[full] p-5 space-y-6 bg-white shadow-md rounded-lg mt-10 ml-3">
+        <div className="md:w-[60vw] md:h-[full] p-5 space-y-6 bg-white shadow-md rounded-lg mt-10 ml-3 items-center">
           
           <h1 className="text-2xl font-bold text-center text-[#2E2D93]">CUG NO</h1>
           <br />
@@ -148,3 +148,5 @@ const CUG_Details = () => {
 };
 
 export default CUG_Details;
+
+
