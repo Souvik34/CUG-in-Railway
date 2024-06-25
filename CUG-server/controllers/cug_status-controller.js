@@ -43,6 +43,22 @@ exports.deactivate = async (req, res) => {
   }
 };
 
+// Remove the CUG from the deactivated collection
+exports.reactivate = async(req, res) => {
+  const { cugNo } = req.body;
+  try{
+    const deactivatedCug = await Deactivated_cug.findOne({ cugNo });
+    if(deactivatedCug){
+      // Remove the CUG from the deactivated collection
+       await Deactivated_cug.deleteOne({ cugNo });
+    }
+  }catch (error) {
+        console.error('Error reactivating CUG No.:', error);
+        res.status(500).json({ message: 'Internal Server Error' });
+      }
+}
+
+
 // Get all deactivated CUG data
 exports.getAllDeactivatedData = async (req, res) => {
   try {
@@ -53,3 +69,15 @@ exports.getAllDeactivatedData = async (req, res) => {
     res.status(500).json({ message: 'Internal Server Error' });
   }
 };
+
+
+
+
+
+
+
+
+
+
+
+
