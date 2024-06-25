@@ -17,10 +17,10 @@ const Admin = () => {
   }
   return (
     <div>
-      <nav className="sticky w-full bg-admin-gradient flex items-center justify-between">
+      <nav className="sticky top-0 z-10 w-full bg-admin-gradient flex items-center justify-between">
        
 
-        <h1 className="text-4xl font-semibold py-5 text-white ml-32 px-96 flex-grow">
+        <h1 className="text-4xl font-semibold py-5 text-white mx-auto">
           ADMIN PORTAL
         </h1>
 
