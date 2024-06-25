@@ -73,70 +73,30 @@ const Allotment_history = () => {
           </button>
         </div>
       </form>
-      <table className="table-auto w-full border border-black">
-        <thead>
-          <tr className="bg-gray-100 border border-black">
-            <th className="px-4 py-2">CUG NO.</th>
-            <th className="px-4 py-2">Previous</th>
-            <th className="px-4 py-2">Current</th>
-          </tr>
-        </thead>
-        <tbody>
-          {filteredEmployees.map((i) => {
-             // Find the corresponding deactivated CUG entry
-             const previousCug = deactivatedCug.find(j => j.cugNo === i.cugNo);
-
-           return (
-           <tr key={i.id} className="border border-black ">
-              {/* CUG no C1 */}
-              <td className="flex text-center items-center h-full bg-[#C77DFF] justify-center px-4 py-2">
-                <div className="font-semibold text-center text-white">
-                  CUG No: {i.cugNo}
-                </div>
-              </td>
-              {/* previous c2 */}
-              <td className="px-4 py-2 border border-black">
-              {previousCug ? (
-                    <>
-                      <div className="flex rounded-md py-2 px-3">
-                        <h1>Name:</h1> <h1 className="text-gray-600">{previousCug.firstName} {previousCug.lastName}</h1>
-                      </div>
-                      <div className="flex rounded-md py-2 px-3">
-                        Employee ID: <h1 className="text-gray-600">{previousCug.empNo}</h1>
-                      </div>
-                      <div className="flex rounded-md py-2 px-3">
-                        Plan: <h1 className="text-gray-600">{previousCug.plan}</h1>
-                      </div>
-                      <div className="flex rounded-md py-2 px-3">
-                        Date: <h1 className="text-gray-600">{previousCug.createdAt}</h1>
-                      </div>
-                    </>
-                  ) : (
-                    <div className="text-gray-600">No previous data</div>
-                  )}
-              </td>
-    
-              {/* Current c3 */}
-              <td className="px-4 py-2">
-                <div className="flex rounded-md py-2 px-3">
-                  Name: <h1 className="text-gray-600"> {i.firstName} {i.lastName}</h1>
-                </div>
-                <div className="flex rounded-md py-2 px-3">
-                  Employee ID: <h1 className="text-gray-600">{i.empNo}</h1>
-                </div>
-                <div className="flex rounded-md py-2 px-3">
-                  Plan: <h1 className="text-gray-600">{i.plan}</h1>
-                </div>
-                <div className="flex rounded-md py-2 px-3">
-                  Date:<h1 className="text-gray-600">{i.createdAt}</h1>
-                </div>
-              </td>
+      <div className="flex justify-center items-center py-2  bg-gray-100">
+      {/* <div className="flex justify-center items-center min-h-scre bg-gray-100"> */}
+      <div className="border border-black w-full">
+        <table className="min-w-full divide-y divide-black">
+          <thead>
+            <tr>
+              <th className="px-6 py-3 text-left text-xl font-bold text-black">CUG No. :</th>
             </tr>
-            )
-          })}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            <tr className="border-t border-black">
+              <td className="px-6 py-4 font-semibold text-center border-r border-black w-1/2">Previous</td>
+              <td className="px-6 py-4 font-semibold text-center w-1/2">Current</td>
+            </tr>
+            <tr className="border-t border-black">
+              <td className="px-6 py-4 border-r border-black h-40"></td>
+              <td className="px-6 py-4 h-40"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
+    </div>
+    // </div>
   );
 };
 
