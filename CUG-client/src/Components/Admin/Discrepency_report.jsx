@@ -15,12 +15,22 @@ function Upload_CUG_Bill() {
     const file = event.target.files[0];
     const fileType = file.type;
 
-    const filterData = (data) => {
-      const filteredData = data.filter(
-        (bill) => parseFloat(bill['Periodic Charge']) > 74.61 &&
-                  parseFloat(bill['Periodic Charge']) > 59.05 &&
-                  parseFloat(bill['Periodic Charge']) > 39.9
-      );
+    const calculateTotalAmount = (data) => {
+      const filteredData = data.map((bill) => {
+        const periodicCharge = parseFloat(bill['Periodic Charge']) || 0;
+        const amountUsage = parseFloat(bill['Amount Usage']) || 0;
+        const amountData = parseFloat(bill['Amount Data']) || 0;
+        const voice = parseFloat(bill['Voice']) || 0;
+        const video = parseFloat(bill['Video']) || 0;
+        const sms = parseFloat(bill['SMS']) || 0;
+        const vas = parseFloat(bill['VAS']) || 0;
+        const totalAmount = periodicCharge + amountUsage + amountData + voice + video + sms + vas;
+        return {
+          'CUG NO': bill['CUG NO'],
+          'Total Amount': totalAmount.toFixed(2),
+          'Plan Type': bill['Plan Type'],
+        };
+      });
       setBills(filteredData);
     };
 
@@ -28,7 +38,7 @@ function Upload_CUG_Bill() {
       Papa.parse(file, {
         header: true,
         complete: (result) => {
-          filterData(result.data);
+          calculateTotalAmount(result.data);
         },
       });
     };
@@ -50,7 +60,7 @@ function Upload_CUG_Bill() {
             return acc;
           }, {})
         );
-        filterData(parsedData);
+        calculateTotalAmount(parsedData);
       };
       reader.readAsArrayBuffer(file);
     };
@@ -70,9 +80,9 @@ function Upload_CUG_Bill() {
   };
 
   return (
-    <div className="container mx-20 my-20 flex flex-col items-center">
-      <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-sm">
-        <div className="mb-4 text-center">
+    <div className="container mx-20 my-20">
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="mb-4">
           <label
             htmlFor="file_upload"
             className="block text-gray-700 font-bold mb-2"
@@ -88,41 +98,29 @@ function Upload_CUG_Bill() {
           />
         </div>
 
-        <div className="flex justify-center">
-          <button
-            type="submit"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          >
-            Submit
-          </button>
-        </div>
+        <button
+          type="submit"
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        >
+          Submit
+        </button>
       </form>
 
-      <div className="mt-8 w-full">
+      <div className="mt-8">
         <table className="min-w-full bg-white">
           <thead>
             <tr>
               <th className="py-2">CUG NO</th>
-              <th className="py-2">Periodic Charge</th>
-              <th className="py-2">Amount Usage</th>
-              <th className="py-2">Amount Data</th>
-              <th className="py-2">Voice</th>
-              <th className="py-2">Video</th>
-              <th className="py-2">SMS</th>
-              <th className="py-2">VAS</th>
+              <th className="py-2">Total Amount</th>
+              <th className="py-2">Plan Type</th>
             </tr>
           </thead>
           <tbody>
             {bills.map((bill, index) => (
               <tr key={index}>
                 <td className="border px-4 py-2">{bill['CUG NO']}</td>
-                <td className="border px-4 py-2">{bill['Periodic Charge']}</td>
-                <td className="border px-4 py-2">{bill['Amount Usage']}</td>
-                <td className="border px-4 py-2">{bill['Amount Data']}</td>
-                <td className="border px-4 py-2">{bill['Voice']}</td>
-                <td className="border px-4 py-2">{bill['Video']}</td>
-                <td className="border px-4 py-2">{bill['SMS']}</td>
-                <td className="border px-4 py-2">{bill['VAS']}</td>
+                <td className="border px-4 py-2">{bill['Total Amount']}</td>
+                <td className="border px-4 py-2">{bill['Plan Type']}</td>
               </tr>
             ))}
           </tbody>

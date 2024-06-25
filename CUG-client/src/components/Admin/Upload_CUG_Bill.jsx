@@ -6,6 +6,9 @@ import * as XLSX from 'xlsx';
 function Upload_CUG_Bill() {
   const { handleSubmit } = useForm();
   const [bills, setBills] = useState([]);
+  const [totalAmountSum, setTotalAmountSum] = useState(0);
+  const [fileUploaded, setFileUploaded] = useState(false);
+  const [fileInfo, setFileInfo] = useState({ month: '', year: '' });
 
   const onSubmit = (data) => {
     console.log('Form submitted:', data);
@@ -15,11 +18,42 @@ function Upload_CUG_Bill() {
     const file = event.target.files[0];
     const fileType = file.type;
 
+    // Extract month and year from the file name
+    const fileName = file.name;
+    const regex = /(\w+)-(\d{4})/; // Adjust this regex based on your file name format
+    const match = fileName.match(regex);
+    if (match) {
+      const [_, month, year] = match;
+      setFileInfo({ month, year });
+    } else {
+      setFileInfo({ month: 'Unknown', year: 'Unknown' });
+    }
+
+    const calculateTotalAmount = (data) => {
+      let totalSum = 0;
+      const dataWithTotalAmount = data.map(bill => {
+        const periodicCharge = parseFloat(bill['Periodic Charge']) || 0;
+        const amountUsage = parseFloat(bill['Amount Usage']) || 0;
+        const amountData = parseFloat(bill['Amount Data']) || 0;
+        const voice = parseFloat(bill['Voice']) || 0;
+        const video = parseFloat(bill['Video']) || 0;
+        const sms = parseFloat(bill['SMS']) || 0;
+        const vas = parseFloat(bill['VAS']) || 0;
+        const totalAmount = periodicCharge + amountUsage + amountData + voice + video + sms + vas;
+        totalSum += totalAmount;
+        return { ...bill, 'Total Amount': totalAmount };
+      });
+      setTotalAmountSum(totalSum);
+      return dataWithTotalAmount;
+    };
+
     const parseCSV = (file) => {
       Papa.parse(file, {
         header: true,
         complete: (result) => {
-          setBills(result.data);
+          const dataWithTotalAmount = calculateTotalAmount(result.data);
+          setBills(dataWithTotalAmount);
+          setFileUploaded(true);
         },
       });
     };
@@ -41,7 +75,9 @@ function Upload_CUG_Bill() {
             return acc;
           }, {})
         );
-        setBills(parsedData);
+        const dataWithTotalAmount = calculateTotalAmount(parsedData);
+        setBills(dataWithTotalAmount);
+        setFileUploaded(true);
       };
       reader.readAsArrayBuffer(file);
     };
@@ -89,36 +125,45 @@ function Upload_CUG_Bill() {
         </div>
       </form>
 
-      <div className="mt-8 w-full">
-        <table className="min-w-full bg-white">
-          <thead>
-            <tr>
-              <th className="py-2">CUG NO</th>
-              <th className="py-2">Periodic Charge</th>
-              <th className="py-2">Amount Usage</th>
-              <th className="py-2">Amount Data</th>
-              <th className="py-2">Voice</th>
-              <th className="py-2">Video</th>
-              <th className="py-2">SMS</th>
-              <th className="py-2">VAS</th>
-            </tr>
-          </thead>
-          <tbody>
-            {bills.map((bill, index) => (
-              <tr key={index}>
-                <td className="border px-4 py-2">{bill['CUG NO']}</td>
-                <td className="border px-4 py-2">{bill['Periodic Charge']}</td>
-                <td className="border px-4 py-2">{bill['Amount Usage']}</td>
-                <td className="border px-4 py-2">{bill['Amount Data']}</td>
-                <td className="border px-4 py-2">{bill['Voice']}</td>
-                <td className="border px-4 py-2">{bill['Video']}</td>
-                <td className="border px-4 py-2">{bill['SMS']}</td>
-                <td className="border px-4 py-2">{bill['VAS']}</td>
+      {fileUploaded && (
+        <div className="mt-8 w-full">
+          <div className="text-lg font-bold mb-4">
+            <div>Month: {fileInfo.month}</div>
+            <div>Year: {fileInfo.year}</div>
+            <div>Sum of Total Amount Charges: {totalAmountSum.toFixed(2)}</div>
+          </div>
+          <table className="min-w-full bg-white">
+            <thead>
+              <tr>
+                <th className="py-2">CUG NO</th>
+                <th className="py-2">Periodic Charge</th>
+                <th className="py-2">Amount Usage</th>
+                <th className="py-2">Amount Data</th>
+                <th className="py-2">Voice</th>
+                <th className="py-2">Video</th>
+                <th className="py-2">SMS</th>
+                <th className="py-2">VAS</th>
+                <th className="py-2">Total Amount</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+            </thead>
+            <tbody>
+              {bills.map((bill, index) => (
+                <tr key={index}>
+                  <td className="border px-4 py-2">{bill['CUG NO']}</td>
+                  <td className="border px-4 py-2">{bill['Periodic Charge']}</td>
+                  <td className="border px-4 py-2">{bill['Amount Usage']}</td>
+                  <td className="border px-4 py-2">{bill['Amount Data']}</td>
+                  <td className="border px-4 py-2">{bill['Voice']}</td>
+                  <td className="border px-4 py-2">{bill['Video']}</td>
+                  <td className="border px-4 py-2">{bill['SMS']}</td>
+                  <td className="border px-4 py-2">{bill['VAS']}</td>
+                  <td className="border px-4 py-2">{bill['Total Amount'].toFixed(2)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
     </div>
   );
 }
