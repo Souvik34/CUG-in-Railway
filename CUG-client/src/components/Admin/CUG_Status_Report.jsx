@@ -24,7 +24,7 @@ const CUG_Status_Report = () => {
 
     const fetchDeactivatedCUGs = async () => {
       try {
-        const response = await fetch('http://127.0.0.2:4000/api/cug_staus/deactivate_data', {
+        const response = await fetch('http://127.0.0.2:4000/api/cug_status/deactivate_data', {
           method: 'GET',
         });
         const data = await response.json();
@@ -51,7 +51,7 @@ const CUG_Status_Report = () => {
 
   const handleDelete = async (cugNo) => {
     try {
-      const response = await fetch('http://127.0.0.2:4000/api/cug_staus/deactivate', {
+      const response = await fetch('http://127.0.0.2:4000/api/cug_status/deactivate', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -72,7 +72,7 @@ const CUG_Status_Report = () => {
   };
   const handleReactivate = async (cugNo) => {
     try {
-      const response = await fetch('http://127.0.0.2:4000/api/cug_staus/reactivate', {
+      const response = await fetch('http://127.0.0.2:4000/api/cug_status/reactivate', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
