@@ -1,12 +1,11 @@
+/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import {Controller } from "react-hook-form";
-import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
-import axios from 'axios'; 
+import axios from 'axios';
 import { toast } from 'react-toastify';
-
+// import { ErrorMessage } from 'react-hook-form';
 
 
 const Add_New_CUG = () => {
@@ -40,33 +39,34 @@ const Add_New_CUG = () => {
   }, [draftData, isDraft]);
 
   const onSubmit = async (data, event) => {
+    console.log('Form data:', data);
     event.preventDefault();
-    
-      try {
-      
-        const response = await axios.post('http://127.0.0.2:4000/api/add_cug', data);
-        toast.success('Data submitted successfully!');
-        // console.log(response.data);
-   
-      } catch (error) {
-        // console.error(error);
-        // Handle error response from backend
-        if (error.response?.status === 401)  {
-          // CUG number already exists
-          toast.error('CUG number already exists!');
-        } 
-        if (error.response?.status === 402)  {
-          // CUG number already exists
-          toast.error('Employee number already exists!');
-        } 
-        
-        else {
-          toast.error('Failed to submit data!');
-        }
+
+    try {
+
+      const response = await axios.post('http://127.0.0.2:4000/api/add_cug', data);
+      toast.success('Data submitted successfully!');
+      // console.log(response.data);
+
+    } catch (error) {
+      // console.error(error);
+      // Handle error response from backend
+      if (error.response?.status === 401) {
+        // CUG number already exists
+        toast.error('CUG number already exists!');
       }
-    
-  
- 
+      if (error.response?.status === 402) {
+        // CUG number already exists
+        toast.error('Employee number already exists!');
+      }
+
+      else {
+        toast.error('Failed to submit data!');
+      }
+    }
+
+
+
   };
 
   const handleCancel = () => {
@@ -76,7 +76,7 @@ const Add_New_CUG = () => {
       // console.log('Data cleared!');
       toast.info('Data cleared!');
     }
-    reset(); 
+    reset();
   };
 
   const handleSaveDraft = () => {
@@ -103,64 +103,71 @@ const Add_New_CUG = () => {
   };
 
   return (
-    
+
     <div className="container mx-auto my-4 p-10 bg-slate-100">
-      <h1 className="text-2xl font-bold mb-4">Your account</h1>
-      <p className="text-gray-600 mb-6">
-        Provide information about yourself for identity
+      <h1 className="text-2xl font-bold mb-4 text-center">Your account</h1>
+      <p className="text-gray-600 mb-6 text-center">
+        Hello! Welcome to the account creation form. Please fill in all the required fields to create your account. The fields marked with a red asterisk (*) are mandatory. Let's get started!
       </p>
       <form onSubmit={handleSubmit(onSubmit)}>
 
 
-      <div className="mb-4">
-  <label htmlFor="cugNo" className="block font-bold mb-2">
-    CUG No.
-  <input
-            type="number"
-            id="cugNo"
-            placeholder='Enter your CUG number'
-            className="shadow appearance-none border rounded w-5/12 ml-[21.8rem] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            {...register('cugNo', { required: true })}
+        <div className="mb-4">
+          <label htmlFor="cugNo" className="block font-bold mb-2">
+            CUG No. <span style={{ color: 'red' }}>*</span>
+            <input
+              type=""
+              id="cugNo"
+              inputMode="numeric"
+              maxLength={10}
+              placeholder='Enter your CUG number'
+              className="shadow appearance-none border rounded w-5/12 ml-[21.8rem] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              {...register('cugNo', {
+                required: true,
+                // only allow digits, max 11 characters
+              })}
             />
-            </label>
-            {errors.empNo && <p className="text-red-500">Enter valid CUG number</p>}
-            
-        </div>
- 
+          </label>
+          {errors.empNo && <p className="text-red-500">Enter valid 10 digits CUG number</p>}
 
-      {/* Employment no */}
+        </div>
+
+
+        {/* Employment no */}
 
         <div className="mb-4">
           <label htmlFor="empNo" className="block text-gray-700 font-bold mb-2">
-            Employement No.
-          <input
-            type="text"
-            id="empNo"
-            placeholder='Enter your Employee number'
-            className="shadow appearance-none border rounded w-5/12 ml-[17.6rem] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            {...register('empNo', { required: true,   pattern: /^\d{11}$/  })}
+            Employement No. <span style={{ color: 'red' }}>*</span>
+            <input
+              type="text"
+              id="empNo"
+              maxLength={11}
+              placeholder='Enter your Employee number'
+              className="shadow appearance-none border rounded w-5/12 ml-[17.6rem] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              {...register('empNo', { required: true, maxLength: 11})}
             />
-            </label>
-          {errors.empNo && <p className="text-red-500">Enter valid Employee number</p>}
+          </label>
+          {errors.empNo && <p className="text-red-500">Enter valid 11 digits Employee number</p>}
         </div>
 
         {/* Personal details */}
         {/* <div className="grid grid-cols-2 gap-0 mb-4"> */}
-          <div>
-            <label htmlFor="firstName" className="block text-gray-700 font-bold mb-2">
-              Name
+        <div>
+          <label htmlFor="firstName" className="block text-gray-700 font-bold mb-2">
+            Name <span style={{ color: 'red' }}>*</span>
             <input
               type="text"
-              id="name"
-              placeholder='Enter your name'
-              className="shadow appearance-none border rounded w-5/12  ml-[22.8rem] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="firstName"
+              placeholder='Enter your full name'
+              className="shadow appearance-none border rounded w-5/12  ml-[22.8rem] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${errors.name ? 'border-red-500' : ''}"
               {...register('firstName', { required: true })}
-              />
-              </label>
-            {errors.firstName && <p className="text-red-500"> Name is required</p>}
-          </div>
-          
-          {/* <div>
+            />
+          </label>
+        
+          {errors.firstName && <p className="text-red-500"> Name is required</p>}
+        </div>
+
+        {/* <div>
             <label htmlFor="lastName" className="block font-bold mb-2 ">
 
             <input
@@ -174,92 +181,92 @@ const Add_New_CUG = () => {
             {errors.lastName && <p className="text-red-500">Last name is required</p>}
           </div> */}
         {/* </div> */}
-        <hr className='border-[1.1px] border-blue-300 rounded'/>
-        
+        <hr className='border-[1.1px] border-blue-300 rounded' />
+
         <div className="mb-4">
           <label htmlFor="designation" className="block text-gray-700 font-bold mt-5">
-            Designation
-          <input
-            type="text"
-            id="designation"
-            placeholder='Enter your Designation'
-            className="shadow appearance-none border rounded w-5/12  ml-[20rem]  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            {...register('designation', { required: true })}
+            Designation <span style={{ color: 'red' }}>*</span>
+            <input
+              type="text"
+              id="designation"
+              placeholder='Enter your Designation'
+              className="shadow appearance-none border rounded w-5/12  ml-[20rem]  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              {...register('designation', { required: true })}
             />
-            </label>        
+          </label>
           {errors.designation && <p className="text-red-500">Enter your Designation</p>}
         </div>
-       
+
         <div className="mb-4">
           <label htmlFor="department" className="block text-gray-700 font-bold mb-2">
-            Department
-          <input
-            type="text"
-            id="department"
-            placeholder='Enter your Department'
-            className="shadow appearance-none border rounded w-5/12 ml-[20rem]  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            {...register('department', { required: true })}
+            Department <span style={{ color: 'red' }}>*</span>
+            <input
+              type="text"
+              id="department"
+              placeholder='Enter your Department'
+              className="shadow appearance-none border rounded w-5/12 ml-[20rem]  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              {...register('department', { required: true })}
             />
-            </label>
+          </label>
           {errors.department && <p className="text-red-500">Enter your department</p>}
         </div>
 
         <hr className='border-[1.1px] border-blue-300 rounded' />
         {/* Bill unit */}
-          <div className="mb-4 mt-8">
+        <div className="mb-4 mt-8">
           <label htmlFor="billUnit" className="block text-gray-700 font-bold mb-2">
-            Bill Unit
-          <input
-            type="number"
-            id=""
-            placeholder='Enter your Bill Unit'
-            className="shadow appearance-none border rounded w-5/12 ml-[21.8rem]  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            {...register('billUnit', { required: true })}
+            Bill Unit <span style={{ color: 'red' }}>*</span>
+            <input
+              type="number"
+              id=""
+              placeholder='Enter your Bill Unit'
+              className="shadow appearance-none border rounded w-5/12 ml-[21.8rem]  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              {...register('billUnit', { required: true })}
             />
-            </label>
+          </label>
           {errors.billUnit && <p className="text-red-500">Enter your bill unit</p>}
         </div>
 
-          <div className="mb-4">
+        <div className="mb-4">
           <label htmlFor="allocation" className="block text-gray-700 font-bold mb-2">
-            Allocation
-          <input
-            type="text"
-            id="allocation"
-            placeholder="Enter your Allocation"
-            className="shadow appearance-none border rounded w-5/12 ml-[20.7rem] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            {...register('allocation', { required: true })}
+            Allocation <span style={{ color: 'red' }}>*</span>
+            <input
+              type="text"
+              id="allocation"
+              placeholder="Enter your Allocation"
+              className="shadow appearance-none border rounded w-5/12 ml-[20.7rem] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              {...register('allocation', { required: true })}
             />
-            </label>
+          </label>
           {errors.allocation && <p className="text-red-500">Enter the allocation</p>}
         </div>
 
-       
+
         <div className="mb-4">
           <label htmlFor="operator" className="block text-gray-700 font-bold mb-2">
-            Operator
-          <input
-            type="text"
-            id="operator"
-            placeholder='Enter your operator'
-            className="shadow appearance-none border rounded w-5/12  ml-[21.3rem] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            {...register('operator', { required: true })}
+            Operator <span style={{ color: 'red' }}>*</span>
+            <input
+              type="text"
+              id="operator"
+              placeholder='Enter your operator'
+              className="shadow appearance-none border rounded w-5/12  ml-[21.3rem] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              {...register('operator', { required: true })}
             />
-            </label>
+          </label>
           {errors.operator && <p className="text-red-500">Enter your operator</p>}
         </div>
 
-          <div className="mb-4">
+        <div className="mb-4">
           <label htmlFor="plan" className="block text-gray-700 font-bold mb-2">
-            Plan
-          <input
-            type="text"
-            id="plan"
-            placeholder='Enter your plan'
-            className="shadow appearance-none border rounded w-5/12  ml-[23.2rem] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            {...register('plan', { required: true })}
+            Plan <span style={{ color: 'red' }}>*</span>
+            <input
+              type="text"
+              id="plan"
+              placeholder='Enter your plan'
+              className="shadow appearance-none border rounded w-5/12  ml-[23.2rem] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              {...register('plan', { required: true })}
             />
-            </label>
+          </label>
           {errors.plan && <p className="text-red-500">Enter your plan</p>}
         </div>
 
@@ -270,7 +277,7 @@ const Add_New_CUG = () => {
           <p className="text-gray-600 mb-2">
             This information is relevant to your authentication
           </p>
-         
+
         </div>
         <div className="flex justify-end">
           <button
@@ -281,7 +288,7 @@ const Add_New_CUG = () => {
             Clear All
           </button>
 
-      {/* Draft to modified    */}
+          {/* Draft to modified    */}
           {/* {isDraft ? (
             <div>
               <button
@@ -327,7 +334,7 @@ const Add_New_CUG = () => {
               Save Draft
             </button>
           )} */}
-         
+
           <button
             type="submit"
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
@@ -337,8 +344,8 @@ const Add_New_CUG = () => {
         </div>
       </form>
     </div>
-  
-    
+
+
   )
 }
 

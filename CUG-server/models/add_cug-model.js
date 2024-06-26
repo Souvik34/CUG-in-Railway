@@ -5,19 +5,19 @@ const add_cugSchema = new Schema({
   {
     type : String,
     required: true,
-    validate: {
-      validator: function(v) {
-        return /\d{10}/.test(v);
-      },
-      message: 'Invalid phone number. Please enter a 10-digit phone number.'
-    }
+    // validate: {
+    //   validator: function(v) {
+    //     return /\d{10}/.test(v);
+    //   },
+    //   message: 'Invalid phone number. Please enter a 10-digit phone number.'
+    // }
 
   },
   empNo: {
     type: String,
     required: true
   },
-  name: {
+  firstName: {
     type: String,
     required: true
   },

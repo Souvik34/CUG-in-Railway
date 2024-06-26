@@ -3,23 +3,22 @@ const {z}= require("zod");
 const add_cugSchema = z.object({
   
   cugNo: z
-  .string({required_error:"cug is required"})
-    .trim()
-    .min(10,{message: "cug must be at least of 10 chareaters"})
-    .max(20,{message:"cug contains maximum 20"}),
+  .string({ required_error: "cug is required" })
+  .trim()
+  .regex(/^[0-9]{10}$/, "cug must be exactly 10 digits"),
 
   
   empNo: z
   .string({required_error:"emp no is required"})
   .trim()
-  .min(11,{message: "emp no must be at least of 11 chareaters"})
-  .max(20,{message:"emp no contains maximum 20"}),
+  .min(10,{message: "emp no must be at least of 11 chareaters"})
+  .max(11,{message:"emp no contains maximum 20"}),
 
-  name: z
-    .string({ required_error: 'First name is required' })
+  firstName: z
+    .string({ required_error: 'Name is required' })
     .trim()
-    .min(2, { message: 'First name must be at least 2 characters' })
-    .max(20, { message: 'First name must be at most 20 characters' }),
+    .min(2, { message: 'Name must be at least 2 characters' })
+    .max(20, { message: 'Name must be at most 20 characters' }),
   designation: z
     .string({ required_error: 'Designation is required' })
     .trim()

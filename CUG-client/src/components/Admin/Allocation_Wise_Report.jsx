@@ -48,11 +48,11 @@ const Allocation_Wise_Report = () => {
   }, [])
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-56">
       <div className="max-w-4xl w-full space-y-8">
         <div className="text-center">
-          <h3 className="text-2xl font-bold text-gray-700">Allocation wise Bill</h3>
-          <p className="mt-2 text-sm text-gray-600">For the Month of : April 2024</p>
+          <h3 className="text-4xl font-bold text-[#2E2D93]">Allocation wise Bill</h3>
+          <p className="mt-2 text-xl text-gray-600">For the Month of : April 2024</p>
         </div>
         <div className="mt-8 overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
           <table className="min-w-full divide-y divide-gray-300">
