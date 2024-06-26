@@ -115,13 +115,18 @@ const Add_New_CUG = () => {
       <div className="mb-4">
   <label htmlFor="cugNo" className="block font-bold mb-2">
     CUG No.
-  <input
-            type="number"
-            id="cugNo"
-            placeholder='Enter your CUG number'
-            className="shadow appearance-none border rounded w-5/12 ml-[21.8rem] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            {...register('cugNo', { required: true })}
-            />
+    <input
+  type=""
+  id="cugNo"
+  inputMode="numeric"
+  maxLength={10}
+  placeholder='Enter your CUG number'
+  className="shadow appearance-none border rounded w-5/12 ml-[21.8rem] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+  {...register('cugNo', {
+    required: true,
+    pattern: /^[0-9]{10}$/, // only allow digits, max 11 characters
+  })}
+/>
             </label>
             {errors.empNo && <p className="text-red-500">Enter valid CUG number</p>}
             
@@ -136,6 +141,7 @@ const Add_New_CUG = () => {
           <input
             type="text"
             id="empNo"
+            maxLength={10}
             placeholder='Enter your Employee number'
             className="shadow appearance-none border rounded w-5/12 ml-[17.6rem] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             {...register('empNo', { required: true,   pattern: /^\d{11}$/  })}

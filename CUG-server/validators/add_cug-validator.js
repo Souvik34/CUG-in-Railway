@@ -3,10 +3,9 @@ const {z}= require("zod");
 const add_cugSchema = z.object({
   
   cugNo: z
-  .string({required_error:"cug is required"})
-    .trim()
-    .min(10,{message: "cug must be at least of 10 chareaters"})
-    .max(20,{message:"cug contains maximum 20"}),
+  .string({ required_error: "cug is required" })
+  .trim()
+  .regex(/^[0-9]{10}$/, "cug must be exactly 11 digits"),
 
   
   empNo: z
