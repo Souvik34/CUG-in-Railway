@@ -5,7 +5,7 @@ const add_cugSchema = z.object({
   cugNo: z
   .string({ required_error: "cug is required" })
   .trim()
-  .regex(/^[0-9]{10}$/, "cug must be exactly 11 digits"),
+  .regex(/^[0-9]{10}$/, "cug must be exactly 10 digits"),
 
   
   empNo: z

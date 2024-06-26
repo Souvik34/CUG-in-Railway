@@ -119,7 +119,7 @@ const Add_New_CUG = () => {
               type=""
               id="cugNo"
               inputMode="numeric"
-              maxLength={12}
+              maxLength={10}
               placeholder='Enter your CUG number'
               className="shadow appearance-none border rounded w-5/12 ml-[21.8rem] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               {...register('cugNo', {
@@ -128,7 +128,7 @@ const Add_New_CUG = () => {
               })}
             />
           </label>
-          {errors.empNo && <p className="text-red-500">Enter valid 11 digits CUG number</p>}
+          {errors.empNo && <p className="text-red-500">Enter valid 10 digits CUG number</p>}
 
         </div>
 
