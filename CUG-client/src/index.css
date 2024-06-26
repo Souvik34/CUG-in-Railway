@@ -18,6 +18,15 @@ nav {
   z-index: 1;
 }
 
+:root {
+  --admin-gradient: linear-gradient(90deg, #C77DFF, #9D4EDD, #7B2CBF, #3C096C);
+}
+heroAdmin{
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
 .active button {
 	background-color: #3730a3;
   }
