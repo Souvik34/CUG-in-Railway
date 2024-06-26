@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
@@ -107,14 +108,14 @@ const Add_New_CUG = () => {
     <div className="container mx-auto my-4 p-10 bg-slate-100">
       <h1 className="text-2xl font-bold mb-4">Your account</h1>
       <p className="text-gray-600 mb-6">
-        Provide information about yourself for identity
+      Hello! Welcome to the account creation form. Please fill in all the required fields to create your account. The fields marked with a red asterisk (*) are mandatory. Let's get started!
       </p>
       <form onSubmit={handleSubmit(onSubmit)}>
 
 
       <div className="mb-4">
   <label htmlFor="cugNo" className="block font-bold mb-2">
-    CUG No.
+    CUG No. <span style={{ color: 'red' }}>*</span>
     <input
   type=""
   id="cugNo"
@@ -137,7 +138,7 @@ const Add_New_CUG = () => {
 
         <div className="mb-4">
           <label htmlFor="empNo" className="block text-gray-700 font-bold mb-2">
-            Employement No.
+            Employement No. <span style={{ color: 'red' }}>*</span>
           <input
             type="text"
             id="empNo"
@@ -154,11 +155,11 @@ const Add_New_CUG = () => {
         {/* <div className="grid grid-cols-2 gap-0 mb-4"> */}
           <div>
             <label htmlFor="firstName" className="block text-gray-700 font-bold mb-2">
-              Name
+              Name <span style={{ color: 'red' }}>*</span>
             <input
               type="text"
               id="name"
-              placeholder='Enter your name'
+              placeholder='Enter your full name'
               className="shadow appearance-none border rounded w-5/12  ml-[22.8rem] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               {...register('firstName', { required: true })}
               />
@@ -184,7 +185,7 @@ const Add_New_CUG = () => {
         
         <div className="mb-4">
           <label htmlFor="designation" className="block text-gray-700 font-bold mt-5">
-            Designation
+            Designation <span style={{ color: 'red' }}>*</span>
           <input
             type="text"
             id="designation"
@@ -198,7 +199,7 @@ const Add_New_CUG = () => {
        
         <div className="mb-4">
           <label htmlFor="department" className="block text-gray-700 font-bold mb-2">
-            Department
+            Department <span style={{ color: 'red' }}>*</span>
           <input
             type="text"
             id="department"
@@ -214,7 +215,7 @@ const Add_New_CUG = () => {
         {/* Bill unit */}
           <div className="mb-4 mt-8">
           <label htmlFor="billUnit" className="block text-gray-700 font-bold mb-2">
-            Bill Unit
+            Bill Unit <span style={{ color: 'red' }}>*</span>
           <input
             type="number"
             id=""
@@ -228,7 +229,7 @@ const Add_New_CUG = () => {
 
           <div className="mb-4">
           <label htmlFor="allocation" className="block text-gray-700 font-bold mb-2">
-            Allocation
+            Allocation <span style={{ color: 'red' }}>*</span>
           <input
             type="text"
             id="allocation"
@@ -243,7 +244,7 @@ const Add_New_CUG = () => {
        
         <div className="mb-4">
           <label htmlFor="operator" className="block text-gray-700 font-bold mb-2">
-            Operator
+            Operator <span style={{ color: 'red' }}>*</span>
           <input
             type="text"
             id="operator"
@@ -257,7 +258,7 @@ const Add_New_CUG = () => {
 
           <div className="mb-4">
           <label htmlFor="plan" className="block text-gray-700 font-bold mb-2">
-            Plan
+            Plan <span style={{ color: 'red' }}>*</span>
           <input
             type="text"
             id="plan"
