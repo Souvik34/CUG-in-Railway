@@ -4,6 +4,7 @@ import { NavLink,Link, Navigate, Outlet } from "react-router-dom";
 import { useAuth } from "../../store/Auth";
 // import './Components/HeroAdmin/Hero.';
 import '../../index.css';
+import Hero from "../../Components/HeroAdmin/Hero";
 
 const Admin = () => {
   const { isLoggedIn } = useAuth();
@@ -39,7 +40,8 @@ const Admin = () => {
         {/* <div className="w-20"></div> */}
         {/* // This div is a placeholder to keep the spacing correct */}
       {/* </nav> */}
-      <div className="bg-gray-100  min-h-screen flex">
+      <Hero/>
+      <div className="bg-gray-100 mt-16  min-h-screen flex">
         <div className="bg-gray-800 w-64 p-4">
         <NavLink to="create_dealer" activeClassName="active">
             <button className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mb-2 border-solid border-2 w-56">
