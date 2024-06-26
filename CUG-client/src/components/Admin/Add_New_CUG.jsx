@@ -106,8 +106,8 @@ const Add_New_CUG = () => {
   return (
     
     <div className="container mx-auto my-4 p-10 bg-slate-100">
-      <h1 className="text-2xl font-bold mb-4">Your account</h1>
-      <p className="text-gray-600 mb-6">
+      <h1 className="text-2xl font-bold mb-4 text-center">Your account</h1>
+      <p className="text-gray-600 mb-6 text-center">
       Hello! Welcome to the account creation form. Please fill in all the required fields to create your account. The fields marked with a red asterisk (*) are mandatory. Let's get started!
       </p>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -117,15 +117,15 @@ const Add_New_CUG = () => {
   <label htmlFor="cugNo" className="block font-bold mb-2">
     CUG No. <span style={{ color: 'red' }}>*</span>
     <input
-  type=""
+  type="number"
   id="cugNo"
   inputMode="numeric"
-  maxLength={10}
+  maxLength={12}
   placeholder='Enter your CUG number'
   className="shadow appearance-none border rounded w-5/12 ml-[21.8rem] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
   {...register('cugNo', {
     required: true,
-    pattern: /^[0-9]{10}$/, // only allow digits, max 11 characters
+    // only allow digits, max 11 characters
   })}
 />
             </label>
@@ -142,10 +142,10 @@ const Add_New_CUG = () => {
           <input
             type="text"
             id="empNo"
-            maxLength={10}
+            maxLength={20}
             placeholder='Enter your Employee number'
             className="shadow appearance-none border rounded w-5/12 ml-[17.6rem] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            {...register('empNo', { required: true,   pattern: /^\d{11}$/  })}
+            {...register('empNo', { required: true,     })}
             />
             </label>
           {errors.empNo && <p className="text-red-500">Enter valid Employee number</p>}
