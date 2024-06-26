@@ -163,9 +163,7 @@ const Add_New_CUG = () => {
               {...register('firstName', { required: true })}
             />
           </label>
-          <ErrorMessage errors={errors} name="firstName">
-            {({ message }) => <p>{message}</p>}
-          </ErrorMessage>
+        
           {errors.firstName && <p className="text-red-500"> Name is required</p>}
         </div>
 
