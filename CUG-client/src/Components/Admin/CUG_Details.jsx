@@ -74,6 +74,7 @@ const CUG_Details = () => {
       }
     } catch (error) {
       console.error('Error deactivating CUG No.:', error);
+      setAlertMessage('Error deactivating CUG No. Please try again later.');
     }
   };
 
