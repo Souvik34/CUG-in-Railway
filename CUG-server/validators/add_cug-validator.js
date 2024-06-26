@@ -15,26 +15,16 @@ const add_cugSchema = z.object({
   .min(11,{message: "emp no must be at least of 11 chareaters"})
   .max(20,{message:"emp no contains maximum 20"}),
 
-  firstName: z
+  name: z
     .string({ required_error: 'First name is required' })
     .trim()
     .min(2, { message: 'First name must be at least 2 characters' })
     .max(20, { message: 'First name must be at most 20 characters' }),
-  lastName: z
-    .string({ required_error: 'Last name is required' })
-    .trim()
-    .min(2, { message: 'Last name must be at least 2 characters' })
-    .max(20, { message: 'Last name must be at most 20 characters' }),
   designation: z
     .string({ required_error: 'Designation is required' })
     .trim()
     .min(2, { message: 'Designation must be at least 2 characters' })
     .max(20, { message: 'Designation must be at most 20 characters' }),
-  division: z
-    .string({ required_error: 'Division is required' })
-    .trim()
-    .min(2, { message: 'Division must be at least 2 characters' })
-    .max(20, { message: 'Division must be at most 20 characters' }),
   department: z
     .string({ required_error: 'Department is required' })
     .trim()

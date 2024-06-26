@@ -77,9 +77,9 @@ const Plan_Wise_Billing_Report = () => {
                 </tr>
               ))}
               <tr>
+                <td className="px-20 py-2 text-sm"></td>
+                <td className="px-20 py-2 text-sm"></td>
                 <td className="px-20 py-2 text-sm font-bold">Total</td>
-                <td className="px-20 py-2 text-sm"></td>
-                <td className="px-20 py-2 text-sm"></td>
                 <td className="px-20 py-2 text-sm font-bold"></td>
                 
               </tr>
