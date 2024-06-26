@@ -61,8 +61,8 @@ function Upload_New_CUG_Nos() {
 
   return (
     <div className="flex flex-col items-center min-h-screen mx-auto my-20">
-      <div className="w-full max-w-md p-5 space-y-6 bg-white shadow-md rounded-lg">
-        <h1 className="text-2xl font-bold text-center text-[#2E2D93]">Upload NEW CUG Numbers</h1>
+      <div className="w-full max-w-xl  px-36 py-6 space-y-6 bg-white shadow-md rounded-lg">
+        <h1 className="text-4xl font-bold text-center text-[#2E2D93]">Upload NEW CUG Numbers</h1>
         <br />
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div>
@@ -80,7 +80,7 @@ function Upload_New_CUG_Nos() {
             {selectedFile && <p className="mt-2 text-gray-600">{selectedFile.name}</p>}
           </div>
           <div>
-            <button type="submit" className="w-full py-2 px-4 bg-[#2E2D93] hover:bg-blue-700 text-white font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">Submit</button>
+            <button type="submit" className="w-full py-2 px-4   bg-blue-500 hover:bg-blue-700 text-white font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">Submit</button>
           </div>
         </form>
       </div>

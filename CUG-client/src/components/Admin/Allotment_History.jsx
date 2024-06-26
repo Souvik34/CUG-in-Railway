@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 
 const Allotment_history = () => {
@@ -64,15 +65,15 @@ const Allotment_history = () => {
 
   return (
     <div className="container mx-auto my-4 p-10">
-      <h2 className="text-left md:text-left text-xl font-bold mb-4 text-black">
+      <h2 className="text-center md:text-center text-4xl font-bold mb-4 text-[#2E2D93]">
         Allotment History
       </h2>
       <form onSubmit={handleSubmit}>
         <div className="flex items-center mb-4">
           <input
             type="text"
-            className="border border-gray-400 rounded-md py-2 px-3 flex-1 mr-2"
-            placeholder="CUG No."
+            className="shadow appearance-none border rounded-md py-2 px-3 flex-1 mr-2"
+            placeholder=" Enter your CUG No."
             value={cugNo}
             onChange={handleCugNoChange}
           />

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 
 
@@ -85,16 +86,18 @@ const CUG_Details = () => {
       <section className="flex justify-center items-center ml-48">
         <div className="md:w-[60vw] md:h-[full] p-5 space-y-6 bg-white shadow-md rounded-lg mt-10 ml-3 items-center">
           
-          <h1 className="text-2xl font-bold text-center text-[#2E2D93]">CUG NO</h1>
+          <h1 className="text-4xl font-bold text-center text-[#2E2D93]">CUG Details</h1>
           <br />
+          <p className="text-lg text-gray-600 text-center mb-4">Please enter your CUG number to fetch details.</p>
+
           <form onSubmit={handleSubmit} className="space-y-6">
             {alertMessage && (
               <div className="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg" role="alert">
                 {alertMessage}
               </div>
             )}
-            <div>
-              <label htmlFor="cugNo" className="block text-sm font-medium text-gray-700">CUG No.</label>
+            <div className='flex justify-center'>
+              {/* <label htmlFor="cugNo" className="block text-sm text-center mb-4 font-medium text-gray-700"> Enter CUG Number</label> */}
               <input
                 type="text"
                 name="cugNo"
@@ -104,11 +107,11 @@ const CUG_Details = () => {
                 autoComplete="off"
                 value={user.cugNo}
                 onChange={handleInput}
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                className="mt-1 block w-[30rem]  text-center  px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
               />
             </div>
-            <div>
-              <button type="submit" className="w-full py-2 px-4 bg-[#2E2D93] hover:bg-blue-700 text-white font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">GO</button>
+            <div className='flex justify-center'>
+              <button type="submit" className="w-[5rem] text-center items-center py-2 px-4 bg-[#2E2D93] hover:bg-blue-700 text-white font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">GO</button>
 
               {filteredData.map((Data) => (
                 <div className="flex flex-col space-y-2 mt-4" key={Data._id}>

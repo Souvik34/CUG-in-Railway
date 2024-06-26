@@ -62,7 +62,7 @@ const Create_Dealer = () => {
         <div className="section-registration">
           <div className="container grid grid-two-cols">
             <div className="registration-form md:w-[30vw] m-auto">
-              <h1 className="main-heading text-center text-4xl font-bold text-[#7B2CBF] pb-5">
+              <h1 className="main-heading text-center text-4xl font-bold text-[#2E2D93] pb-5">
                 Create Dealer
               </h1>
               <br />
@@ -173,7 +173,7 @@ const Create_Dealer = () => {
                 <div className="text-center">
                   <button
                     type="submit"
-                    className="btn btn-submit m-auto bg-[#7B2CBF] py-2 mt-5 font-bold w-full rounded-md text-white"
+                    className="btn btn-submit m-auto bg-blue-500 hover:bg-blue-700 py-2 mt-5 font-bold w-[10rem] rounded-md text-white"
                   >
                     Register Dealer
                   </button>

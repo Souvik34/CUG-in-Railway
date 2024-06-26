@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 
 
 import React, { useState, useEffect } from 'react';
@@ -70,19 +71,20 @@ function Upload_CUG_Bill() {
 
   return (
     <div className="container mx-20 my-20 flex flex-col items-center">
+      <div className="text-4xl  text-[#2E2D93] font-bold mb-4">
+        Upload Your Bills
+      </div>
+      <p className="text-lg mb-4">
+        Please upload your CSV or Excel file to view your bills.
+      </p>
       {loading && (
         <div className="mb-4 text-center text-blue-700">
           Submitting file, please wait...
         </div>
       )}
       <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-sm">
-        <div className="mb-4">
-          <label
-            htmlFor="file_upload"
-            className="block text-gray-700 font-bold mb-2 text-center"
-          >
-            Upload CSV/Excel
-          </label>
+        <div className="mb-4 w-full max-w-md p-5 space-y-6 bg-white shadow-md rounded-lg">  
+          
           <input
             type="file"
             id="file_upload"
@@ -90,6 +92,7 @@ function Upload_CUG_Bill() {
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
             onChange={handleFileUpload}
+            aria-label="Upload CSV or Excel file"
           />
         </div>
 
