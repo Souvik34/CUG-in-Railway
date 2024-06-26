@@ -5,7 +5,7 @@ const create = async (req, res) => {
     const {
       cugNo,
       empNo,
-      name,
+      firstName,
       designation,
       department,
       billUnit,
@@ -24,7 +24,7 @@ const create = async (req, res) => {
     const userCreated = await Add_cug.create({
       cugNo,
       empNo,
-      name,
+      firstName,
       designation,
       department,
       billUnit,
@@ -66,7 +66,7 @@ const saveDraft = async (req, res) => {
     const {
       cugNo,
       empNo,
-      name,
+      firstName,
       designation,
       department,
       billUnit,
@@ -77,7 +77,7 @@ const saveDraft = async (req, res) => {
     const draft = await Add_cug.create({
       cugNo,
       empNo,
-      name,
+      firstName,
       designation,
       department,
       billUnit,

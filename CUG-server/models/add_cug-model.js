@@ -17,7 +17,7 @@ const add_cugSchema = new Schema({
     type: String,
     required: true
   },
-  name: {
+  firstName: {
     type: String,
     required: true
   },
