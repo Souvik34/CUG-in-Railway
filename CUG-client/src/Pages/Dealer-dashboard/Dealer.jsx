@@ -8,30 +8,26 @@ const Dealer = () => {
   return (
     <div className="">
       {/* dealer navbar */}
-      <nav className=" w-full bg-custom-gradient flex items-center justify-between  sticky top-0 z-10">
-       
-
-        <h1 className="text-4xl font-semibold py-5 text-white ml-32 px-96 flex-grow">
+      <nav className="w-full flex items-center bg-admin-gradient fixed pt-36  justify-between py-3 px-10">
+      <div className="flex-grow">
+        <h1 className="text-4xl font-semibold text-white text-center">
           DEALER PORTAL
         </h1>
-
-          {/* logout button */}
-        <div className="text-base font-medium space-x-5 lg:block">
-          {isLoggedIn ? (
-            <Link
-              to="/logout"
-              className="py-2 px-2 border rounded text-white bg-[#ef4444] hover:bg-[#991b1b] ml-3 mr-3"
-            >
-              Logout
-            </Link>
-          ) : (
-            ""
-          )}
-        </div> 
-
-      </nav>
+      </div>
+      <div className="text-base font-medium space-x-5">
+        {isLoggedIn ? (
+          <Link
+            to="/logout"
+            className="py-2 px-4 border rounded text-white bg-[#ef4444] hover:bg-[#991b1b]">
+            Logout
+          </Link>
+        ) : (
+          ""
+        )}
+      </div>
+    </nav>
       {/* Side bar for dealer */}
-      <div className=" bg-gray-100  min-h-screen flex">
+      <div className=" bg-gray-100 mt-16 min-h-screen flex">
         <div className="bg-gray-800 w-64 p-4">
           <NavLink to="add_new_cug" activeClassName="current">
             <button className="bg-blue-700 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded mb-2 border-solid border-2 w-56">

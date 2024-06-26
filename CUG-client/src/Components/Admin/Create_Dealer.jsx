@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
@@ -69,95 +70,95 @@ const Create_Dealer = () => {
                 <div className="space-y-5">
                   {/* for username */}
                   <div className="space-y-2">
-                    <label htmlFor="username">Name</label>
+                    <label htmlFor="username"  className=' text-gray-700 font-bold '>Name <span style={{ color: 'red' }}>*</span></label>
                     <br />
                     <div className="flex rounded hover:ring-1 w-full">
                       <input
                         type="text"
                         name="username"
-                        placeholder="Ex: Rohan roy"
+                        placeholder="Enter your name"
                         id="username"
                         required
                         autoComplete="off"
                         value={user.username}
                         onChange={handleInput}
-                        className="black flex-1 border-0 py-1.5 pl-4 text-gray-900 placeholder:text-gray-400 focus:outline-none rounded-md sm:text-sm sm:leading-6"
+                       className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       />
                     </div>
                   </div>
 
                   {/* for employee id */}
                   <div className="space-y-2">
-                    <label htmlFor="employeeid">Employee Id</label>
+                    <label htmlFor="employeeid"  className=' text-gray-700 font-bold '>Employee Id <span style={{ color: 'red' }}>*</span></label>
                     <br />
                     <div className="flex rounded hover:ring-1 w-full">
                       <input
                         type="text"
                         name="employeeid"
-                        placeholder="1kj3nkn3"
+                        placeholder="Enter your Employee ID"
                         id="employeeid"
                         required
                         autoComplete="off"
                         value={user.employeeid}
                         onChange={handleInput}
-                        className="black flex-1 border-0 py-1.5 pl-4 text-gray-900 placeholder:text-gray-400 focus:outline-none rounded-md sm:text-sm sm:leading-6"
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       />
                     </div>
                   </div>
 
                   {/* for department */}
                   <div className="space-y-2">
-                    <label htmlFor="department">Department</label>
+                    <label htmlFor="department"  className=' text-gray-700 font-bold '>Department <span style={{ color: 'red' }}>*</span></label>
                     <br />
                     <div className="flex rounded hover:ring-1 w-full">
                       <input
                         type="text"
                         name="department"
-                        placeholder="Ex: Account"
+                        placeholder="Enter your Department"
                         id="department"
                         required
                         autoComplete="off"
                         value={user.department}
                         onChange={handleInput}
-                        className="black flex-1 border-0 py-1.5 pl-4 text-gray-900 placeholder:text-gray-400 focus:outline-none rounded-md sm:text-sm sm:leading-6"
+                       className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       />
                     </div>
                   </div>
 
                   {/* for phone number */}
                   <div className="space-y-2">
-                    <label htmlFor="phone">Phone</label>
+                    <label htmlFor="phone"  className=' text-gray-700 font-bold ' >Phone <span style={{ color: 'red' }}>*</span></label>
                     <br />
                     <div className="flex rounded hover:ring-1 w-full">
                       <input
                         type="number"
                         name="phone"
-                        placeholder="Phone"
+                        placeholder="Enter your phone number"
                         id="phone"
                         required
                         autoComplete="off"
                         value={user.phone}
                         onChange={handleInput}
-                        className="black flex-1 border-0 py-1.5 pl-4 text-gray-900 placeholder:text-gray-400 focus:outline-none rounded-md sm:text-sm sm:leading-6"
+                      className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       />
                     </div>
                   </div>
 
                   {/* for password */}
                   <div className="space-y-2">
-                    <label htmlFor="password">Password</label>
+                    <label htmlFor="password" className=' text-gray-700 font-bold '>Password <span style={{ color: 'red' }}>*</span></label>
                     <br />
                     <div className="flex rounded hover:ring-1 w-full">
                       <input
                         type={visible ? "text" : "password"}
                         name="password"
-                        placeholder="Password"
+                        placeholder="Enter your password"
                         id="password"
                         required
                         autoComplete="off"
                         value={user.password}
                         onChange={handleInput}
-                        className="black flex-1 border-0 py-1.5 pl-4 text-gray-900 placeholder:text-gray-400 focus:outline-none rounded-md sm:text-sm sm:leading-6"
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       />
                       <div className="mt-2.5 ml-2 text-gray-600" onClick={() => { setvisible(!visible) }}>
                         {visible ? <FaEye /> : <FaEyeSlash />}
@@ -166,6 +167,9 @@ const Create_Dealer = () => {
                   </div>
                 </div>
                 <br />
+                <p className="text-gray-500 text-sm">
+    Password must be at least 8 characters long and contain a mix of uppercase and lowercase letters, numbers, and special characters.
+  </p>
                 <div className="text-center">
                   <button
                     type="submit"
