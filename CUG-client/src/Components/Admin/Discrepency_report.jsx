@@ -15,6 +15,40 @@ function Upload_CUG_Bill() {
     const file = event.target.files[0];
     const fileType = file.type;
 
+    // Extract month and year from the file name
+    const fileName = file.name;
+    const regex = /(\w+)-(\d{4})/; // Adjust this regex based on your file name format
+    const match = fileName.match(regex);
+    if (match) {
+      const [_, month, year] = match;
+      
+      // Convert month name to month number
+      const monthNames = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
+      const monthIndex = monthNames.indexOf(month.toLowerCase());
+      
+      if (monthIndex === -1) {
+        alert('Invalid month name in file name. Please upload a valid bill file.');
+        event.target.value = null;
+        return;
+      }
+
+      // Validate the file date
+      const fileDate = new Date(year, monthIndex);
+      const currentDate = new Date();
+      const sixMonthsAgo = new Date();
+      sixMonthsAgo.setMonth(currentDate.getMonth() - 6);
+
+      if (fileDate < sixMonthsAgo || fileDate > currentDate) {
+        alert('Please upload a bill that is not older than six months.');
+        event.target.value = null;
+        return;
+      }
+    } else {
+      alert('Invalid file name format. Please upload a valid bill file.');
+      event.target.value = null;
+      return;
+    }
+
     const calculateTotalAmount = (data) => {
       const filteredData = data.map((bill) => {
         const periodicCharge = parseFloat(bill['Periodic Charge']) || 0;
@@ -25,29 +59,32 @@ function Upload_CUG_Bill() {
         const sms = parseFloat(bill['SMS']) || 0;
         const vas = parseFloat(bill['VAS']) || 0;
         const totalAmount = periodicCharge + amountUsage + amountData + voice + video + sms + vas;
+
+        // Determine Plan Type based on periodic charge
+        let planType = '';
+        if (periodicCharge >= 74.61) {
+          planType = 'Plan A';
+        } else if (periodicCharge >= 59.05) {
+          planType = 'Plan B';
+        } else if (periodicCharge >= 39.9) {
+          planType = 'Plan C';
+        }
+
         return {
           'CUG NO': bill['CUG NO'],
-          'Total Amount': totalAmount.toFixed(2),
-          'Plan Type': bill['Plan Type'],
+          'Total Amount': totalAmount,
+          'Plan Type': planType,
         };
-      });
-      setBills(filteredData);
-    };
+      }).filter(bill => bill['Total Amount'] > 74.61); // Filter based on total amount > 74.61
 
-    const filterData = (data) => {
-      const filteredData = data.filter(
-        (bill) => parseFloat(bill['Periodic Charge']) > 74.61 &&
-                  parseFloat(bill['Periodic Charge']) > 59.05 &&
-                  parseFloat(bill['Periodic Charge']) > 39.9
-      );
-      calculateTotalAmount(filteredData);
+      setBills(filteredData);
     };
 
     const parseCSV = (file) => {
       Papa.parse(file, {
         header: true,
         complete: (result) => {
-          filterData(result.data);
+          calculateTotalAmount(result.data);
         },
       });
     };
@@ -69,7 +106,7 @@ function Upload_CUG_Bill() {
             return acc;
           }, {})
         );
-        filterData(parsedData);
+        calculateTotalAmount(parsedData);
       };
       reader.readAsArrayBuffer(file);
     };
@@ -94,10 +131,12 @@ function Upload_CUG_Bill() {
         <div className="mb-4">
           <label
             htmlFor="file_upload"
-            className="block text-gray-700 font-bold mb-2"
+            className="block text-[#2E2D93] font-bold text-center text-4xl mb-6"
           >
-            Upload CSV/Excel
+            Discrepency Report
           </label>
+          <p className='flex justify-center font-bold text-lg mb-4'> Upload a bill to get a list of CUG numbers, who have exceeded the data plan </p>
+          <div className='flex justify-center font-bold text-lg text-blue-500 '> Upload a CSV/ Excel file </div>
           <input
             type="file"
             id="file_upload"
@@ -106,13 +145,17 @@ function Upload_CUG_Bill() {
             onChange={handleFileUpload}
           />
         </div>
+        
 
+        <div className='flex justify-center'>
         <button
           type="submit"
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          className="bg-blue-500 hover:bg-blue-700  text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
         >
           Submit
         </button>
+        </div>
+       
       </form>
 
       <div className="mt-8">
@@ -128,7 +171,7 @@ function Upload_CUG_Bill() {
             {bills.map((bill, index) => (
               <tr key={index}>
                 <td className="border px-4 py-2">{bill['CUG NO']}</td>
-                <td className="border px-4 py-2">{bill['Total Amount']}</td>
+                <td className="border px-4 py-2">{bill['Total Amount'].toFixed(2)}</td>
                 <td className="border px-4 py-2">{bill['Plan Type']}</td>
               </tr>
             ))}
