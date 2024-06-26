@@ -131,10 +131,12 @@ function Upload_CUG_Bill() {
         <div className="mb-4">
           <label
             htmlFor="file_upload"
-            className="block text-gray-700 font-bold mb-2"
+            className="block text-[#2E2D93] font-bold text-center text-4xl mb-6"
           >
-            Upload CSV/Excel
+            Discrepency Report
           </label>
+          <p className='flex justify-center font-bold text-lg mb-4'> Upload a bill to get a list of CUG numbers, who have exceeded the data plan </p>
+          <div className='flex justify-center font-bold text-lg text-blue-500 '> Upload a CSV/ Excel file </div>
           <input
             type="file"
             id="file_upload"
@@ -143,13 +145,17 @@ function Upload_CUG_Bill() {
             onChange={handleFileUpload}
           />
         </div>
+        
 
+        <div className='flex justify-center'>
         <button
           type="submit"
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          className="bg-blue-500 hover:bg-blue-700  text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
         >
           Submit
         </button>
+        </div>
+       
       </form>
 
       <div className="mt-8">
