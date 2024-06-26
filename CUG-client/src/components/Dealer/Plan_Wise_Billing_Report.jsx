@@ -48,25 +48,17 @@ const Plan_Wise_Billing_Report = () => {
              
             </div>
           </div>
-          <table className="w-full table-auto">
+          <table className="min-w-full divide-y divide-gray-300">
             <thead>
               <tr>
-                <th className="px-20 py-2 text-left text-gray-700 font-bold text-sm">
-                  Plan
-                </th>
-                <th className="px-20 py-2 text-left text-gray-700 font-bold text-sm">
-                  Department
-                </th>
-                <th className="px-20 py-2 text-left text-gray-700 font-bold text-sm">
-                  Date
-                </th>
-                <th className="px-20 py-2 text-left text-gray-700 font-bold text-sm">
-                  Amount
-                </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Plan</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Department</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Amount (Rs.)</th>
               
               </tr>
             </thead>
-            <tbody>
+            <tbody className="bg-white divide-y divide-gray-200">
               {rows.map((row, index) => (
                 <tr key={index}>
                   <td className="px-20 py-2 text-sm">{row.plan}</td>
