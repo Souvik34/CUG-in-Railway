@@ -115,13 +115,14 @@ function Upload_CUG_Bill() {
   return (
     <div className="container mx-20 my-20 flex flex-col items-center">
       <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-sm">
-        <div className="mb-4">
+        <div className="mb-6">
           <label
             htmlFor="file_upload"
-            className="block text-gray-700 font-bold mb-2 text-center"
+            className="block text-5xl text-[#2E2D93] font-bold mb-5 text-center"
           >
-            Upload CSV/Excel
+            Upload your Bill 
           </label>
+          <p className='mb-10 text-lg flex justify-center'>Upload your CUG bill to get the total amount </p>
           <input
             type="file"
             id="file_upload"
