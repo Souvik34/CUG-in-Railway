@@ -25,8 +25,23 @@ function Upload_CUG_Bill() {
     if (match) {
       const [_, month, year] = match;
       setFileInfo({ month, year });
+
+      // Validate the file date
+      const fileDate = new Date(`${month} 1, ${year}`);
+      const currentDate = new Date();
+      const sixMonthsAgo = new Date();
+      sixMonthsAgo.setMonth(currentDate.getMonth() - 6);
+
+      if (fileDate < sixMonthsAgo) {
+        alert('Please upload a bill that is not older than six months.');
+        event.target.value = null;
+        return;
+      }
     } else {
       setFileInfo({ month: 'Unknown', year: 'Unknown' });
+      alert('Invalid file name format. Please upload a valid bill file.');
+      event.target.value = null;
+      return;
     }
 
     const calculateTotalAmount = (data) => {
