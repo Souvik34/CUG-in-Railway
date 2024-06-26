@@ -8,7 +8,7 @@ const Dealer = () => {
   return (
     <div className="">
       {/* dealer navbar */}
-      <nav className="w-full flex items-center bg-admin-gradient fixed pt-36  justify-between py-3 px-10">
+      <nav className="w-full flex items-center bg-custom-gradient fixed pt-36  justify-between py-3 px-10">
       <div className="flex-grow">
         <h1 className="text-4xl font-semibold text-white text-center">
           DEALER PORTAL
