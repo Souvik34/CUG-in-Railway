@@ -23,7 +23,7 @@ app.use("/api/form",contactRouter);
 app.use("/api/services",serviceRouter);
 app.use("/api/add_cug", add_cugRouter);
 app.use("/api/admin",adminRouter);
-app.use("/api/cug_staus",cug_activate_deactivate);
+app.use("/api/cug_status",cug_activate_deactivate);
 app.use("/api/plan_wise_bill",plan_wise_bill);
 app.use('/api/bills', billRouter);
 //calling error middleware
