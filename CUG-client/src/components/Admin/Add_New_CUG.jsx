@@ -136,31 +136,31 @@ const Add_New_CUG = () => {
           <input
             type="text"
             id="empNo"
-            placeholder='Enter your Employement number'
+            placeholder='Enter your Employee number'
             className="shadow appearance-none border rounded w-5/12 ml-[17.6rem] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             {...register('empNo', { required: true,   pattern: /^\d{11}$/  })}
             />
             </label>
-          {errors.empNo && <p className="text-red-500">Enter valid employment number</p>}
+          {errors.empNo && <p className="text-red-500">Enter valid Employee number</p>}
         </div>
 
         {/* Personal details */}
-        <div className="grid grid-cols-2 gap-0 mb-4">
+        {/* <div className="grid grid-cols-2 gap-0 mb-4"> */}
           <div>
             <label htmlFor="firstName" className="block text-gray-700 font-bold mb-2">
               Name
             <input
               type="text"
-              id="firstName"
-              placeholder='first name'
-              className="shadow appearance-none border rounded w-[33%]  ml-[22.7rem] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="name"
+              placeholder='Enter your name'
+              className="shadow appearance-none border rounded w-5/12  ml-[22.8rem] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               {...register('firstName', { required: true })}
               />
               </label>
-            {errors.firstName && <p className="text-red-500">First name is required</p>}
+            {errors.firstName && <p className="text-red-500"> Name is required</p>}
           </div>
           
-          <div>
+          {/* <div>
             <label htmlFor="lastName" className="block font-bold mb-2 ">
 
             <input
@@ -172,8 +172,8 @@ const Add_New_CUG = () => {
               />
               </label>
             {errors.lastName && <p className="text-red-500">Last name is required</p>}
-          </div>
-        </div>
+          </div> */}
+        {/* </div> */}
         <hr className='border-[1.1px] border-blue-300 rounded'/>
         
         <div className="mb-4">
@@ -189,19 +189,7 @@ const Add_New_CUG = () => {
             </label>        
           {errors.designation && <p className="text-red-500">Enter your Designation</p>}
         </div>
-        <div className="mb-4">
-          <label htmlFor="division" className="block text-gray-700 font-bold mb-2">
-            Division
-          <input
-            type="text"
-            id="division"
-            placeholder='Enter your Division'
-            className="shadow appearance-none border rounded w-5/12 ml-[21.8rem] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            {...register('division', { required: true })}
-            />
-            </label>
-          {errors.division && <p className="text-red-500">Invalid division</p>}
-        </div>
+       
         <div className="mb-4">
           <label htmlFor="department" className="block text-gray-700 font-bold mb-2">
             Department
