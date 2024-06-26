@@ -67,7 +67,7 @@ const Allocation_Wise_Report = () => {
               {AllocationTotal.map((item, index) => (
                 <tr key={index}>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.allocation}</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">14/05/2024</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">26/06/2024</td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.totalAmount}</td>
                 </tr>
               ))}
