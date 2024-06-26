@@ -11,7 +11,7 @@ const add_cugSchema = z.object({
   empNo: z
   .string({required_error:"emp no is required"})
   .trim()
-  .min(11,{message: "emp no must be at least of 11 chareaters"})
+  .min(9,{message: "emp no must be at least of 11 chareaters"})
   .max(20,{message:"emp no contains maximum 20"}),
 
   name: z
