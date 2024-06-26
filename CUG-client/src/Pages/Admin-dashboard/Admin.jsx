@@ -19,29 +19,9 @@ const Admin = () => {
   }
   return (
     <div>
-      {/* <nav className="sticky top-0 z-10 w-full bg-admin-gradient flex items-center justify-between"> */}
-        {/* <h1 className="text-4xl font-semibold py-5 text-white ml-32 px-96 flex-grow">
-          ADMIN PORTAL
-        </h1> */}
-
-         {/* logout button */}
-         {/* <div className="text-base font-medium space-x-5 lg:block">
-          {isLoggedIn ? (
-            <Link
-              to="/logout"
-              className="py-2 px-2 border rounded text-white bg-[#ef4444] hover:bg-[#991b1b] ml-3 mr-3">
-              Logout
-            </Link>
-          ) : (
-            ""
-          )} */}
-        {/* </div> */}
-
-        {/* <div className="w-20"></div> */}
-        {/* // This div is a placeholder to keep the spacing correct */}
-      {/* </nav> */}
+      
       <Hero/>
-      <div className="bg-gray-100 mt-16  min-h-screen flex">
+      <div className="bg-gray-100 mt-16  min-h-screen  flex">
         <div className="bg-gray-800 w-64 p-4">
         <NavLink to="create_dealer" activeClassName="active">
             <button className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mb-2 border-solid border-2 w-56">

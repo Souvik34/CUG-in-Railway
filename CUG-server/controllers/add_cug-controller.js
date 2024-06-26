@@ -1,4 +1,12 @@
 const Add_cug = require("../models/add_cug-model");
+
+// Plan rates
+const planRates = {
+  A: 75,
+  B: 60,
+  C: 40,
+};
+
 const create = async (req, res) => {
   try {
     console.log(req.body);
@@ -108,7 +116,35 @@ const getDraft = async (req, res) => {
   }
 };
 
-module.exports = { create, getAllData, getPlansAndDepartments, saveDraft, getDraft };
+const getAllocationTotal= async(req,res)=>{
+  try {
+    // Fetch all CUG data from the database
+    const cugData = await Add_cug.find({}, { allocation: 1, plan: 1 });
+
+    // Calculate allocation totals
+    const allocationTotals = {};
+    cugData.forEach(({ allocation, plan }) => {
+      const amount = planRates[plan];
+      if (!allocationTotals[allocation]) {
+        allocationTotals[allocation] = 0;
+      }
+      allocationTotals[allocation] += amount;
+    });
+
+    // Format the result
+    const result = Object.keys(allocationTotals).map(allocation => ({
+      allocation,
+      totalAmount: allocationTotals[allocation],
+    }));
+
+    // Send the response
+    res.json({ allocations: result });
+  } catch (error) {
+    console.error('Error fetching allocation totals:', error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+}
+module.exports = { create, getAllData, getPlansAndDepartments, saveDraft, getDraft,getAllocationTotal };
 
 
 // module.exports = { create, getAllData };
