@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 
 const CUG_Details = () => {
@@ -52,27 +51,29 @@ const CUG_Details = () => {
     }
   };
 
+
   const handleDeactivate = async (cugNo) => {
     try {
-      const response = await fetch('http://127.0.0.2:4000/api/cug_staus/deactivate', {
+      const response = await fetch('http://127.0.0.2:4000/api/cug_status/deactivate', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({ cugNo })
       });
-
+  
       if (response.ok) {
-        // Remove the deactivated CUG from filteredData
+        console.log('CUG No. deactivated successfully');
         setFilteredData(filteredData.filter(data => data.cugNo !== cugNo));
-        
         setAlertMessage('CUG No. deactivated successfully');
       } else {
-        console.error('Failed to deactivate CUG No.');
-        setAlertMessage('Failed to deactivate CUG No.');
+        const errorData = await response.json();
+        console.error('Failed to deactivate CUG No.:', errorData);
+        setAlertMessage(`Failed to deactivate CUG No.: ${errorData.message}`);
       }
     } catch (error) {
       console.error('Error deactivating CUG No.:', error);
+      setAlertMessage('Error deactivating CUG No. Please try again later.');
     }
   };
 
@@ -117,7 +118,7 @@ const CUG_Details = () => {
                   <div className="flex flex-row ml-4 justify-around min-w-max space-x-4">
                     <div className="w-1/3 flex flex-col">
                       <h2 className="p-4 bg-gray-100 rounded shadow flex-grow">EMP NO: <span>{Data.empNo}</span></h2>
-                      <h2 className="p-4 bg-gray-100 rounded shadow flex-grow">NAME: <span>{Data.firstName + " " + Data.lastName}</span></h2>
+                      <h2 className="p-4 bg-gray-100 rounded shadow flex-grow">NAME: <span>{Data.firstName}</span></h2>
                       <h2 className="p-4 bg-gray-100 rounded shadow flex-grow">DESIGNATION: <span>{Data.designation}</span></h2>
                     </div>
                     <div className="w-1/3 flex flex-col">
