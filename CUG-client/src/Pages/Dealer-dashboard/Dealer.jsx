@@ -6,7 +6,7 @@ import { useAuth } from "../../store/Auth";
 const Dealer = () => {
   const { isLoggedIn } = useAuth();
   return (
-    <div className="">
+    <div>
       {/* dealer navbar */}
       <nav className="w-full flex items-center bg-custom-gradient fixed pt-36  justify-between py-3 px-10">
       <div className="flex-grow">
@@ -34,11 +34,7 @@ const Dealer = () => {
               Add New CUG
             </button>
           </NavLink>
-          {/* <NavLink to="activate_deactivate_cug" activeClassName="current">
-            <button className="bg-blue-700 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded mb-4 border-2 w-full">
-              Activate/De-Activate CUG
-            </button>
-          </NavLink> */}
+          
           <NavLink to="allocation_wise_report" activeClassName="current">
             <button className="bg-blue-700 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded mb-4 border-2 w-full">
               Allocation-Wise Report

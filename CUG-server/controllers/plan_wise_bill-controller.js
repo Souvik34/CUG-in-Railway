@@ -1,5 +1,12 @@
 const Add_cug = require("../models/add_cug-model");
 
+// Plan rates
+const planRates = {
+  A: 75,
+  B: 60,
+  C: 40,
+};
+
 const getPlanWiseBillingReport = async (req, res) => {
   try {
     const add_cugs = await Add_cug.find({}).exec();
@@ -27,4 +34,31 @@ const getPlanWiseBillingReport = async (req, res) => {
     res.status(500).json({ message: 'Error generating plan-wise billing report' });
   }
 }
-module.exports = {getPlanWiseBillingReport};
+
+const getPlanWiseBillReport = async (req, res) => {
+  try {
+    const plans = await Add_cug.distinct('plan');
+    const planWiseBillReport = [];
+
+    for (const plan of plans) {
+      const employees = await Add_cug.find({ plan });
+      const departments = await Add_cug.distinct('department', { plan });
+      for (const department of departments) {
+        const departmentEmployees = employees.filter(employee => employee.department === department);
+        const totalAmount = departmentEmployees.reduce((acc, employee) => acc + planRates[employee.plan] * employee.no_of_employees, 0);
+        planWiseBillReport.push({
+          plan,
+          department,
+          totalAmount,
+        });
+      }
+    }
+
+    res.json(planWiseBillReport);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+};
+
+module.exports = { getPlanWiseBillingReport, getPlanWiseBillReport };
