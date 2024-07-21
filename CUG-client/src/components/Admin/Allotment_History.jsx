@@ -115,7 +115,7 @@ const Allotment_history = () => {
                         <div className="flex rounded-md   py-2 px-3">
                           <h1>Name:</h1>{" "}
                           <h1 className="text-gray-600">
-                            {previousCug.firstName} {previousCug.lastName}
+                            {previousCug.firstName}
                           </h1>
                         </div>
                         <div className="flex rounded-md py-2 px-3">
