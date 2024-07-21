@@ -115,6 +115,27 @@ const getDraft = async (req, res) => {
     console.log(error);
   }
 };
+const getPlanWiseBillReport = async (req, res) => {
+  try {
+    const plans = await Add_cug.distinct('plan');
+    const planWiseBillReport = [];
+
+    for (const plan of plans) {
+      const employees = await Add_cug.find({ plan });
+      const totalAmount = employees.reduce((acc, employee) => acc + planRates[employee.plan], 0);
+      planWiseBillReport.push({
+        plan,
+        department: employees[0].department,
+        totalAmount,
+      });
+    }
+
+    res.json(planWiseBillReport);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+};
 
 const getAllocationTotal= async(req,res)=>{
   try {

@@ -50,7 +50,7 @@ const CUG_Status_Report = () => {
     setFilteredActiveCUGs(filteredActive);
     setFilteredDeactivatedCUGs(filteredDeactivated);
   };
-
+  
   return (
     <div className="container mx-auto p-6 bg-gradient-to-r from-blue-50 to-blue-100 min-h-screen flex flex-col items-center">
       <h1 className="text-4xl font-extrabold text-center text-blue-900 mb-8">CUG Status Report</h1>
