@@ -28,7 +28,7 @@ const Allotment_history = () => {
 
   const fetchAllDeactivatedCugData = async () => {
     try {
-      const URL = "http://127.0.0.2:4000/api/cug_staus/deactivate_data";
+      const URL = "http://127.0.0.2:4000/api/cug_status/deactivate_data";
       const response = await fetch(URL, {
         method: "GET",
       });
