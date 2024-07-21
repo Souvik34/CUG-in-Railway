@@ -51,6 +51,51 @@ const CUG_Status_Report = () => {
     setFilteredDeactivatedCUGs(filteredDeactivated);
   };
 
+  const handleDelete = async (cugNo) => {
+    try {
+      const response = await fetch('http://127.0.0.2:4000/api/cug_status/deactivate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ cugNo })
+      });
+
+      if (response.ok) {
+        setFilteredActiveCUGs(filteredActiveCUGs.filter(data => data.cugNo !== cugNo));
+        setFilteredDeactivatedCUGs([...filteredDeactivatedCUGs, activeCUGs.find(data => data.cugNo === cugNo)]);
+        console.log('CUG No. deactivated and added to deactivated list');
+      } else {
+        console.error('Failed to deactivate CUG No.');
+      }
+    } catch (error) {
+      console.error('Error deactivating CUG No.:', error);
+    }
+  };
+  const handleReactivate = async (cugNo) => {
+    try {
+      const response = await fetch('http://127.0.0.2:4000/api/cug_status/reactivate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ cugNo })
+      });
+  
+      if (response.ok) {
+        const reactivatedCUG = deactivatedCUGs.find(data => data.cugNo === cugNo);
+        setActiveCUGs([...activeCUGs, reactivatedCUG]);
+        setDeactivatedCUGs(deactivatedCUGs.filter(data => data.cugNo!== cugNo));
+        setFilteredActiveCUGs([...filteredActiveCUGs, reactivatedCUG]);
+        setFilteredDeactivatedCUGs(filteredDeactivatedCUGs.filter(data => data.cugNo!== cugNo));
+        console.log('CUG No. reactivated and removed from deactivated list');
+      } else {
+        console.error('Failed to reactivate CUG No.');
+      }
+    } catch (error) {
+      console.error('Error reactivating CUG No.:', error);
+    }
+  };
   return (
     <div className="container mx-auto p-6 bg-gradient-to-r from-blue-50 to-blue-100 min-h-screen flex flex-col items-center">
       <h1 className="text-4xl font-extrabold text-center text-blue-900 mb-8">CUG Status Report</h1>
