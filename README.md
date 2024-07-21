@@ -2,6 +2,25 @@
 
 This project implements a CUG (Closed User Group) management system using the MERN stack (MongoDB, Express.js, React, Node.js). It allows users to create, manage, and view CUG groups for discounted or free calls and SMS within a group.
 
+├── src
+│   ├── controller
+│   │   ├── **/*.css
+│   ├── views
+│   ├── model
+│   ├── index.js
+├── public
+│   ├── css
+│   │   ├── **/*.css
+│   ├── images
+│   ├── js
+│   ├── index.html
+├── dist (or build
+├── node_modules
+├── package.json
+├── package-lock.json
+└── .gitignore
+
+
 ## Features:
 
 - Create new CUG groups
