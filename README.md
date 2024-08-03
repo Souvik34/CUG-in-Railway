@@ -7,7 +7,7 @@ This project implements a CUG (Closed User Group) management system using the ME
 - Create new CUG groups
 - View a list of existing CUG groups with details
 - Manage CUG group members (add, remove)
-- User-friendly interface built with React (optional: consider mentioning UI libraries used)
+- User-friendly interface built with React 
 
 ## Tech Stack:
 
@@ -50,6 +50,15 @@ npm run start (or a similar script defined in your package.json)
 ```
 
 This will usually start the application at http://localhost:3000/ (adjust the port if necessary).
+
+## Functions:
+
+#Create New CUG Group
+- File: client/src/components/CUGGroupForm.js
+- Description: This function allows users to create a new CUG group by providing a group name and description.
+- API Endpoint: POST /api/cug-groups
+- Request Body: { name: string, description: string }
+- Response: 201 Created with the newly created CUG group ID
 
 
 
