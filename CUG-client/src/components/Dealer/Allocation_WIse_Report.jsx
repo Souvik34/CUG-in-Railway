@@ -45,7 +45,7 @@ const Allocation_Wise_Report = () => {
   }, [])
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center w-full ml-40 mt-auto py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gray-100 flex items-center w-full py-12 px-4 sm:px-6 lg:px-8 text-center justify-center" >
       <div className="max-w-4xl w-full space-y-8">
         <div className="text-center">
           <h3 className="text-2xl font-bold text-gray-700">Allocation wise Bill</h3>
